@@ -1,0 +1,4 @@
+ccxt==2.4.88
+lxml==4.9.2
+requests==2.28.1
+termcolor==2.1.1
