@@ -121,7 +121,7 @@ I'd say that the ROI/month can go from **5% to 30%** easily.
 
 Reminder: you can check B.A.S running live [here](discord.gg/Y7MeEMGKnn).
  
-You can also contact me if you have a question, or if you want to talk about B.A.S, how it works etc.
+Get B.A.S (full package) [here](https://shoppy.gg/product/SNIB5Zf).
 
 <a name="contact"/>
  
