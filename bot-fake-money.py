@@ -80,7 +80,7 @@ async def symbol_loop(exchange, symbol):
             profit_usd = (min_ask_price*((total_crypto/len(echanges_str)))*((max_bid_price-min_ask_price)/min_ask_price))
             profit_pct = profit_usd/(0.01*total_usd)
             profit_with_fees_usd = profit_usd - (((crypto_per_transaction) * max_bid_price)*(fees[max_bid_ex]['receive']) + ((crypto_per_transaction * min_ask_price)*(fees[min_ask_ex]['give'])))
-            profit_with_fees_pct = (profit_with_fees_usd/total_usd)*100
+            profit_with_fees_pct = ((profit_with_fees_usd/total_usd)*100)/2
 
             if max_bid_ex != min_ask_ex and profit_with_fees_usd > float(criteria_usd) and profit_with_fees_pct > float(criteria_pct) and prec_ask_price != min_ask_price and prec_bid_price != max_bid_price and usd[min_ask_ex] >= crypto_per_transaction * min_ask_price * (1+fees[min_ask_ex]['give']) and crypto[max_bid_ex] >= crypto_per_transaction * (1+fees[max_bid_ex]['give']):
                 i+=1
