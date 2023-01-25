@@ -7,8 +7,6 @@
 More than a simple algorithm, [Barbotine Arbitrage System (B.A.S)](https://bas.teleporthq.app) is a complete portfolio management system based on the price difference opportunities of the same asset on several centralized trading platforms.
 To eliminate the risks and variables to be taken into account, B.A.S operates without any transfer of assets between trading platforms. It also operates in a delta-neutral situation, which brings it even closer to zero risk.
 
-<button data-shoppy-product="SNIB5Zf">Pay</button>
-
 ## Table of content
 * [Features](#features)
 * [Demo](#demo)
