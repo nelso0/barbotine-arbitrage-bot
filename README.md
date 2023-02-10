@@ -120,6 +120,7 @@ In general, the more volatile the crypto market, the more arbitrage opportunitie
 I'd say that the ROI/month can go from **5% to 30%** easily. 
 
 [<img src='https://media.discordapp.net/attachments/871516621464797184/1073676186049323008/button2.png' width="25%"/>](https://shoppy.gg/product/SNIB5Zf)
+ 
 [<img src='https://media.discordapp.net/attachments/871516621464797184/1073674914176979016/button.png' width="25%"/>](https://shoppy.gg/product/SNIB5Zf)
 <a name="contact"/>
  
