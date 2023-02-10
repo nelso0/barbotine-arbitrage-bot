@@ -31,7 +31,8 @@ To eliminate the risks and variables to be taken into account, B.A.S operates wi
  
 ## Demo
 
-I created a Discord server where you can track live results of B.A.S with $10k starting balance on SOL/USDT
+I created a Discord server where you can track live results of B.A.S with $10k starting balance on SOL/USDT.
+
 Join it [here](https://discord.gg/Y7MeEMGKnn)
 
 ![](https://cdn.discordapp.com/attachments/876447732259225612/1066353879568105512/demo.gif)
@@ -119,7 +120,7 @@ I also made a full version which operates with real money (and real profits!).
 In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. 
 I'd say that the ROI/month can go from **5% to 30%** easily. 
 
-[See live profits](https://shoppy.gg/product/SNIB5Zf)
+[See live profits](https://discord.gg/Y7MeEMGKnn)
  
 [<img src='https://media.discordapp.net/attachments/871516621464797184/1073679549067436112/buy.png' height="35px"/>](https://shoppy.gg/product/SNIB5Zf)
 <a name="contact"/>
