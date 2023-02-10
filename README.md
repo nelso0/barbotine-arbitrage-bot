@@ -119,7 +119,7 @@ I also made a full version which operates with real money (and real profits!).
 In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. 
 I'd say that the ROI/month can go from **5% to 30%** easily. 
 
-[<img src='https://media.discordapp.net/attachments/871516621464797184/1073679549562368090/live_prof_.png' height="35px"/>](https://shoppy.gg/product/SNIB5Zf)
+[See live profits](https://shoppy.gg/product/SNIB5Zf)
  
 [<img src='https://media.discordapp.net/attachments/871516621464797184/1073679549067436112/buy.png' height="35px"/>](https://shoppy.gg/product/SNIB5Zf)
 <a name="contact"/>
