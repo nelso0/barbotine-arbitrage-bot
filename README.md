@@ -40,7 +40,7 @@ Join it [here](https://discord.gg/Y7MeEMGKnn)
 What an opportunity looks like (0 trading fees example):
 
 ![](https://media.discordapp.net/attachments/876447732259225612/1066487526807842836/demo_trades.gif)
-In general, you can't know in advance how many opportunities there will be, and it's not constant at all. Plus, it also changes completely from one crypto to another. But I have observed that the more volatile the market is, the more opportunities there are. I'm still doing my research on this, you can help me if you want (contact info below)
+In general, you can't know in advance how many opportunities there will be, and it's not constant at all. Plus, it also changes completely from one crypto to another. But I have observed that the more volatile the market is, the more opportunities there are.
 
 <a name="prerequis"/>
  
@@ -51,7 +51,7 @@ The things you need before installing the software.
 * Python 3.*
 * Machine which can run bash scripts (best is macOS or Linux env.)
 * (not mandatory) AWS, Google Cloud or any cloud computing service to run the system 24/7
-* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) package installed
+* (not mandotory, you can download the zip file of the repo) [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) package installed
 
 <a name="installation"/>
  
@@ -59,11 +59,11 @@ The things you need before installing the software.
 
 1. Clone the repository 
 ```sh
-$ git clone https://github.com/nelso0/BAS.git
+$ git clone https://github.com/nelso0/crypto-arbitrage-bot
 ```
-2. Go to the B.A.S repository you just cloned
+2. Go to the repository you just cloned
 ```sh
-$ cd BAS
+$ cd crypto-arbitrage-bot
 ```
 3. Install all the requirements to run the arbitrage system
 ```sh
@@ -83,9 +83,11 @@ Usage:
 $ bash main.sh [mode] [symbol-renew-time-minutes] [balance-usdt-to-use] {symbol}
 ```
 
-* ```[mode]``` = the mode you wanna use among bot-fake-money, bot-classic, bot-delta-neutral. 
+* ```[mode]``` = the mode you wanna use among ```fake-money```, ```classic```, and ```delta-neutral```. 
   
-  * ```fake-money``` will run the bot with the balance-usdt-to-use you put, to test without any actual money. You have access to this mode only, read [full version](#full-version).
+  * ```fake-money``` will run the bot with the balance-usdt-to-use you put, with no real profits, just to test.
+  * ```classic``` will run the bot with real USDT, with real profits.
+  * ```delta-neutral```will run the bot with real USDT also, but in a delta-neutral situation. (a bit less profits but you won't loose a cent if the crypto you're using dump in 5 minutes (for very very careful people).
   
 * ```[symbol-renew-time-minutes]``` = the timeframe you wanna use to switch symbol. If you put 60, it will renew the symbol each hour. Note that the new symbol is automatically selected by the [best_symbol.py](best-symbol.py) script.
 
@@ -102,7 +104,7 @@ $ bash main.sh fake-money 15 1000    # run the system with 1000 USDT and renew s
 $ bash main.sh classic 15 1000 SOL/USDT   # run the system with 1000 USDT on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
 ```
 ```sh
-$ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situation with 2000 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities. (Yes, a delta-neutral situation has a cost.)
+$ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situation with 2000 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities. (a delta-neutral situation has a cost.)
 ```
 <a name="todo"/>
  
