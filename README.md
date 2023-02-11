@@ -31,9 +31,9 @@ To eliminate the risks and variables to be taken into account, B.A.S operates wi
  
 ## Demo
 
-* [Live profits discord server](https://discord.gg/Y7MeEMGKnn)
+* <u>[Live profits discord server](https://discord.gg/Y7MeEMGKnn)</u>
 
-* [Youtube video demo](https://youtu.be/Hq7XXsiKJhI)
+* <u>[Youtube video demo](https://youtu.be/Hq7XXsiKJhI)</u>
 
 What an opportunity looks like (0 trading fees example):
 
