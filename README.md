@@ -31,11 +31,9 @@ To eliminate the risks and variables to be taken into account, B.A.S operates wi
  
 ## Demo
 
-I created a Discord server where you can track live results of B.A.S with $10k starting balance on SOL/USDT.
+[Live profits discord server](https://discord.gg/Y7MeEMGKnn)
 
-Join it [here](https://discord.gg/Y7MeEMGKnn)
-
-![](https://cdn.discordapp.com/attachments/876447732259225612/1066353879568105512/demo.gif)
+[Youtube video demo](https://youtu.be/Hq7XXsiKJhI)
 
 What an opportunity looks like (0 trading fees example):
 
