@@ -90,13 +90,13 @@ $ bash main.sh [mode] [symbol-renew-time-minutes] [balance-usdt-to-use] {symbol}
   * ```delta-neutral```will run the bot with real USDT also, but in a delta-neutral situation. (a bit less profits but you won't loose a cent if the crypto you're using dump in 5 minutes (for very very careful people).
   
   
-* ```[symbol-renew-time-minutes]``` = the timeframe you wanna use to switch symbol. If you put 60, it will renew the symbol each hour. Note that the new symbol is automatically selected by the [best_symbol.py](best-symbol.py) script.
+* ```[symbol-renew-time-minutes]``` = the timeframe you wanna use to switch symbol. If you put 60, it will renew the symbol each hour. Note that the new symbol is automatically selected by the [best_symbol.py](best-symbol.py) script if you don't put a {symbol}. Default: 15
 
 
 * ```[balance-usdt-to-use]``` = how to be clearer? 
 
 
-* ```{symbol}``` = Not mandatory. If you put a symbol, it will run continuously on this symbol, and so you can put a big [symbol-renew-time-minutes].
+* ```{symbol}``` = Not mandatory. If you put a {symbol}, it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto at the new price. 
 
 Examples:
 
