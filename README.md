@@ -125,7 +125,7 @@ I'd say that the ROI/month can go from **5% to 30%** easily.
 
 [See live profits](https://discord.gg/Y7MeEMGKnn)
  
-[<img src='https://media.discordapp.net/attachments/871516621464797184/1073679549067436112/buy.png' height="35px"/>](https://shoppy.gg/product/SNIB5Zf)
+[<img src='https://media.discordapp.net/attachments/871516621464797184/1073679549067436112/buy.png' height="35px"/>](https://nelso.sell.app/product/full-version-of-barbotine?info=faq)
 <a name="contact"/>
  
 ## Contact
