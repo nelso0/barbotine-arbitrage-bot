@@ -121,10 +121,14 @@ $ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situa
 
 I also made a full version which operates with real money (and real profits!).
 In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. 
-I'd say that the ROI/month can go from **5% to 30%** easily. 
+I'm still doing my research on this, you can help me if you want! contact info below.
+I'd say that the ROI/month can go from **5% to 40%**. 
 
 [See live profits](https://discord.gg/Y7MeEMGKnn)
- 
+
+You can now buy the source code of that real version! (25$ contribution)
+[Click here to get it](https://nelso.sell.app/product/full-version-of-barbotine)
+
 [<img src='https://media.discordapp.net/attachments/871516621464797184/1073679549067436112/buy.png' height="35px"/>](https://nelso.sell.app/product/full-version-of-barbotine?info=faq)
 <a name="contact"/>
  
