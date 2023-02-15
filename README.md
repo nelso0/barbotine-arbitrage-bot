@@ -128,7 +128,7 @@ I'd say that the ROI/month can go from **5% to 40%**.
 
 You can now buy the source code of that real version! (25$ contribution)
 
-[Click here to get it](https://nelso.sell.app/product/full-version-of-barbotine)
+[Click here to get it](https:/https://get.barbotine.capital/product/full-version-of-barbotine)
  
 ## Contact
 
