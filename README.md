@@ -14,8 +14,8 @@ To eliminate the risks and variables to be taken into account, B.A.S operates wi
 * [Prerequisites](#prerequis)
 * [Installation](#installation)
 * [Usage](#usage)
-* [To do](#todo)
-* [Real money (and profits)](#full-version)
+* [Flowchart](#flowchart)
+* [Real money](#full-version)
 * [Contact](#contact)
 <a name="features"/>
  
@@ -113,18 +113,10 @@ $ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situa
 <details><summary>Python module flowchart</summary>
 
 <p align="left">
-  <img width="30%" height="30%" src="https://media.discordapp.net/attachments/871516621464797184/1075687180816625784/image.png">
+  <img width="45%" height="45%" src="https://media.discordapp.net/attachments/871516621464797184/1075687180816625784/image.png">
 </p>
 
 </details>
-
-<a name="todo"/>
- 
-## To do
-
-- [x] Improve lisibility and UI
-- [x] Add full trading fee support
-- [X] Sometimes crypto balance can be slightly negative (fixed)
 
 <a name="full-version"/>
  
