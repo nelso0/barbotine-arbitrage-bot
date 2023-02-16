@@ -107,6 +107,14 @@ $ bash main.sh classic 15 1000 SOL/USDT   # run the system with 1000 USDT on SOL
 ```sh
 $ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situation with 2000 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities. (a delta-neutral situation has a cost.)
 ```
+
+
+<details><summary>Python module flowchart</summary>
+
+![](https://media.discordapp.net/attachments/871516621464797184/1075687180816625784/image.png)
+
+</details>
+
 <a name="todo"/>
  
 ## To do
