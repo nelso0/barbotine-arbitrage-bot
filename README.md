@@ -133,7 +133,7 @@ I'd say that the ROI/month can go from **5% to 40%**.
 
 [See the live profits of it](https://discord.gg/Y7MeEMGKnn)
 
-[Click here to get it ($25 contribution)](https:/https://get.barbotine.capital/product/full-version-of-barbotine)
+[Click here to get it ($25 contribution)](https://get.barbotine.capital/product/full-version-of-barbotine)
  
 ## Contact
 
