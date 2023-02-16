@@ -124,8 +124,10 @@ $ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situa
  
 ## Full version
 
-I also made a full version which operates with real money (and real profits!).
+I also made a full version which operates with real money. There is also a latency.py program that calculates in milliseconds exactly how long it takes to pass an order to the 3 exchanges.
+
 In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. 
+
 I'm still doing my research on this, you can help me if you want! contact info below.
 I'd say that the ROI/month can go from **5% to 40%**. 
 
