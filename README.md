@@ -47,7 +47,7 @@ In general, you can't know in advance how many opportunities there will be, and 
 The things you need before installing the software.
 
 * Python 3.*
-* Machine which can run bash scripts (best is macOS or Linux env.)
+* Machine that can run bash scripts (search on Google how to run bash scripts if you're on windows, if you're on macOS/Linux it's installed by default, just type ´´´sh bash <script>´´´)
 * (not mandatory) AWS, Google Cloud or any cloud computing service to run the system 24/7
 * (not mandotory, you can download the zip file of the repo) [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) package installed
 
