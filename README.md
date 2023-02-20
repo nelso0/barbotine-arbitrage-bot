@@ -15,7 +15,7 @@ To eliminate the risks and variables to be taken into account, B.A.S operates wi
 * [Installation](#installation)
 * [Flowchart](#flowchart)
 * [Usage](#usage)
-* [Real money (real profits)](#full-version)
+* [Full version](#full-version)
 * [Contact](#contact)
 <a name="features"/>
  
