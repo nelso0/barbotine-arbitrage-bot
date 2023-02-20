@@ -69,19 +69,7 @@ $ pip install -r requirements.txt
 ```
 4. Put your 3 api keys, passwords etc (binance, okx, kucoin) and your telegram bot details in [exchange_config.py](exchange_config.py)
 
-**Then you're ready to run B.A.S!**
-
-<a name="flowchart"/>
-
-## How it works? (flowchart)
-
-<details><summary>Python module flowchart</summary>
-
-<p align="left">
-  <img width="45%" height="45%" src="https://media.discordapp.net/attachments/871516621464797184/1075687180816625784/image.png">
-</p>
-
-</details>
+5. Run and enjoy!
 
 <a name="usage"/>
  
