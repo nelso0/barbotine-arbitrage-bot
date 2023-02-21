@@ -13,7 +13,6 @@ To eliminate the risks and variables to be taken into account, B.A.S operates wi
 * [Demo](#demo)
 * [Prerequisites](#prerequis)
 * [Installation](#installation)
-* [Flowchart](#flowchart)
 * [Usage](#usage)
 * [Full version](#full-version)
 * [Contact](#contact)
