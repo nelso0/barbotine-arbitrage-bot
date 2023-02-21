@@ -6,7 +6,7 @@
 [![GitHub @nelso0](https://img.shields.io/github/followers/nelso0?label=follow&style=social)](https://github.com/nelso0)
 
 More than a simple algorithm, [Barbotine Arbitrage System (B.A.S)](https://barbotine.capital) is a complete portfolio management system based on the price difference opportunities of the same asset on several centralized trading platforms, **averaging 5-40% return on investment per month.**
-To eliminate the risks and variables to be taken into account, B.A.S operates without any transfer of assets between trading platforms. It also operates in a delta-neutral situation, which brings it even closer to zero risk.
+To eliminate the risks and variables to be taken into account, **B.A.S operates without any transfer of assets between trading platforms.** It also operates in a delta-neutral situation, which brings it even closer to zero risk.
 
 ## Table of content
 * [Features](#features)
@@ -14,7 +14,7 @@ To eliminate the risks and variables to be taken into account, B.A.S operates wi
 * [Prerequisites](#prerequis)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Full version](#full-version)
+* [Real version](#full-version)
 * [Contact](#contact)
 <a name="features"/>
  
@@ -106,18 +106,17 @@ $ bash main.sh classic 15 1000 SOL/USDT   # run the system with 1000 USDT on SOL
 $ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situation with 2000 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities. (a delta-neutral situation has a cost.)
 ```
 
-<a name="full-version"/>
- 
-## Full version
-
-More info on [barbotine.capital](https://barbotine.capital)
- 
-R.O.I per month: averaging 5-40%
-
 ## Contact
 
 Twitter: [@nelsodot](https://twitter.com/nelsodot)
 
 Discord: nelso#1800
 
-Email: [nils.spen@gmail.com](mailto:nils.spen@gmail.com)
+Email: [nelsoo.arts@gmail.com](mailto:nelsoo.arts@gmail.com)
+
+
+<a name="full-version"/>
+ 
+## Real version
+
+I personally don't have the minimal amount of money ($200) to run the system on my own, but if you have enough money to run it, you can by donating $25 to get the **real-money modes.** Link: [get.barbotine.capital](https://get.barbotine.capital)
