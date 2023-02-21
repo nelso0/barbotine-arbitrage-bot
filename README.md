@@ -120,4 +120,6 @@ Don't forget to give a star if you like the code ⭐️
  
 ## Real version
 
-I personally don't have the minimal amount of money ($200) to run the system on my own, but if you have enough money to run it, you can by donating $25 to get the **real-money modes.** Link: [get.barbotine.capital](https://get.barbotine.capital)
+I personally don't have the minimal amount of money ($200) to run the system on my own, but if you have enough money to run it, you can by donating $25 to get the **real-money modes.** 
+
+Link: [get.barbotine.capital](https://get.barbotine.capital/product/full-version-of-barbotine)
