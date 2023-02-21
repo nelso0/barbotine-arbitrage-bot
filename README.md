@@ -113,6 +113,8 @@ $ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situa
 
 More info on [barbotine.capital](https://barbotine.capital)
  
+R.O.I per month: averaging 5-40%
+
 ## Contact
 
 Twitter: [@nelsodot](https://twitter.com/nelsodot)
