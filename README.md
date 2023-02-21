@@ -14,8 +14,8 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
 * [Prerequisites](#prerequis)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Real version](#full-version)
 * [Contact](#contact)
+* [Real version](#full-version)
 <a name="features"/>
  
 ## Features
