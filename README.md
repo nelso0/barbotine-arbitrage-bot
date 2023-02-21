@@ -114,6 +114,7 @@ Discord: nelso#1800
 
 Email: [nelsoo.arts@gmail.com](mailto:nelsoo.arts@gmail.com)
 
+Don't forget to give a star if you like the code ⭐️
 
 <a name="full-version"/>
  
