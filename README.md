@@ -118,8 +118,15 @@ Don't forget to give a star if you like the code ⭐️
 
 <a name="full-version"/>
  
-## Real version
+## Full version
 
-I personally don't have the minimal amount of money ($200) to run the system on my own, but if you have enough money to run it, you can by donating $25 to get the **real-money modes.** 
+I also made a full version which operates with real dollars.
+In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. 
+I'm still doing my research on this, you can help me if you want! contact info below.
+I'd say that the ROI/month can go from **5% to 40%**.
+
+[See the live (real) profits of it](https://discord.gg/Y7MeEMGKnn)
+
+You can now buy the source code of that real version! (25$ contribution)
 
 Link: [get.barbotine.capital](https://get.barbotine.capital/product/full-version-of-barbotine)
