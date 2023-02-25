@@ -108,11 +108,9 @@ $ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situa
 
 ## Contact
 
-Twitter: [@nelsodot](https://twitter.com/nelsodot)
-
 Discord: nelso#1800
 
-Email: [nelsoo.arts@gmail.com](mailto:nelsoo.arts@gmail.com)
+Email: [nelso@barbotine.capital](emailto:nelso@barbotine.capital)
 
 Don't forget to give a star if you like the code ⭐️
 
