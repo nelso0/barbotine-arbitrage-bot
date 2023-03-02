@@ -30,7 +30,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
  
 ## Demo
 
-* [Live profits discord server](https://discord.gg/Y7MeEMGKnn)
+* [Live profits discord server](https://discord.gg/K6P2Vfxahg)
 
 * [Youtube video demo](https://youtu.be/Hq7XXsiKJhI)
 
