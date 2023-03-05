@@ -20,7 +20,7 @@ if len(sys.argv) != 5:
     sys.exit(1)
 print(" ")
 
-kucoinPair = str(sys.argv[1])
+currentPair = str(sys.argv[1])
 howmuchusd = float(sys.argv[2])
 inputtimeout = int(sys.argv[3])*60
 indicatif = str(sys.argv[4])
@@ -35,15 +35,15 @@ total_usd = usd['binance'] + usd['kucoin'] + usd['okx']
 all_tickers = []
 
 try:
-    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Fetching the global average price for {kucoinPair}...")
+    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Fetching the global average price for {currentPair}...")
     for exchange in echanges:
-        ticker = exchange.fetch_ticker(kucoinPair)
+        ticker = exchange.fetch_ticker(currentPair)
         all_tickers.append(ticker['bid'])
         all_tickers.append(ticker['ask'])
     average_first_buy_price = moy(all_tickers)
     total_crypto = (howmuchusd/2)/average_first_buy_price
-    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Average {kucoinPair} price in USDT: {average_first_buy_price}")
-    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] If that was with real money, orders would be sent here for {round(total_crypto/len(echanges),3)} {kucoinPair[:-5]} at {average_first_buy_price}.")
+    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Average {currentPair} price in USDT: {average_first_buy_price}")
+    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] If that was with real money, orders would be sent here for {round(total_crypto/len(echanges),3)} {currentPair[:-5]} at {average_first_buy_price}.")
 
 except Exception as e:
     print(f"Error while fetching orders. Error: {e}")
@@ -61,7 +61,7 @@ prec_time = '0000000'
 min_ask_price = 0
 
 async def symbol_loop(exchange, symbol):
-    global total_crypto,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,total_absolute_profit_pct,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_pct,profit_usd
+    global total_crypto,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,total_absolute_profit_pct,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_pct,profit_usd,total_crypto
     while time.time() <= timeout:
         try:
             orderbook = await exchange.watch_order_book(symbol)
@@ -76,7 +76,7 @@ async def symbol_loop(exchange, symbol):
                 if usd[n] <= 0: # should not happen
                     max_bid_ex = n
             min_ask_price = ask_prices[min_ask_ex]
-            max_bid_price = ask_prices[max_bid_ex]
+            max_bid_price = bid_prices[max_bid_ex]
             profit_usd = (min_ask_price*((total_crypto/len(echanges_str)))*((max_bid_price-min_ask_price)/min_ask_price))
             profit_pct = profit_usd/(0.01*total_usd)
             profit_with_fees_usd = profit_usd - (((crypto_per_transaction) * max_bid_price)*(fees[max_bid_ex]['receive']) + ((crypto_per_transaction * min_ask_price)*(fees[min_ask_ex]['give'])))
@@ -99,8 +99,8 @@ async def symbol_loop(exchange, symbol):
                 sys.stdout.write("\033[K")
                 print(" \n-----------------------------------------------------\n")
 
-                print(f"{Style.RESET_ALL}Opportunity n°{i} detected! ({min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex})\n \nProfit: {Fore.GREEN}+{round(profit_with_fees_pct,4)} % (+{round(profit_with_fees_usd,4)} USD){Style.RESET_ALL}\n \nSession total profit: {Fore.GREEN}+{round(total_absolute_profit_pct,4)} %     (+{round((total_absolute_profit_pct/100)*howmuchusd,4)} USD){Style.RESET_ALL}\n \nFees: {Fore.RED}-{round(total_fees_usd,4)} USD      -{round(total_fees_crypto,4)} {kucoinPair[:len(kucoinPair)-5]}\n \n{Style.RESET_ALL}Current worth: {round((howmuchusd*(1+(total_absolute_profit_pct/100))),3)} USD{Style.RESET_ALL}{Style.DIM}\n \n➝ binance: {round(crypto['binance'],3)} {kucoinPair[:len(kucoinPair)-5]} / {round(usd['binance'],2)} USDT\n➝ kucoin: {round(crypto['kucoin'],3)} {kucoinPair[:len(kucoinPair)-5]} / {round(usd['kucoin'],2)} USDT\n➝ okx: {round(crypto['okx'],3)} {kucoinPair[:len(kucoinPair)-5]} / {round(usd['okx'],2)} USDT\n \nTime elapsed since the beginning of the session: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\n \n{Style.RESET_ALL}-----------------------------------------------------\n \n")
-                send_to_telegram(f"[{indicatif} Trade n°{i}]\n \nOpportunity detected!\n \nProfit: {round(profit_with_fees_pct,4)} % ({round(profit_with_fees_usd,4)} USD)\n \n{min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex}\nTime elapsed: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\nSession total profit: {round(total_absolute_profit_pct,4)} % ({round((total_absolute_profit_pct/100)*howmuchusd,4)} USDT)\nTotal fees paid on this session: {round(total_fees_usd,4)} USD      {round(total_fees_crypto,4)} {kucoinPair[:len(kucoinPair)-5]}\n \n--------BALANCES---------\n \nCurrent worth: {round((howmuchusd*(1+(total_absolute_profit_pct/100))),3)} USD\n \n➝ binance: {round(crypto['binance'],3)} {kucoinPair[:len(kucoinPair)-5]} / {round(usd['binance'],2)} USDT\n➝ kucoin: {round(crypto['kucoin'],3)} {kucoinPair[:len(kucoinPair)-5]} / {round(usd['kucoin'],2)} USDT\n➝ okx: {round(crypto['okx'],3)} {kucoinPair[:len(kucoinPair)-5]} / {round(usd['okx'],2)} USDT\n \n")
+                print(f"{Style.RESET_ALL}Opportunity n°{i} detected! ({min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex})\n \nProfit: {Fore.GREEN}+{round(profit_with_fees_pct,4)} % (+{round(profit_with_fees_usd,4)} USD){Style.RESET_ALL}\n \nSession total profit: {Fore.GREEN}+{round(total_absolute_profit_pct,4)} %     (+{round((total_absolute_profit_pct/100)*howmuchusd,4)} USD){Style.RESET_ALL}\n \nFees: {Fore.RED}-{round(total_fees_usd,4)} USD      -{round(total_fees_crypto,4)} {currentPair[:len(currentPair)-5]}\n \n{Style.RESET_ALL}Current worth: {round((howmuchusd*(1+(total_absolute_profit_pct/100))),3)} USD{Style.RESET_ALL}{Style.DIM}\n \n➝ binance: {round(crypto['binance'],3)} {currentPair[:len(currentPair)-5]} / {round(usd['binance'],2)} USDT\n➝ kucoin: {round(crypto['kucoin'],3)} {currentPair[:len(currentPair)-5]} / {round(usd['kucoin'],2)} USDT\n➝ okx: {round(crypto['okx'],3)} {currentPair[:len(currentPair)-5]} / {round(usd['okx'],2)} USDT\n \nTime elapsed since the beginning of the session: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\n \n{Style.RESET_ALL}-----------------------------------------------------\n \n")
+                send_to_telegram(f"[{indicatif} Trade n°{i}]\n \nOpportunity detected!\n \nProfit: {round(profit_with_fees_pct,4)} % ({round(profit_with_fees_usd,4)} USD)\n \n{min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex}\nTime elapsed: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\nSession total profit: {round(total_absolute_profit_pct,4)} % ({round((total_absolute_profit_pct/100)*howmuchusd,4)} USDT)\nTotal fees paid on this session: {round(total_fees_usd,4)} USD      {round(total_fees_crypto,4)} {currentPair[:len(currentPair)-5]}\n \n--------BALANCES---------\n \nCurrent worth: {round((howmuchusd*(1+(total_absolute_profit_pct/100))),3)} USD\n \n➝ binance: {round(crypto['binance'],3)} {currentPair[:len(currentPair)-5]} / {round(usd['binance'],2)} USDT\n➝ kucoin: {round(crypto['kucoin'],3)} {currentPair[:len(currentPair)-5]} / {round(usd['kucoin'],2)} USDT\n➝ okx: {round(crypto['okx'],3)} {currentPair[:len(currentPair)-5]} / {round(usd['okx'],2)} USDT\n \n")
             
                 prec_ask_price = min_ask_price
                 prec_bid_price = max_bid_price
@@ -137,9 +137,9 @@ async def exchange_loop(exchange_id, symbols):
 
 async def main():
     exchanges = {
-        "kucoin": [kucoinPair],
-        "binance": [kucoinPair],
-        "okx":[kucoinPair]
+        "kucoin": [currentPair],
+        "binance": [currentPair],
+        "okx":[currentPair]
     }
     loops = [
         exchange_loop(exchange_id, symbols)
@@ -155,5 +155,5 @@ with open('balance.txt', 'r+') as balance_file:
     balance_file.seek(0)
     balance_file.write(str(round(balance * (1 + (total_absolute_profit_pct/100)), 3)))
     balance = float(round(balance * (1 + (total_absolute_profit_pct/100)), 3))
-printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Session with {kucoinPair} finished.\nTotal profit: {round(total_absolute_profit_pct,4)} % ({round((total_absolute_profit_pct/100)*howmuchusd,4)} USDT)\n \nTotal current balance: {balance} USDT")
+printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Session with {currentPair} finished.\nTotal profit: {round(total_absolute_profit_pct,4)} % ({round((total_absolute_profit_pct/100)*howmuchusd,4)} USDT)\n \nTotal current balance: {balance} USDT")
 
