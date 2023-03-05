@@ -30,7 +30,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
  
 ## Demo
 
-* [Live profits discord server](https://discord.gg/K6P2Vfxahg)
+* [Live opportunities here](https://barbotine.capital)
 
 * [Youtube video demo](https://youtu.be/Hq7XXsiKJhI)
 
@@ -123,7 +123,7 @@ In general, the more volatile the crypto market, the more arbitrage opportunitie
 I'm still doing my research on this, you can help me if you want! contact info below.
 I'd say that the ROI/month can go from **5% to 40%**.
 
-[See the live (real) profits of it](https://discord.gg/K6P2Vfxahg)
+[See the live (real) profits of it](https://barbotine.capital)
 
 You can now buy the source code of that real version! (25$ contribution)
 
