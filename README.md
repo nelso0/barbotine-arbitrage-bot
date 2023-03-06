@@ -121,7 +121,6 @@ Don't forget to give a star if you like the code ⭐️
 I also made a full version which operates with real dollars.
 In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. 
 I'm still doing my research on this, you can help me if you want! contact info below.
-I'd say that the ROI/month can go from **5% to 40%**.
 
 [See Barbotine running 24/7 on a $10,000 account on different crypto assets](https://barbotine.capital)
 
