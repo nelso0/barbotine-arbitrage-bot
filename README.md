@@ -97,13 +97,13 @@ $ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> {symbol}
 Examples:
 
 ```sh
-$ bash main.sh fake-money 15 1000    # run the system with 1000 USDT and renew symbol every 15 minutes.
+$ bash main.sh fake-money 15 5000    # run the system with 5000 USDT and renew symbol every 15 minutes.
 ```
 ```sh
-$ bash main.sh classic 15 1000 SOL/USDT   # run the system with 1000 USDT on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
+$ bash main.sh classic 15 10000 SOL/USDT   # run the system with 10000 USDT on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
 ```
 ```sh
-$ bash main.sh delta-neutral 60 2000   # run the system in a delta-neutral situation with 2000 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities. (a delta-neutral situation has a cost.)
+$ bash main.sh delta-neutral 60 20000   # run the system in a delta-neutral situation with 20000 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities. (a delta-neutral situation has a cost.)
 ```
 
 ## Contact
@@ -125,6 +125,6 @@ I'd say that the ROI/month can go from **5% to 40%**.
 
 [See Barbotine running 24/7 on a $10,000 account on different crypto assets](https://barbotine.capital)
 
-You can now buy the source code of that real version! ($ 40)
+You can now buy the source code of that real version! ($40)
 
 Link: [get.barbotine.capital](https://get.barbotine.capital/product/full-version-of-barbotine)
