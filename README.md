@@ -30,7 +30,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
  
 ## Demo
 
-* [Live opportunities here](https://barbotine.capital)
+* [See Barbotine running 24/7 on a $10,000 account on different crypto assets](https://barbotine.capital)
 
 * [Youtube video demo](https://youtu.be/Hq7XXsiKJhI)
 
@@ -123,8 +123,8 @@ In general, the more volatile the crypto market, the more arbitrage opportunitie
 I'm still doing my research on this, you can help me if you want! contact info below.
 I'd say that the ROI/month can go from **5% to 40%**.
 
-[See the live (real) opportunities of it](https://barbotine.capital)
+[See Barbotine running 24/7 on a $10,000 account on different crypto assets](https://barbotine.capital)
 
-You can now buy the source code of that real version! (25$ contribution)
+You can now buy the source code of that real version! ($ 40)
 
 Link: [get.barbotine.capital](https://get.barbotine.capital/product/full-version-of-barbotine)
