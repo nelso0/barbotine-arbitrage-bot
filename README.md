@@ -122,7 +122,7 @@ I also made a full version which operates with real dollars.
 In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. 
 I'm still doing my research on this, you can help me if you want! contact info below.
 
-[See Barbotine running 24/7 on a $10,000 account on different crypto assets](https://barbotine.capital)
+[See live profits](https://barbotine.capital)
 
 You can now buy the source code of that real version! ($40)
 
