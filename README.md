@@ -47,7 +47,6 @@ The things you need before installing the software.
 
 * Python 3
 * Environment where you can run bash scripts
-* (not mandotory, you can download the zip file of the repo) [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) package installed
 
 <a name="installation"/>
  
@@ -55,17 +54,17 @@ The things you need before installing the software.
 
 1. Clone the repository 
 ```sh
-$ git clone https://github.com/nelso0/crypto-arbitrage-bot
+$ git clone https://github.com/nelso0/barbotine-arbitrage-bot # you can also download the zip file
 ```
 2. Go to the repository you just cloned
 ```sh
-$ cd crypto-arbitrage-bot
+$ cd barbotine-arbitrage-bot
 ```
 3. Install all the requirements to run the arbitrage system
 ```sh
 $ pip install -r requirements.txt
 ```
-4. Put your 3 api keys, passwords etc (binance, okx, kucoin) and your telegram bot details in [exchange_config.py](exchange_config.py)
+4. Put your 3 api keys and telegram bot details in [exchange_config.py](exchange_config.py)
 
 5. Run and enjoy!
 
@@ -92,18 +91,18 @@ $ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> {symbol}
 * ```<balance-usdt-to-use>``` = how to be clearer? 
 
 
-* ```{symbol}``` = Not mandatory. If you put a {symbol}, it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto at the new price. 
+* ```{symbol}``` = Not mandatory. If you put a {symbol}, it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
 
 Examples:
 
 ```sh
-$ bash main.sh fake-money 15 5000    # run the system with 5000 USDT and renew symbol every 15 minutes.
+$ bash main.sh fake-money 15 500    # run the system with 500 USDT and renew symbol every 15 minutes.
 ```
 ```sh
-$ bash main.sh classic 15 10000 SOL/USDT   # run the system with 10000 USDT on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
+$ bash main.sh classic 15 1000 SOL/USDT   # run the system with 1000 USDT on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
 ```
 ```sh
-$ bash main.sh delta-neutral 60 20000   # run the system in a delta-neutral situation with 20000 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities. (a delta-neutral situation has a cost.)
+$ bash main.sh delta-neutral 60 750   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
 ```
 
 ## Contact
@@ -119,11 +118,12 @@ Don't forget to give a star if you like the code ⭐️
 ## Full version
 
 I also made a full version which operates with real dollars.
-In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. 
-I'm still doing my research on this, you can help me if you want! contact info below.
+In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. I'm still doing my research on this, you can help me if you want! contact info below.
 
-[See live profits](https://barbotine.capital)
+/!\ It's not a trading bot, it's an arbitrage bot, so you won't have trade losses at all, there is no speculation, Barbotine takes the opportunity only if it's profitable. /!\
+
+[See live profits here](https://barbotine.capital)
 
 You can now buy the source code of that real version! ($40)
 
-Link: [get.barbotine.capital](https://get.barbotine.capital/product/full-version-of-barbotine)
+Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/full-version-of-barbotine)
