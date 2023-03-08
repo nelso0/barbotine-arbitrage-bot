@@ -122,7 +122,7 @@ In general, the more volatile the crypto market, the more arbitrage opportunitie
 
 /!\ It's not a trading bot, it's an arbitrage bot, so you won't have trade losses at all, there is no speculation, Barbotine takes the opportunity only if it's profitable. /!\
 
-[See live profits here](https://barbotine.capital)
+[See live profits here.](https://barbotine.capital)
 
 You can now buy the source code of that real version! ($40)
 
