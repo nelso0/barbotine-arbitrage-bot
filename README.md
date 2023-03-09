@@ -46,7 +46,7 @@ In general, you can't know in advance how many opportunities there will be, and 
 The things you need before installing the software.
 
 * Python 3
-* Environment where you can run bash scripts
+* Environment where you can run bash scripts (which means you can run bash scripts by typing ``bash <script.sh>`` in your terminal/cmd window. If you can't, go [here](https://www.thewindowsclub.com/how-to-run-sh-or-shell-script-file-in-windows-10))
 
 <a name="installation"/>
  
