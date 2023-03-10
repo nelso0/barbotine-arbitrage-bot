@@ -124,6 +124,6 @@ In general, the more volatile the crypto market, the more arbitrage opportunitie
 
 [See live profits here.](https://barbotine.capital)
 
-You can now buy the source code of that real version for 40 bucks!
+You can now buy the source code of that real version for a contribution of 25 bucks!
 
 Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/full-version-of-barbotine)
