@@ -20,11 +20,11 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
  
 ## Features
 
+* Compatible with almost any exchange (all [ccxt](https://github.com/ccxt/ccxt) exchanges).
 * True trading fees support
 * Zero-risk (no speculation)
 * Full live tracking on Telegram and Discord webhooks
 * Permanent live rate display in the terminal
-* Compatible with all [ccxt](https://github.com/ccxt/ccxt) exchanges (multi-threading).
 
 <a name="demo"/>
  
