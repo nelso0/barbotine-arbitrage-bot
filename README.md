@@ -90,7 +90,7 @@ $ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchang
 
 * ```<balance-usdt-to-use>``` = how to be clearer? 
 
-* ```<exchange1,2,3> = the three exchanges you want to use among all the CCXT-compatible exchanges. Default: binance okx kucoin (All the 3 have to be correctly configured in [exchange_config.py](exchange_config.py)
+* ```<exchange1,2,3>``` = the three exchanges you want to use among all the CCXT-compatible exchanges. Default: binance okx kucoin (All the 3 have to be correctly configured in [exchange_config.py](exchange_config.py)
 
 * ```{symbol}``` = Not mandatory. If you put a {symbol}, it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
 
