@@ -24,7 +24,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
 * Zero-risk (no speculation)
 * Full live tracking on Telegram and Discord webhooks
 * Permanent live rate display in the terminal
-* Compatible with all [ccxt](https://github.com/ccxt/ccxt) exchanges simultaneously (multi-threading).
+* Compatible with all [ccxt](https://github.com/ccxt/ccxt) exchanges (multi-threading).
 
 <a name="demo"/>
  
@@ -75,7 +75,7 @@ $ pip install -r requirements.txt
 Usage: 
 
 ```sh
-$ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> {symbol}
+$ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> {symbol}
 ```
 
 * ```<mode>``` = the mode you wanna use among ```fake-money```, ```classic```, and ```delta-neutral```. 
@@ -90,19 +90,20 @@ $ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> {symbol}
 
 * ```<balance-usdt-to-use>``` = how to be clearer? 
 
+* ```<exchange1,2,3> = the three exchanges you want to use among all the CCXT-compatible exchanges. Default: binance okx kucoin (All the 3 have to be correctly configured in [exchange_config.py](exchange_config.py)
 
 * ```{symbol}``` = Not mandatory. If you put a {symbol}, it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
 
 Examples:
 
 ```sh
-$ bash main.sh fake-money 15 500    # run the system with 500 USDT and renew symbol every 15 minutes.
+$ bash main.sh fake-money 15 500 binance okx kucoin    # run the system with 500 USDT and renew symbol every 15 minutes, with binance okx and kucoin
 ```
 ```sh
-$ bash main.sh classic 15 1000 SOL/USDT   # run the system with 1000 USDT on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
+$ bash main.sh classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
 ```
 ```sh
-$ bash main.sh delta-neutral 60 750   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
+$ bash main.sh delta-neutral 60 750 okx cryptocom huobi   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
 ```
 
 ## Contact
