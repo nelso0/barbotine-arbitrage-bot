@@ -3,13 +3,13 @@ renew=$2
 echo $3 >| start_balance-$(echo $5 | tr -d '[:punct:]').txt
 echo $3 >| balance-$(echo $5 | tr -d '[:punct:]').txt
 printf "\ec"
-printf "                  ▄▀▀█▄▄    ▄▀▀█▄   ▄▀▀▀▀▄ 
-                 ▐ ▄▀   █  ▐ ▄▀ ▀▄ █ █   ▐ 
-                   █▄▄▄▀     █▄▄▄█    ▀▄   
-                   █   █    ▄▀   █ ▀▄   █  
-                  ▄▀▄▄▄▀ ▄ █   ▄▀ ▄ █▀▀▀   
-                 █    ▐    ▐   ▐    ▐      
-                 ▐                         \n"
+printf "██████╗   █████╗  ██████╗  ██████╗   ██████╗  ████████╗ ██╗ ███╗   ██╗ ███████╗
+██╔══██╗ ██╔══██╗ ██╔══██╗ ██╔══██╗ ██╔═══██╗ ╚══██╔══╝ ██║ ████╗  ██║ ██╔════╝
+██████╔╝ ███████║ ██████╔╝ ██████╔╝ ██║   ██║    ██║    ██║ ██╔██╗ ██║ █████╗  
+██╔══██╗ ██╔══██║ ██╔══██╗ ██╔══██╗ ██║   ██║    ██║    ██║ ██║╚██╗██║ ██╔══╝  
+██████╔╝ ██║  ██║ ██║  ██║ ██████╔╝ ╚██████╔╝    ██║    ██║ ██║ ╚████║ ███████╗
+╚═════╝  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═════╝   ╚═════╝     ╚═╝    ╚═╝ ╚═╝  ╚═══╝ ╚══════╝
+                                                                       \n"
 printf "\nBarbotine Arbitrage System, by nelso.\nUsage is strictly restricted to personal-use only under the CC BY-NC-SA 4.0 license. (https://creativecommons.org/licenses/by-nc-sa/4.0/)\n \nDiscord: nelso#1800\nGithub: nelso0\n \n"
 while [[ 1 == 1 ]]; do
     if [[ "$1" == "classic" ]]; then
