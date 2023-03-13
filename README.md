@@ -78,7 +78,7 @@ bash run.sh
 You can also run it with one line like this:
 
 ```sh
-$ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> {symbol}
+bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> {symbol}
 ```
 
 * ```<mode>``` = the mode you wanna use among ```fake-money```, ```classic```, and ```delta-neutral```. 
@@ -100,13 +100,13 @@ $ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchang
 Examples:
 
 ```sh
-$ bash main.sh fake-money 15 500 binance okx kucoin    # run the system with 500 USDT and renew symbol every 15 minutes, with binance okx and kucoin
+bash main.sh fake-money 15 500 binance okx kucoin    # run the system with 500 USDT and renew symbol every 15 minutes, with binance okx and kucoin
 ```
 ```sh
-$ bash main.sh classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
+bash main.sh classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
 ```
 ```sh
-$ bash main.sh delta-neutral 60 750 okx cryptocom huobi   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
+bash main.sh delta-neutral 60 750 okx cryptocom huobi   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
 ```
 
 ## Contact
@@ -121,7 +121,7 @@ Don't forget to give a star if you like the code ⭐️
  
 ## Full version
 
-I also made a full version which operates with real dollars.
+I also made a full version which operates with real dollars (the classic & delta-neutral mode).
 In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. I'm still doing my research on this, you can help me if you want! contact info below.
 
 /!\ It's not a trading bot, it's an arbitrage bot, so you won't have trade losses at all, there is no speculation, Barbotine takes the opportunity only if it's profitable. /!\
