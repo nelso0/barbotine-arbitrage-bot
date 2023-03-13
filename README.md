@@ -81,6 +81,7 @@ You can also run it with one line like this:
 bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> {symbol}
 ```
 
+
 * ```<mode>``` = the mode you wanna use among ```fake-money```, ```classic```, and ```delta-neutral```. 
   
   * ```fake-money``` will run the bot with the balance-usdt-to-use you put, with a virtual balance, just to test.
@@ -88,12 +89,16 @@ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1
   * ```delta-neutral```will run the bot with real USDT also, but in a delta-neutral situation. (a bit less profits but you won't loose a cent if the crypto you're using dump in 5 minutes (for very very careful people).
   
   
+  
 * ```<symbol-renew-time-minutes>``` = the timeframe you wanna use to switch symbol. If you put 60, it will renew the symbol each hour. Note that the new symbol is automatically selected by the [best_symbol.py](best-symbol.py) script if you don't put a {symbol}. Default: 15
+
 
 
 * ```<balance-usdt-to-use>``` = how to be clearer? 
 
+
 * ```<exchange1,2,3>``` = the three exchanges you want to use among all the CCXT-compatible exchanges. Default: binance okx kucoin (All the 3 have to be correctly configured in [exchange_config.py](exchange_config.py)).
+
 
 * ```{symbol}``` = Not mandatory. If you put a {symbol}, it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
 
