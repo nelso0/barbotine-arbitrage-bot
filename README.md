@@ -84,7 +84,7 @@ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1
 * ```<mode>``` = the mode you wanna use among ```fake-money```, ```classic```, and ```delta-neutral```. 
   
   * ```fake-money``` will run the bot with the balance-usdt-to-use you put, with a virtual balance, just to test.
-  * ```classic``` will run the bot with real USDT, and real profits.
+  * ```classic``` will run the bot with real USDT.
   * ```delta-neutral```will run the bot with real USDT also, but in a delta-neutral situation. (a bit less profits but you won't loose a cent if the crypto you're using dump in 5 minutes (for very very careful people).
   
   
