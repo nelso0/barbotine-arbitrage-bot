@@ -15,6 +15,6 @@ read -p '[*] Total USDT investment: ' usdt_investment
 read -p '[*] Symbol (put nothing if not): ' symbol
 read -p '[*] Symbol renew time: ' symbol_renew
 
-bash main.sh $mode $symbol_renew $usdt_investment $ex1 $ex2 $ex3 $symbol
+bash main.sh fake-money $symbol_renew $usdt_investment $ex1 $ex2 $ex3 $symbol
 
 
