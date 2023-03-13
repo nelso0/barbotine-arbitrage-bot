@@ -54,25 +54,28 @@ The things you need before installing the software.
 
 1. Clone the repository 
 ```sh
-$ git clone https://github.com/nelso0/barbotine-arbitrage-bot # you can also download the zip file
+git clone https://github.com/nelso0/barbotine-arbitrage-bot # you can also download the zip file
 ```
 2. Go to the repository you just cloned
 ```sh
-$ cd barbotine-arbitrage-bot
+cd barbotine-arbitrage-bot
 ```
 3. Install all the requirements to run the arbitrage system
 ```sh
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 4. Put your 3 api keys and telegram bot details in [exchange_config.py](exchange_config.py)
 
-5. Run and enjoy!
+5. Run with:
+```sh
+bash run.sh
+```
 
 <a name="usage"/>
  
 ## Usage
 
-Usage: 
+You can also run it with one line like this:
 
 ```sh
 $ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> {symbol}
