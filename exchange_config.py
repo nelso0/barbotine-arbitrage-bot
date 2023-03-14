@@ -3,29 +3,9 @@ import requests
 import time
 
 ex = {
-    'kucoinfutures':ccxt.kucoinfutures({
-        'password':'here',
-        'apiKey':'here',
-        'secret':'here',
-    }),
-    'kucoin':ccxt.kucoin({
-        'password':'here',
-        'apiKey':'here',
-        'secret':'here',
-    }),
-    'binance':ccxt.binance({
-        'apiKey':'here',
-        'secret':'here',
-    }),
-    'okx':ccxt.okx({
-        'password':'here',
-        'apiKey':'here',
-        'secret':'here',
-    }),
-    # 'another_exchange_here':ccxt.other_exchange({
-    #     'apiKey':'here',
-    #     'secret':'here',
-    # }),
+    'kucoin':ccxt.kucoin(),
+    'binance':ccxt.binance(),
+    'okx':ccxt.okx(),
 }
 
 # put maker fees of your exchanges in "receive" (only if it's a quote and not base fee)
@@ -34,7 +14,6 @@ fees = {
     'binance' : {'give':0,"receive":0.001},
     'kucoin' : {'give':0,"receive":0.001},
     'okx' : {'give':0,"receive":0.0008},
-    'another_exchange_here' : {'give':0,"receive":0},
 }
 
 # telegram API to send everything to you

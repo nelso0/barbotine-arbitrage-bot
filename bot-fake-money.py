@@ -15,6 +15,15 @@ prec_ask_price = 0
 prec_bid_price = 0
 i=0
 z=0
+
+ex[sys.argv[5]] = getattr(ccxt,sys.argv[5])()
+ex[sys.argv[6]] = getattr(ccxt,sys.argv[6])()
+ex[sys.argv[7]] = getattr(ccxt,sys.argv[7])()
+
+fees[sys.argv[5]] = {'give':0,"receive":ex[sys.argv[5]].fetchMarkets()[0]['maker']}
+fees[sys.argv[6]] = {'give':0,"receive":ex[sys.argv[6]].fetchMarkets()[0]['maker']}
+fees[sys.argv[7]] = {'give':0,"receive":ex[sys.argv[7]].fetchMarkets()[0]['maker']}
+
 if len(sys.argv) != 8:
     print(f" \nUsage: $ python3 bot-fake-money.py [pair] [total_usdt_investment] [stop.delay.minutes] [tlgrm.msg.title] [ex1] [ex2] [ex3]\n ")
     sys.exit(1)
