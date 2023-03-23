@@ -129,8 +129,6 @@ Don't forget to give a star if you like the code ⭐️
 I also made a full version which operates with real dollars (the classic & delta-neutral mode).
 In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. I'm still doing my research on this, you can help me if you want! contact info below.
 
-/!\ It's not a trading bot, it's an arbitrage bot, so you won't have trade losses at all, there is no speculation, Barbotine takes the opportunity only if it's profitable. /!\
-
 [See live profits here.](https://barbotine.capital)
 
 You can now buy the source code of that real version for a contribution of 25 bucks!
