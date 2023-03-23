@@ -120,17 +120,11 @@ Discord: nelso#1800
 
 Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
 
-Don't forget to give a star if you like the code ⭐️
-
 <a name="full-version"/>
  
 ## Full version
 
-I also made a full version which operates with real dollars (the classic & delta-neutral mode).
-In general, the more volatile the crypto market, the more arbitrage opportunities there are - so the profits vary a lot from a month to another. I'm still doing my research on this, you can help me if you want! contact info below.
-
-[See live profits here.](https://barbotine.capital)
-
+I also made a full version which operates with real dollars. It can be a nice way of having an extra income with no risk.
 You can now buy the source code of that real version for a contribution of 25 bucks!
 
 Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/full-package-of-barbotine)
