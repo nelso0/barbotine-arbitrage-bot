@@ -75,7 +75,7 @@ bash run.sh
  
 ## Usage
 
-You can also run it with one line like this:
+If you don't like `bash run.sh`, you can also run it with one line like this:
 
 ```sh
 bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> {symbol}
@@ -101,6 +101,9 @@ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1
 
 
 * ```{symbol}``` = Not mandatory. If you put a {symbol}, it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
+
+Note: you can put a minimum profit in USD or % in [exchange_config.py](exchange_config.py). The bot will only take the trade if the profit is 
+> (superior) to your value
 
 Examples:
 
