@@ -127,7 +127,8 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
 ## Full version
 
 I also made a full version which operates with real dollars.
-You can now buy the source code of that real version! ($25 contribution)
+You can now buy the source code of that real version! ($25 contribution).
+
 The profits vary a lot from one month to another, because it depends a lot of market conditions (can go from 5% to 40% easily). You can see the current profits of the bot [here](https://barbotine.capital). 
 
 Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price), but it's multifactorial. 
