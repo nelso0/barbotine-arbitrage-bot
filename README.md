@@ -126,7 +126,7 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
  
 ## Full version
 
-I also made a full version which operates with real dollars. It can be a nice way of having an extra income with no risk.
+I also made a full version which operates with real dollars.
 You can now buy the source code of that real version for a contribution of 25 bucks!
 The profits vary a lot from one month to another, because it depends a lot of market conditions (can go from 5% to 40% easily). You can see the current profits of the bot [here](https://barbotine.capital). 
 
