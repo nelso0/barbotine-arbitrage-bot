@@ -64,25 +64,25 @@ cd barbotine-arbitrage-bot
 ```sh
 pip install -r requirements.txt
 ```
-4. Put your telegram bot details in [exchange_config.py](exchange_config.py)
+4. Put your telegram bot details and exchanges API keys in [modules/exchange_config.py](modules/exchange_config.py)
 
 5. Run with:
 ```sh
-bash run.sh
+python run.py
 ```
 
 <a name="usage"/>
  
 ## Usage
 
-If you don't like `bash run.sh`, you can also run it with one line like this:
+You can also run it with one line like this:
 
 ```sh
-bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> {symbol}
+python run.py <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> [symbol]
 ```
 
 
-* ```<mode>``` = the mode you wanna use among ```fake-money```, ```classic```, and ```delta-neutral```. 
+* ```<mode>``` = the mode you wanna use among ```fake-money```, ```classic```, and ```delta-neutral```. See #full-version for classic and delta-neutral modes. 
   
   * ```fake-money``` will run the bot with the balance-usdt-to-use you put, with a virtual balance, just to test.
   * ```classic``` will run the bot with real USDT.
@@ -100,20 +100,20 @@ bash main.sh <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1
 * ```<exchange1,2,3>``` = the three exchanges you want to use among all the CCXT-compatible exchanges. Default: binance okx kucoin (All the 3 have to be correctly configured in [exchange_config.py](exchange_config.py)).
 
 
-* ```{symbol}``` = Not mandatory. If you put a {symbol}, it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
+* ```[symbol]``` = Not mandatory. If you put a [symbol], it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
 
-Note: you can put a minimum profit in USD or % in [exchange_config.py](exchange_config.py). The bot will only take the trade if the profit is > (superior) to your value.
+Note: you can put a minimum profit in USD or % in [modules/exchange_config.py](modules/exchange_config.py). The bot will only take the trade if the profit is > (superior) to your value.
 
 Examples:
 
 ```sh
-bash main.sh fake-money 15 500 binance okx kucoin    # run the system with 500 USDT and renew symbol every 15 minutes, with binance okx and kucoin
+python run.py fake-money 15 500 binance okx kucoin    # run the system with 500 USDT and renew symbol every 15 minutes, with binance okx and kucoin
 ```
 ```sh
-bash main.sh classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
+python run.py classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
 ```
 ```sh
-bash main.sh delta-neutral 60 750 okx cryptocom huobi   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
+python run.py delta-neutral 60 750 okx cryptocom huobi   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
 ```
 
 ## Contact
@@ -126,7 +126,7 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
  
 ## Full version
 
-I also made a full version which operates with real dollars.
+There is also a full version which operates with real dollars.
 
 The profits vary a lot from one month to another, because it depends a lot of market conditions (can go from 5% to 40%). You can see the current opportunities of the real bot [here](https://barbotine.capital). 
 
