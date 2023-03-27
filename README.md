@@ -40,7 +40,8 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
 
 The things you need before installing the software.
 
-* Python 3
+* Python 3.9+
+* Nothing else lol
 
 <a name="installation"/>
  
