@@ -7,33 +7,7 @@ import ccxt.pro
 import sys
 from colorama import Fore, Back, Style
 from exchange_config import *
-import platform
-import ctypes
 
-def set_console_size(width, height):
-    system = platform.system()
-    if system == 'Windows':
-        kernel32 = ctypes.windll.kernel32
-        kernel32.GetConsoleWindow.restype = ctypes.c_void_p
-        hwnd = kernel32.GetConsoleWindow()
-
-        rect = ctypes.wintypes.RECT(0, 0, width, height)
-        kernel32.AdjustWindowRectEx(ctypes.byref(rect), 
-                                    ctypes.windll.user32.WS_OVERLAPPEDWINDOW, 
-                                    False, 
-                                    ctypes.windll.user32.WS_EX_OVERLAPPEDWINDOW)
-                                    
-        kernel32.MoveWindow(hwnd, rect.left, rect.top, 
-                            rect.right - rect.left, rect.bottom - rect.top, True)
-
-    elif system == 'Darwin':
-        out = f"\033[8;{height};{width}t"
-        print(out, end='')
-
-    else:
-        print("System not compatible with automatic resizing. Please larger your window size.")
-
-set_console_size(800, 100)
 bid_prices = {}
 ask_prices = {}
 total_absolute_profit_pct=0
