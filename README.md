@@ -129,4 +129,4 @@ The profits vary a lot from one month to another, because it depends a lot of ma
 Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price), but it's multifactorial. 
 
 You can now buy the source code of that real version! ($25 contribution)
-Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/full-package-of-barbotine)
+Link: [https://support.barbotine.capital](https://get.barbotine.capital/product/full-package-of-barbotine)
