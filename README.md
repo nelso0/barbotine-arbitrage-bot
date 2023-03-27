@@ -32,7 +32,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
 
 * [See Barbotine running 24/7 on a $10,000 account on different crypto assets](https://barbotine.capital)
 
-* [video demo](https://youtu.be/Hq7XXsiKJhI)
+* [video demo](https://youtu.be/-HG05ZSeAp8)
 
 <a name="prerequis"/>
  
