@@ -32,12 +32,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
 
 * [See Barbotine running 24/7 on a $10,000 account on different crypto assets](https://barbotine.capital)
 
-* [Youtube video demo](https://youtu.be/Hq7XXsiKJhI)
-
-What an opportunity looks like (0 trading fees example):
-
-![](https://media.discordapp.net/attachments/876447732259225612/1066487526807842836/demo_trades.gif)
-In general, you can't know in advance how many opportunities there will be, and it's not constant at all. Plus, it also changes completely from one crypto to another. But I have observed that the more volatile the market is, the more opportunities there are.
+* [video demo](https://youtu.be/Hq7XXsiKJhI)
 
 <a name="prerequis"/>
  
