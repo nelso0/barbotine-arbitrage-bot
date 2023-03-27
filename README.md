@@ -30,7 +30,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
  
 ## Demo
 
-* [See Barbotine running 24/7 on a $10,000 account on different crypto assets](https://barbotine.capital)
+* [live profits](https://barbotine.capital)
 
 * [video demo](https://youtu.be/-HG05ZSeAp8)
 
@@ -41,7 +41,6 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
 The things you need before installing the software.
 
 * Python 3
-* Environment where you can run bash scripts (which means you can run bash scripts by typing ``bash <script.sh>`` in your terminal/cmd window. If you can't, go [here](https://www.thewindowsclub.com/how-to-run-sh-or-shell-script-file-in-windows-10))
 
 <a name="installation"/>
  
