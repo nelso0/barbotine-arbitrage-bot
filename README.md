@@ -113,6 +113,8 @@ python run.py delta-neutral 60 750 okx cryptocom huobi   # run the system in a d
 
 ## Contact
 
+If you have any questions or you want to discuss of the bot with me, let's talk!
+
 Discord: nelso#1800
 
 Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
