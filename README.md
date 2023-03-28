@@ -129,3 +129,5 @@ Most of the time, the more volatile a crypto asset is, the more opportunities th
 
 You can now buy the source code of that real version! ($25 contribution)
 Link: [https://support.barbotine.capital](https://get.barbotine.capital/product/full-package-of-barbotine)
+
+I also created a stabler release for investors & firms, contact me to discuss about it.
