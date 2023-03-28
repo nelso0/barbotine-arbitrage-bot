@@ -59,9 +59,7 @@ cd barbotine-arbitrage-bot
 ```sh
 pip install -r requirements.txt
 ```
-4. Put your telegram bot details and exchanges API keys in [exchange_config.py](exchange_config.py)
-
-5. Run with:
+4. Run with:
 ```sh
 python run.py
 ```
@@ -131,3 +129,5 @@ Most of the time, the more volatile a crypto asset is, the more opportunities th
 
 You can now buy the source code of that real version! ($25 contribution)
 Link: [https://support.barbotine.capital](https://get.barbotine.capital/product/full-package-of-barbotine)
+
+I also created a stabler release for investors & firms, contact me to discuss about it.
