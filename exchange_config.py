@@ -35,7 +35,7 @@ telegram_sending = False
 apiToken = 'here' # telegram API to send everything to you, don't fill if you don't want telegram (False = not activated by default)
 chatID = 'here'
 
-first_orders_fill_timeout = 0 # ONLY FOR FULL VERSION       # if equals to 0 = no timeout, check indefinitely to fill first orders. Put a value for the timeout in seconds if you want to have a timeout.
+first_orders_fill_timeout = 0 # ONLY FOR FULL VERSION       # Put a value for the timeout in minutes.
 
 criteria_pct = 0 # minimum of profits to take the opportunity, default to 0 so it takes the opportunity even if this is a 0.001 USD profit. (all fees are already included in the calculation, so it's actual profit)
 criteria_usd = 0
