@@ -3,20 +3,9 @@ import requests
 import time
 
 ex = {
-    'kucoin':ccxt.kucoin({
-        'password':'here',
-        'apiKey':'here',
-        'secret':'here',
-    }),
-    'binance':ccxt.binance({
-        'apiKey':'here',
-        'secret':'here',
-    }),
-    'okx':ccxt.okx({
-        'password':'here',
-        'apiKey':'here',
-        'secret':'here',
-    }),
+    'kucoin':ccxt.kucoin(),
+    'binance':ccxt.binance(),
+    'okx':ccxt.okx(),
     
     # 'another_exchange_here':ccxt.other_exchange({
     #     'apiKey':'here',
@@ -54,7 +43,8 @@ def moy(list):
 def send_to_telegram(message):
     apiURL = f'https://api.telegram.org/bot{apiToken}/sendMessage'
     try:
-        response = requests.post(apiURL, json={'chat_id': chatID, 'text': message})
+        pass
+        #response = requests.post(apiURL, json={'chat_id': chatID, 'text': message}) # put this if you want to send telegram messages.
     except Exception as e:
         print(e)
 def append_new_line(file_name, text_to_append):
