@@ -24,7 +24,6 @@ ex = {
     # }),
 }
 
-
 fees = { # put maker fees of your exchanges in 'receive' (only if it's a quote and not base fee)
     'binance' : {'receive':0.001},
     'kucoin' : {'receive':0.001},
