@@ -10,7 +10,14 @@ if len(sys.argv) < 2:
     
     for inputt in input_list:
         output.append(input(inputt+" >>> "))
-
+    balance=output[2]
+    with open(f"start_balance-{balance}.txt","w") as f:
+        f.write(balance)
+        f.close()
+    with open(f"balance-{balance}.txt","w") as f:
+        f.write(balance)
+        f.close()
+    
     if output[6]=='':
         subprocess.run(['python3',f"main.py",output[0],output[1],output[2],output[3],output[4],output[5]])
     else:
