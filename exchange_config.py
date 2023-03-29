@@ -25,10 +25,10 @@ ex = {
 }
 
 fees = { # put maker fees of your exchanges in 'receive' (only if it's a quote and not base fee)
-    'binance' : {'receive':0.001},
-    'kucoin' : {'receive':0.001},
-    'okx' : {'receive':0.0008},
-    'another_exchange_here' : {'receive':0},
+    'binance' : {'give':0,'receive':0.001},
+    'kucoin' : {'give':0,'receive':0.001},
+    'okx' : {'give':0,'receive':0.0008},
+    'another_exchange_here' : {'give':0,'receive':0},
 }
 
 telegram_sending = False
