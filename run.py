@@ -36,8 +36,10 @@ else:
     i=0
     with open(f"start_balance-{balance}.txt","w") as f:
         f.write(balance)
+        f.close()
     with open(f"balance-{balance}.txt","w") as f:
         f.write(balance)
+        f.close()
 
     while True:
         if i>=1 and p.returncode==1:
