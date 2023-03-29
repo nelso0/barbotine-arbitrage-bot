@@ -11,10 +11,10 @@ if len(sys.argv) < 2:
     for inputt in input_list:
         output.append(input(inputt+" >>> "))
     balance=output[2]
-    with open(f"start_balance-{balance}.txt","w") as f:
+    with open(f"start_balance.txt","w") as f:
         f.write(balance)
         f.close()
-    with open(f"balance-{balance}.txt","w") as f:
+    with open(f"balance.txt","w") as f:
         f.write(balance)
         f.close()
     
@@ -41,10 +41,10 @@ else:
     ex2=args[5]
     ex3=args[6]
     i=0
-    with open(f"start_balance-{balance}.txt","w") as f:
+    with open(f"start_balance.txt","w") as f:
         f.write(balance)
         f.close()
-    with open(f"balance-{balance}.txt","w") as f:
+    with open(f"balance.txt","w") as f:
         f.write(balance)
         f.close()
 
