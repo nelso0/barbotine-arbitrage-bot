@@ -6,7 +6,8 @@
 [![GitHub @nelso0](https://img.shields.io/github/followers/nelso0?label=follow&style=social)](https://github.com/nelso0)
 
 More than a simple algorithm, [Barbotine Arbitrage System (B.A.S)](https://barbotine.capital) is a complete portfolio management system based on the price difference opportunities of the same asset on several centralized trading platforms.
-To eliminate the risks and variables to be taken into account, **B.A.S operates without any transfer of assets between trading platforms.** It also operates in a delta-neutral situation, which brings it even closer to zero risk.
+What it does is basically look for price differences on 3 exchanges at the same time (asynchronous).
+To eliminate the risks and variables to be taken into account, **B.A.S operates without any transfer of assets between trading platforms.** It can also operate in a delta-neutral situation, which brings it even closer to zero risk.
 
 ## Table of content
 * [Features](#features)
