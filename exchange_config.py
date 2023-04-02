@@ -71,3 +71,6 @@ def get_balance(exchange,symbol):
     if symbol in balance['free'] != 0:
         return balance['free'][symbol]
     else: return 0
+def get_precision_min(symbol,exchange_str):
+    symbol_info = ex[exchange_str].load_markets(symbol)
+    return symbol_info[symbol]['limits']['price']['min']
