@@ -2,6 +2,9 @@ import ccxt as ccxt
 import requests
 import time
 
+better_fill_less_profits = True
+telegram_sending = False
+
 ex = {
     'kucoin':ccxt.kucoin({
         'apiKey':'here',
@@ -31,7 +34,6 @@ fees = { # put maker fees of your exchanges in 'receive' (only if it's a quote a
     'another_exchange_here' : {'give':0,'receive':0},
 }
 
-telegram_sending = False
 apiToken = 'here' # telegram API to send everything to you, don't fill if you don't want telegram (False = not activated by default)
 chatID = 'here'
 
