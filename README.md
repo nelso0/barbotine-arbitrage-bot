@@ -99,7 +99,7 @@ Note: you can put a minimum profit in USD or % in [exchange_config.py](exchange_
 Examples:
 
 ```sh
-python run.py fake-money 15 500 binance okx kucoin    # run the system with 500 USDT and renew symbol every 15 minutes, with binance okx and kucoin
+python run.py fake-money 15 500 binance okx kucoin EOS/USDT    # run the system with 500 USDT and renew symbol every 15 minutes, with binance okx and kucoin
 ```
 ```sh
 python run.py classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
