@@ -122,11 +122,9 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
 
 There is also a full version which operates with real dollars.
 
-The profits vary a lot from one month to another, because it depends a lot of market conditions (can go from 5% to 40%).
+The profits vary a lot from one month to another, because it depends a lot of market conditions (can go from 5% to 40% monthly).
 
-Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price), but it's multifactorial. 
+Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price). 
 
 You can now buy the source code of that real version!
 Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/full-package-of-barbotine)
-
-I also created a stabler release for investors & firms, contact me to discuss about it.
