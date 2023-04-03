@@ -4,8 +4,9 @@ import random
 import os
 import requests
 import ccxt.pro
+from colorama import Fore, Back, Style, init
+init(convert=True)
 import sys
-from colorama import Fore, Back, Style
 from exchange_config import *
 
 bid_prices = {}
