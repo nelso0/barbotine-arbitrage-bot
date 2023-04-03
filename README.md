@@ -39,7 +39,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
 
 The things you need before installing the software.
 
-* Python 3.9+
+* Python 3.9+ (for windows users: if python or pip isn't recognized as a command, make sure you have installed python by checking the box "add to PATH")
 * Nothing else lol
 
 <a name="installation"/>
