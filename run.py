@@ -60,12 +60,12 @@ else:
                     symbol=f.read()
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Crypto pair is: {symbol}")
                 p=subprocess.run(['python3', "bot-fake-money.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
-                with open(f"balance-{balance}.txt") as f:
+                with open(f"balance.txt") as f:
                     balance=f.read()
 
             if len(args)>=8:
                 p=subprocess.run(['python3',"bot-fake-money.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
-                with open(f"balance-{balance}.txt") as f:
+                with open(f"balance.txt") as f:
                     balance=f.read()
         elif mode == "classic":
             if len(args)<8:
@@ -76,12 +76,12 @@ else:
                     symbol=f.read()
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Crypto pair is: {symbol}")
                 p=subprocess.run(['python3', "bot-classic.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
-                with open(f"balance-{balance}.txt") as f:
+                with open(f"balance.txt") as f:
                     balance=f.read()
 
             if len(args)>=8:
                 p=subprocess.run(['python3',"bot-classic.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
-                with open(f"balance-{balance}.txt") as f:
+                with open(f"balance.txt") as f:
                     balance=f.read()
         elif mode == "delta-neutral":
             if len(args)<8:
@@ -92,12 +92,12 @@ else:
                     symbol=f.read()
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Crypto pair is: {symbol}")
                 p=subprocess.run(['python3', "bot-delta-neutral.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
-                with open(f"balance-{balance}.txt") as f:
+                with open(f"balance.txt") as f:
                     balance=f.read()
 
             if len(args)>=8:
                 p=subprocess.run(['python3',"bot-delta-neutral.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
-                with open(f"balance-{balance}.txt") as f:
+                with open(f"balance.txt") as f:
                     balance=f.read()
         else:
             print(f"Mode input is incorrect.")
