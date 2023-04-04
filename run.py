@@ -19,9 +19,9 @@ if len(sys.argv) < 2:
         f.close()
     
     if output[6]=='':
-        subprocess.run(['python3',f"main.py",output[0],output[1],output[2],output[3],output[4],output[5]])
+        subprocess.run(['python',f"main.py",output[0],output[1],output[2],output[3],output[4],output[5]])
     else:
-        subprocess.run(['python3',f"main.py",output[0],output[1],output[2],output[3],output[4],output[5],output[6]])
+        subprocess.run(['python',f"main.py",output[0],output[1],output[2],output[3],output[4],output[5],output[6]])
 
 else:
     print("""
@@ -55,48 +55,48 @@ else:
             if len(args)<8:
 
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Searching symbol... (can take some minutes)")
-                p=subprocess.run(['python3', "best-symbol.py"])
+                p=subprocess.run(['python', "best-symbol.py"])
                 with open('symbol.txt') as f:
                     symbol=f.read()
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Crypto pair is: {symbol}")
-                p=subprocess.run(['python3', "bot-fake-money.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
+                p=subprocess.run(['python', "bot-fake-money.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
                 with open(f"balance.txt") as f:
                     balance=f.read()
 
             if len(args)>=8:
-                p=subprocess.run(['python3',"bot-fake-money.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
+                p=subprocess.run(['python',"bot-fake-money.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
                 with open(f"balance.txt") as f:
                     balance=f.read()
         elif mode == "classic":
             if len(args)<8:
 
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Searching symbol... (can take some minutes)")
-                p=subprocess.run(['python3', "best-symbol.py"])
+                p=subprocess.run(['python', "best-symbol.py"])
                 with open('symbol.txt') as f:
                     symbol=f.read()
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Crypto pair is: {symbol}")
-                p=subprocess.run(['python3', "bot-classic.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
+                p=subprocess.run(['python', "bot-classic.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
                 with open(f"balance.txt") as f:
                     balance=f.read()
 
             if len(args)>=8:
-                p=subprocess.run(['python3',"bot-classic.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
+                p=subprocess.run(['python',"bot-classic.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
                 with open(f"balance.txt") as f:
                     balance=f.read()
         elif mode == "delta-neutral":
             if len(args)<8:
 
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Searching symbol... (can take some minutes)")
-                p=subprocess.run(['python3', "best-symbol.py"])
+                p=subprocess.run(['python', "best-symbol.py"])
                 with open('symbol.txt') as f:
                     symbol=f.read()
                 print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Crypto pair is: {symbol}")
-                p=subprocess.run(['python3', "bot-delta-neutral.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
+                p=subprocess.run(['python', "bot-delta-neutral.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
                 with open(f"balance.txt") as f:
                     balance=f.read()
 
             if len(args)>=8:
-                p=subprocess.run(['python3',"bot-delta-neutral.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
+                p=subprocess.run(['python',"bot-delta-neutral.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
                 with open(f"balance.txt") as f:
                     balance=f.read()
         else:
