@@ -4,6 +4,11 @@ import sys
 import time
 from os import path
 
+sys.stdin.reconfigure(encoding="utf-8")
+
+sys.stdout.reconfigure(encoding="utf-8")
+
+
 if len(sys.argv) < 2:
     input_list = ["mode (fake-money, classic, delta-neutral)", "renew time (in minutes)", "balance to use (USDT)", "exchange 1","exchange 2","exchange 3","crypto pair (put nothing if you want it to be automatically selected)"]
     output = []
