@@ -4,9 +4,8 @@ import random
 import os
 import requests
 import ccxt.pro
-from colorama import Fore, Back, Style, init
-init()
 import sys
+from colorama import Fore, Back, Style
 from exchange_config import *
 
 bid_prices = {}
@@ -17,7 +16,7 @@ prec_bid_price = 0
 i=0
 z=0
 if len(sys.argv) != 8:
-    print(f" \nIncorrect usage, this is what it has to look like: $ python3 bot-fake-money.py [pair] [total_usdt_investment] [stop.delay.minutes] [tlgrm.msg.title] [ex1] [ex2] [ex3]\n ")
+    print(f" \nIncorrect usage, this is what it has to look like: $ {how_do_you_usually_launch_python} bot-fake-money.py [pair] [total_usdt_investment] [stop.delay.minutes] [tlgrm.msg.title] [ex1] [ex2] [ex3]\n ")
     print(f" \n This is the list of args you wrote: {sys.argv}")
     sys.exit(1)
 print(" ")
@@ -58,20 +57,21 @@ for exc in echanges_str:
 all_tickers = []
 
 try:
-    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Fetching the global average price for {currentPair}...")
+    printandtelegram(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Fetching the global average price for {currentPair}...")
     for exchange in echanges:
         ticker = exchange.fetch_ticker(currentPair)
         all_tickers.append(ticker['bid'])
         all_tickers.append(ticker['ask'])
     average_first_buy_price = moy(all_tickers)
     total_crypto = (howmuchusd/2)/average_first_buy_price
-    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Average {currentPair} price in USDT: {average_first_buy_price}")
-    printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] If that was with real money, orders would be sent here for {round(total_crypto/len(echanges),3)} {currentPair[:-5]} at {average_first_buy_price}.")
+    printandtelegram(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Average {currentPair} price in USDT: {average_first_buy_price}")
+    printandtelegram(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} If that was with real money, orders would be sent here for {round(total_crypto/len(echanges),3)} {currentPair[:-5]} at {average_first_buy_price}.")
 
 except Exception as e:
     print(f"Error while fetching orders. Error: {e}")
-    for exchange in ex:
-        exchange.close()
+    for exchange in echanges_str:
+        ex[exchange].close()
+    sys.exit(1)
 
 crypto = {exchange:total_crypto/len(echanges) for exchange in echanges_str}
 
@@ -79,7 +79,7 @@ i=0
 
 crypto_per_transaction = total_crypto/len(echanges_str)
 
-printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Starting program with parameters: {[n for n in sys.argv]}")
+printandtelegram(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Starting program with parameters: {[n for n in sys.argv]}")
 prec_time = '0000000'
 min_ask_price = 0
 
@@ -145,7 +145,7 @@ async def symbol_loop(exchange, symbol):
                     color = Fore.GREEN
                 elif profit_with_fees_usd == 0:
                     color = Fore.WHITE
-                print(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Best opportunity: {color}{round(profit_with_fees_usd,4)} USD {Style.RESET_ALL}(with fees)       buy: {min_ask_ex} at {min_ask_price}     sell: {max_bid_ex} at {max_bid_price}")
+                print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Best opportunity: {color}{round(profit_with_fees_usd,4)} USD {Style.RESET_ALL}(with fees)       buy: {min_ask_ex} at {min_ask_price}     sell: {max_bid_ex} at {max_bid_price}")
             time1=exchange.iso8601(exchange.milliseconds())
             if time1[17:19] == "00" and time1[14:16] != prec_time:
                 prec_time = time1[11:13]
@@ -183,4 +183,4 @@ with open('balance.txt', 'r+') as balance_file:
     balance_file.seek(0)
     balance_file.write(str(round(balance * (1 + (total_absolute_profit_pct/100)), 3)))
     balance = float(round(balance * (1 + (total_absolute_profit_pct/100)), 3))
-printandtelegram(f"[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}] Session with {currentPair} finished.\nTotal profit: {round(total_absolute_profit_pct,4)} % ({round((total_absolute_profit_pct/100)*howmuchusd,4)} USDT)\n \nTotal current balance: {balance} USDT")
+printandtelegram(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Session with {currentPair} finished.\nTotal profit: {round(total_absolute_profit_pct,4)} % ({round((total_absolute_profit_pct/100)*howmuchusd,4)} USDT)\n \nTotal current balance: {balance} USDT")
