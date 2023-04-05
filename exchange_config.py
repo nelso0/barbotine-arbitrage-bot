@@ -2,8 +2,10 @@ import ccxt as ccxt
 import requests
 import time
 
-better_fill_less_profits = True
+better_fill_less_profits = True # full version only
 telegram_sending = False
+
+how_do_you_usually_launch_python = 'python' # the command you put in the terminal/cmd to launch python. Usually: python, python3, py...
 
 ex = {
     'kucoin':ccxt.kucoin({
