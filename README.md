@@ -58,7 +58,8 @@ cd barbotine-arbitrage-bot
 ```sh
 pip install -r requirements.txt
 ```
-4. Run with:
+6. Set your configuration details in [exchange_config.py](exchange_config.py)
+5. Run with:
 ```sh
 python run.py
 ```
