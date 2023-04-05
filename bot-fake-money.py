@@ -4,7 +4,8 @@ import random
 import os
 import requests
 import ccxt.pro
-from colorama import Fore, Back, Style
+from colorama import Fore, Back, Style, init
+init()
 import sys
 from exchange_config import *
 
