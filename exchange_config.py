@@ -27,7 +27,7 @@ ex = {
         #'apiKey':'here',
         #'secret':'here',
         #'password':'here'
-    }),
+    # }),
     # 'another_exchange_here':ccxt.other_exchange({
     #     'apiKey':'here',
     #     'secret':'here',
