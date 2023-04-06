@@ -50,6 +50,9 @@ def moy(list):
         moy+=n
     return moy/len(list)
 def send_to_telegram(message):
+    message = message.replace("[2m","")
+    message = message.replace("[0m","")
+    message = message.replace("[2m","")
     apiURL = f'https://api.telegram.org/bot{apiToken}/sendMessage'
     try:
         if telegram_sending:
