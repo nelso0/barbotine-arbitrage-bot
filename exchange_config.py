@@ -77,4 +77,5 @@ def get_balance(exchange,symbol):
     else: return 0
 def get_precision_min(symbol,exchange_str):
     symbol_info = ex[exchange_str].load_markets(symbol)
-    return symbol_info[symbol]['limits']['price']['min']
+    graal = symbol_info[symbol]['limits']['price']['min']
+    return graal
