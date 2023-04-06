@@ -22,7 +22,12 @@ ex = {
         'secret':'here',
         'password':'here'
     }),
-    
+    # for delta-neutral full version only
+        #'kucoinfutures':ccxt.kucoinfutures({
+        #'apiKey':'here',
+        #'secret':'here',
+        #'password':'here'
+    }),
     # 'another_exchange_here':ccxt.other_exchange({
     #     'apiKey':'here',
     #     'secret':'here',
