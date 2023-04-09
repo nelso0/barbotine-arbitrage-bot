@@ -5,8 +5,9 @@ import os
 import requests
 import ccxt.pro
 import sys
-from colorama import Fore, Back, Style
+from colorama import Fore, Back, Style,init
 from exchange_config import *
+init()
 
 bid_prices = {}
 ask_prices = {}
@@ -17,7 +18,7 @@ i=0
 z=0
 if len(sys.argv) != 8:
     print(f" \nIncorrect usage, this is what it has to look like: $ {how_do_you_usually_launch_python} bot-fake-money.py [pair] [total_usdt_investment] [stop.delay.minutes] [tlgrm.msg.title] [ex1] [ex2] [ex3]\n ")
-    print(f" \n This is the list of args you wrote: {sys.argv}")
+    print(f" \n This is the list of args you wrote: {sys.argv}")
     sys.exit(1)
 print(" ")
 
@@ -30,6 +31,22 @@ indicatif = str(sys.argv[4])
 timeout = time.time() + inputtimeout
 
 s=0
+def emergency_convert_list(pair_to_sell,exlist):
+    i=0
+    for echange in exlist:
+        try:
+            if ex[echange].has['cancelAllOrders'] and ex[echange].fetchOpenOrders(pair_to_sell) != []:
+                ex[echange].cancelAllOrders(pair_to_sell)
+                print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Successfully canceled all orders on {echange}.")
+            bal = get_balance(echange,pair_to_sell)
+            bal-=bal*0.01
+            if bal>(float(10)/float(ex[echange].fetch_ticker(pair_to_sell)['last'])):
+                ex[echange].createMarketSellOrder(symbol=pair_to_sell,amount=round(bal,3))
+                print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Successfully sold {bal} {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
+            else: print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Not enough {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
+            i+=1
+        except Exception as e:
+            print(f'{Style.DIM}[{time.strftime("%H:%M:%S", time.gmtime(time.time()))}]{Style.RESET_ALL} Problem on {echange}. Error:    {e}')
 
 def emergency_convert(pair_to_sell):
     i=0
@@ -151,9 +168,8 @@ async def symbol_loop(exchange, symbol):
                 prec_time = time1[11:13]
                 await exchange.close()
             z+=1
-
         except Exception as e:
-            print(str(e))
+            print("Error in loop: "+str(e))
             await exchange.close()
             break
 
