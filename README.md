@@ -31,6 +31,8 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
  
 ## Demo
 
+[It's running live! Click here to see current profits.](https://barbotine.capital/barbotine-arbitrage-instance)
+
 [video demo](https://youtu.be/-HG05ZSeAp8)
 
 <a name="prerequis"/>
@@ -124,6 +126,8 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
 There is also a full version which operates with real dollars.
 
 The profits vary a lot from one month to another, because it depends a lot of market conditions (can go from 5% to 40% monthly).
+
+[Current profits](https://barbotine.capital/barbotine-arbitrage-instance)
 
 Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price). 
 
