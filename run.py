@@ -125,17 +125,20 @@ try:
                 sys.exit(1)
             i+=1
 except KeyboardInterrupt:
-    print(" \n \n \n")
-    answered = False
-    while answered == False:
-        inp = input(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} CTRL+C was pressed. Do you want to sell all crypto back to USDT? (y)es / (n)o\n \ninput: ")
-        if inp == "y" or inp == "Y" or inp == "yes" or inp == "Yes":
-            answered = True
-            emergency_convert_list(symbol,[ex1,ex2,ex3])
-            sys.exit(1)
-        if inp == "n" or inp == "N" or inp == "no" or inp == "No":
-            answered = True
-            sys.exit(1)
-        else:
-            answered = False
+    if ctrl_c_handling:
+        print(" \n \n \n")
+        answered = False
+        while answered == False:
+            inp = input(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} CTRL+C was pressed. Do you want to sell all crypto back to USDT? (y)es / (n)o\n \ninput: ")
+            if inp == "y" or inp == "Y" or inp == "yes" or inp == "Yes":
+                answered = True
+                emergency_convert_list(symbol,[ex1,ex2,ex3])
+                sys.exit(1)
+            if inp == "n" or inp == "N" or inp == "no" or inp == "No":
+                answered = True
+                sys.exit(1)
+            else:
+                answered = False
+    else:
+        pass
 
