@@ -33,9 +33,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
  
 ## Demo
 
-<p>
-<img alt="Barbotine Arbitrage System Demo" src="https://media.discordapp.net/attachments/876447732259225612/1095816511760904322/arbitrage.gif">
-</p>
+![Barbotine Arbitrage Bot Demo](https://cdn.discordapp.com/attachments/876447732259225612/1095816511760904322/arbitrage.gif)
 
 [It's running live! Click here to see current profits.](https://barbotine.capital/arbitrage-instance)
 
