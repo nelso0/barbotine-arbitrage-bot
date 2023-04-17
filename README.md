@@ -5,7 +5,7 @@
 [![Twitter @nelsodot](https://img.shields.io/twitter/url/https/twitter.com/nelsodot.svg?style=social&label=%20%40nelsodot)](https://twitter.com/nelsodot)
 [![GitHub @nelso0](https://img.shields.io/github/followers/nelso0?label=follow&style=social)](https://github.com/nelso0)
 
-## I also made a coin listing bot working on all exchanges, check it out [here](https://github.com/nelso0/barbotine-listing-bot)!
+## I also made a coin listing bot, check it out [here](https://github.com/nelso0/barbotine-listing-bot)!
 
 More than a simple algorithm, [Barbotine Arbitrage System (B.A.S)](https://barbotine.capital) is a complete portfolio management system based on the price difference opportunities of the same asset on several centralized trading platforms.
 What it does is basically look for price differences on 3 exchanges at the same time (asynchronous).
