@@ -33,6 +33,7 @@ To eliminate the risks and variables to be taken into account, **B.A.S operates 
  
 ## Demo
 
+Fees are set to 0 for demo purposes.
 ![Barbotine Arbitrage Bot Demo](https://cdn.discordapp.com/attachments/876447732259225612/1095816511760904322/arbitrage.gif)
 
 [It's running live! Click here to see current profits.](https://barbotine.capital/arbitrage-instance)
