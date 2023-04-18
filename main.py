@@ -35,7 +35,7 @@ while True:
         if len(args)<8:
 
             print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Searching symbol... (can take some minutes)")
-            p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py"])
+            p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py",ex1,ex2,ex3])
             with open('symbol.txt') as f:
                 symbol=f.read()
             print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Crypto pair is: {symbol}")
@@ -51,7 +51,7 @@ while True:
         if len(args)<8:
 
             print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Searching symbol... (can take some minutes)")
-            p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py"])
+            p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py",ex1,ex2,ex3])
             with open('symbol.txt') as f:
                 symbol=f.read()
             print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Crypto pair is: {symbol}")
@@ -67,7 +67,7 @@ while True:
         if len(args)<8:
 
             print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Searching symbol... (can take some minutes)")
-            p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py"])
+            p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py",ex1,ex2,ex3])
             with open('symbol.txt') as f:
                 symbol=f.read()
             print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Crypto pair is: {symbol}")
