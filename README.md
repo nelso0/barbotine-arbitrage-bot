@@ -124,7 +124,7 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
 
 There is also a full version which operates with real dollars.
 
-The profits vary a lot from one month to another, because it depends a lot of market conditions (can go from 5% to 40% monthly).
+The profits vary a lot from one month to another, because it depends a lot of market conditions.
 
 [Current profits](https://barbotine.capital/arbitrage-instance)
 
