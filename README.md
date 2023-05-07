@@ -72,7 +72,7 @@ python run.py
 You can also run it with one line like this:
 
 ```sh
-python run.py <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> [symbol]
+python run.py <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> <symbol>
 ```
 
 
@@ -94,7 +94,7 @@ python run.py <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange
 * ```<exchange1,2,3>``` = the three exchanges you want to use among all the CCXT-compatible exchanges. Default: binance okx kucoin (All the 3 have to be correctly configured in [exchange_config.py](exchange_config.py)).
 
 
-* ```[symbol]``` = Not mandatory. If you put a [symbol], it will renew but on the same symbol every time. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
+* ```<symbol>``` = Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
 
 Note: you can put a minimum profit in USD or % in [exchange_config.py](exchange_config.py). The bot will only take the trade if the profit is > (superior) to your value.
 
@@ -107,7 +107,7 @@ python run.py fake-money 15 500 binance okx kucoin EOS/USDT    # run the system 
 python run.py classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
 ```
 ```sh
-python run.py delta-neutral 60 750 okx cryptocom huobi   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
+python run.py delta-neutral 60 750 okx cryptocom huobi BTC/USDT   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
 ```
 
 ## Contact
