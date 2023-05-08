@@ -26,7 +26,7 @@ def emergency_convert_list(pair_to_sell,exlist):
 
 try:
     if len(sys.argv) < 2:
-        input_list = ["mode (fake-money, classic, delta-neutral)", "renew time (in minutes)", "balance to use (USDT)", "exchange 1","exchange 2","exchange 3","crypto pair (put nothing if you want it to be automatically selected)"]
+        input_list = ["mode (fake-money, classic, delta-neutral)", "renew time (in minutes)", "balance to use (USDT)", "exchange 1","exchange 2","exchange 3","crypto pair"]
         output = []
         
         for inputt in input_list:
