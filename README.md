@@ -30,7 +30,7 @@
 Fees are set to 0 for demo purposes.
 ![Barbotine Arbitrage Bot Demo](https://cdn.discordapp.com/attachments/876447732259225612/1095816511760904322/arbitrage.gif)
 
-[It's running live! Click here to see current profits.](https://barbotine.capital/arbitrage-instance)
+[It's running live! Click here to see current profits.](https://barbotine.capital/arbitrage-live)
 
 [video demo](https://youtu.be/-HG05ZSeAp8)
 
@@ -124,9 +124,7 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
 
 There is also a full version which operates with real dollars.
 
-The profits vary a lot from one month to another, because it depends a lot of market conditions.
-
-[Current profits](https://barbotine.capital/arbitrage-instance)
+[Current profits](https://barbotine.capital/arbitrage-live)
 
 Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price). 
 
