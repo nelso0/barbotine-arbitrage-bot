@@ -124,8 +124,6 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
 
 There is also a full version which operates with real dollars.
 
-[Current profits](https://barbotine.capital/arbitrage-live)
-
 Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price). 
 
 You can now buy the source code of that real version!
