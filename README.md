@@ -127,4 +127,4 @@ There is also a full version which operates with real dollars.
 Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price). 
 
 You can now buy the source code of that real version!
-Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/full-package-of-barbotine-arbitrage)
+Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/barbotine-arbitrage)
