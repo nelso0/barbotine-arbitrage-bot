@@ -30,7 +30,7 @@
 Fees are set to 0 for demo purposes.
 ![Barbotine Arbitrage Bot Demo](https://cdn.discordapp.com/attachments/876447732259225612/1095816511760904322/arbitrage.gif)
 
-[It's running live! Click here to see current profits.](https://barbotine.capital/arbitrage-live)
+[It's running live! Click here to see current opportunities.](https://barbotine.capital/arbitrage-live)
 
 [video demo](https://youtu.be/-HG05ZSeAp8)
 
