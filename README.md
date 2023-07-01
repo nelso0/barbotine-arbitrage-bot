@@ -128,3 +128,5 @@ Most of the time, the more volatile a crypto asset is, the more opportunities th
 
 You can now buy the source code of that real version!
 Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/barbotine-arbitrage)
+
+Also check out my [new scalping bot](https://github.com/nelso0/barbotine-scalping-bot) which is working very well currently.
