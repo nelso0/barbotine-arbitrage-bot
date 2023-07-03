@@ -1,28 +1,18 @@
 import ccxt as ccxt
 import requests
 import time
+import pytz
+import datetime
 
-better_fill_less_profits = True # full version only
 telegram_sending = False
-ctrl_c_handling = False
+ctrl_c_handling = True
 
 how_do_you_usually_launch_python = 'python' # the command you put in the terminal/cmd to launch python. Usually: python, python3, py...
 
 ex = {
-    'kucoin':ccxt.kucoin({
-        'apiKey':'here',
-        'secret':'here',
-        'password':'here'
-    }),
-    'binance':ccxt.binance({
-        'apiKey':'here',
-        'secret':'here',
-    }),
-    'okx':ccxt.okx({
-        'apiKey':'here',
-        'secret':'here',
-        'password':'here'
-    }),
+    'kucoin':ccxt.kucoin(),
+    'binance':ccxt.binance(),
+    'okx':ccxt.okx(),
     # for delta-neutral full version only
         #'kucoinfutures':ccxt.kucoinfutures({
         #'apiKey':'here',
@@ -35,20 +25,10 @@ ex = {
     # }),
 }
 
-fees = { # put maker fees of your exchanges in 'receive' (only if it's a quote and not base fee)
-    'binance' : {'give':0,'receive':0.001},
-    'kucoin' : {'give':0,'receive':0.001},
-    'okx' : {'give':0,'receive':0.0008},
-    'another_exchange_here' : {'give':0,'receive':0},
-}
-
 apiToken = 'here' # telegram API to send everything to you, don't fill if you don't want telegram (False = not activated by default)
 chatID = 'here'
 
-first_orders_fill_timeout = 0 # ONLY FOR FULL VERSION       # Put a value for the timeout in minutes.
-
-criteria_pct = 0 # minimum of profits to take the opportunity, default to 0 so it takes the opportunity even if this is a 0.001 USD profit. (all fees are already included in the calculation, so it's actual profit)
-criteria_usd = 0
+criteria_pct = 0 # minimum of price difference in % to take the opportunity
 
 def moy(list):
     moy=0
@@ -88,3 +68,15 @@ def get_precision_min(symbol,exchange_str):
     symbol_info = ex[exchange_str].load_markets(symbol)
     graal = symbol_info[symbol]['limits']['price']['min']
     return graal
+def get_time():
+    # Définir la timezone française
+    tz_france = pytz.timezone('Europe/Paris')
+
+    # Obtenir la date et l'heure actuelles dans la timezone française
+    now = datetime.datetime.now(tz_france)
+
+    # Formater la date et l'heure dans le format souhaité
+    date_heure_format = now.strftime("[%d/%m/%Y  %H:%M:%S]")
+
+    # Retourner la date et l'heure formatées
+    return date_heure_format
