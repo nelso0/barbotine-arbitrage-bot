@@ -29,6 +29,7 @@ apiToken = 'here' # telegram API to send everything to you, don't fill if you do
 chatID = 'here'
 
 criteria_pct = 0 # minimum of price difference in % to take the opportunity
+criteria_usd = 0
 
 def moy(list):
     moy=0
