@@ -127,6 +127,6 @@ There is also a full version which operates with real dollars.
 Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price). 
 
 You can now buy the source code of that real version!
-Link: [https://get.barbotine.capital](https://get.barbotine.capital/product/barbotine-arbitrage)
+Link: [barbotine.capital/arbitrage](https://barbotine.capital/arbitrage)
 
-Also check out my [new scalping bot](https://github.com/nelso0/barbotine-scalping-bot) which is working very well currently.
+I also made a new trading (scalping) bot! As I want people to discover it, you can buy a bundle of Barbotine Arbitrage + Scalping for a very reduced price, [here](https://barbotine.capital/purchase-arbitrage)
