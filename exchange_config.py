@@ -4,12 +4,12 @@ import time
 import pytz
 import datetime
 
-market_or_limit = 'market' # market is recommended if you're not experienced
 telegram_sending = False
 ctrl_c_handling = True
 
 how_do_you_usually_launch_python = 'python' # the command you put in the terminal/cmd to launch python. Usually: python, python3, py...
 
+# put maker fees of the exchange in 'receive'
 fees = {
     'binance': {'give': 0, 'receive' : 0.001},
     'okx': {'give': 0, 'receive' : 0.0008},
@@ -37,7 +37,8 @@ chatID = 'here'
 
 first_orders_fill_timeout = 0 # put a value for the timeout in minutes. 0 means desactivated (default)
 
-criteria_pct = 0 # minimum of price difference in % to take the opportunity
+criteria_pct = 0 # minimum of profit in % to take the opportunity
+criteria_usd = 0 # minimum of profit in USD to take the opportunity
 
 def moy(list):
     moy=0
