@@ -4,16 +4,23 @@ import time
 import pytz
 import datetime
 
+market_or_limit = 'market' # market is recommended if you're not experienced
 telegram_sending = False
 ctrl_c_handling = True
 
 how_do_you_usually_launch_python = 'python' # the command you put in the terminal/cmd to launch python. Usually: python, python3, py...
 
+fees = {
+    'binance': {'give': 0, 'receive' : 0.001},
+    'okx': {'give': 0, 'receive' : 0.0008},
+    'kucoin': {'give': 0, 'receive' : 0.001}
+}
+
 ex = {
     'kucoin':ccxt.kucoin(),
     'binance':ccxt.binance(),
     'okx':ccxt.okx(),
-    # for delta-neutral full version only
+    # uncomment and fill kucoin futures api for delta-neutral mode.
         #'kucoinfutures':ccxt.kucoinfutures({
         #'apiKey':'here',
         #'secret':'here',
@@ -25,11 +32,12 @@ ex = {
     # }),
 }
 
-apiToken = 'here' # telegram API to send everything to you, don't fill if you don't want telegram (False = not activated by default)
+apiToken = 'here' # telegram API to send everything to you, don't fill if you don't want telegram
 chatID = 'here'
 
+first_orders_fill_timeout = 0 # put a value for the timeout in minutes. 0 means desactivated (default)
+
 criteria_pct = 0 # minimum of price difference in % to take the opportunity
-criteria_usd = 0
 
 def moy(list):
     moy=0
