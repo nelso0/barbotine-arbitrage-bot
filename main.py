@@ -2,17 +2,15 @@ import subprocess
 import time
 import sys
 import os
-from colorama import Style, init
+from colorama import Style, init, Fore
 init()
 from exchange_config import *
 sys.stdin.reconfigure(encoding="utf-8")
 sys.stdout.reconfigure(encoding="utf-8")
 print("""
-█▄▄ ▄▀█ █▀█ █▄▄ █▀█ ▀█▀ █ █▄░█ █▀▀   ▄▀█ █▀█ █▄▄ █ ▀█▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
-█▄█ █▀█ █▀▄ █▄█ █▄█ ░█░ █ █░▀█ ██▄   █▀█ █▀▄ █▄█ █ ░█░ █▀▄ █▀█ █▄█ ██▄   ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█""")
-
-print(" \nUnder Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license, for personal-use only.\n \nGithub: nelso0\nTwitter: @nelsodot\n")
-
+    █▄▄ ▄▀█ █▀█ █▄▄ █▀█ ▀█▀ █ █▄░█ █▀▀   ▄▀█ █▀█ █▄▄ █ ▀█▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
+    █▄█ █▀█ █▀▄ █▄█ █▄█ ░█░ █ █░▀█ ██▄   █▀█ █▀▄ █▄█ █ ░█░ █▀▄ █▀█ █▄█ ██▄   ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█""")
+print(f" \n{Fore.CYAN}FAKE-MONEY VERSION{Style.RESET_ALL}\n \nLink for real money version: https://barbotine.capital/purchase-arbitrage\n \nGithub: nelso0\nTwitter: @nelsorex\nDiscord: nelsorex\n")
 args = sys.argv
 mode = args[1]
 balance = args[3]
@@ -34,11 +32,11 @@ while True:
     if mode == "fake-money":
         if len(args)<8:
 
-            print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Searching symbol... (can take some minutes)")
+            print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Searching symbol... (can take some minutes)")
             p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py",ex1,ex2,ex3])
             with open('symbol.txt') as f:
                 symbol=f.read()
-            print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Crypto pair is: {symbol}")
+            print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Crypto pair is: {symbol}")
             p=subprocess.run([how_do_you_usually_launch_python, "bot-fake-money.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
             with open(f"balance.txt") as f:
                 balance=f.read()
@@ -50,11 +48,11 @@ while True:
     elif mode == "classic":
         if len(args)<8:
 
-            print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Searching symbol... (can take some minutes)")
+            print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Searching symbol... (can take some minutes)")
             p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py",ex1,ex2,ex3])
             with open('symbol.txt') as f:
                 symbol=f.read()
-            print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Crypto pair is: {symbol}")
+            print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Crypto pair is: {symbol}")
             p=subprocess.run([how_do_you_usually_launch_python, "bot-classic.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
             with open(f"balance.txt") as f:
                 balance=f.read()
@@ -66,11 +64,11 @@ while True:
     elif mode == "delta-neutral":
         if len(args)<8:
 
-            print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Searching symbol... (can take some minutes)")
+            print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Searching symbol... (can take some minutes)")
             p=subprocess.run([how_do_you_usually_launch_python, "best-symbol.py",ex1,ex2,ex3])
             with open('symbol.txt') as f:
                 symbol=f.read()
-            print(f"{Style.DIM}[{time.strftime('%H:%M:%S', time.gmtime(time.time()))}]{Style.RESET_ALL} Crypto pair is: {symbol}")
+            print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Crypto pair is: {symbol}")
             p=subprocess.run([how_do_you_usually_launch_python, "bot-delta-neutral.py",symbol,balance,renew,symbol,ex1,ex2,ex3])
             with open(f"balance.txt") as f:
                 balance=f.read()
