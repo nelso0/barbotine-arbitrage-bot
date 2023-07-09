@@ -52,6 +52,12 @@ try:
         args = sys.argv
         mode = args[1]
         balance = args[3]
+        with open(f"start_balance.txt","w") as f:
+            f.write(balance)
+            f.close()
+        with open(f"balance.txt","w") as f:
+            f.write(balance)
+            f.close()
         if len(args)>=8:
             symbol=args[7]
         renew=args[2]
