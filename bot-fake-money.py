@@ -47,7 +47,6 @@ def emergency_convert_list(pair_to_sell,exlist):
             i+=1
         except Exception as e:
             print(f'{Style.DIM}[{time.strftime("%H:%M:%S", time.gmtime(time.time()))}]{Style.RESET_ALL} Problem on {echange}. Error:    {e}')
-
 def emergency_convert(pair_to_sell):
     i=0
     for echange in echanges_str:
