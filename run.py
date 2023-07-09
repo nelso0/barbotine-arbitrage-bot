@@ -126,7 +126,7 @@ try:
                 sys.exit(1)
             i+=1
 except KeyboardInterrupt:
-    if ctrl_c_handling:
+    if ctrl_c_handling and mode!='fake-money':
         print(" \n \n \n")
         answered = False
         while answered == False:
