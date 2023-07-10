@@ -1,5 +1,5 @@
 import subprocess
-from exchange_config import *
+from exchange_config import how_do_you_usually_launch_python, get_time, ctrl_c_handling, ex, get_balance
 import sys
 sys.stdin.reconfigure(encoding="utf-8")
 sys.stdout.reconfigure(encoding="utf-8")
@@ -58,6 +58,7 @@ try:
         with open(f"balance.txt","w") as f:
             f.write(balance)
             f.close()
+        
         if len(args)>=8:
             symbol=args[7]
         renew=args[2]
@@ -67,14 +68,8 @@ try:
         print("""
     █▄▄ ▄▀█ █▀█ █▄▄ █▀█ ▀█▀ █ █▄░█ █▀▀   ▄▀█ █▀█ █▄▄ █ ▀█▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
     █▄█ █▀█ █▀▄ █▄█ █▄█ ░█░ █ █░▀█ ██▄   █▀█ █▀▄ █▄█ █ ░█░ █▀▄ █▀█ █▄█ ██▄   ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█""")
-        print(f" \n{Fore.CYAN}FAKE-MONEY VERSION{Style.RESET_ALL}\n \nLink for real money version: https://barbotine.capital/purchase-arbitrage\n \nGithub: nelso0\nTwitter: @nelsorex\nDiscord: nelsorex\n")
+        print(f" \n{Fore.BLUE}{Style.BRIGHT}FAKE-MONEY VERSION{Style.RESET_ALL}\n \nGithub: nelso0\nTwitter: @nelsorex\nDiscord: nelsorex\n")
         i=0
-        with open(f"start_balance.txt","w") as f:
-            f.write(balance)
-            f.close()
-        with open(f"balance.txt","w") as f:
-            f.write(balance)
-            f.close()
 
         while True:
             if i>=1 and p.returncode==1:
