@@ -12,13 +12,21 @@ how_do_you_usually_launch_python = 'python3' # the command you put in the termin
 fees = {
     'binance': {'base': 0, 'quote' : 0.001},
     'okx': {'base': 0, 'quote' : 0.0008},
-    'kucoin': {'base': 0, 'quote' : 0.001}
+    'kucoin': {'base': 0, 'quote' : 0.001},
+    'bybit':{'base':0.001,'quote':0.001},
 }
 
 ex = {
     'kucoin':ccxt.kucoin(),
     'binance':ccxt.binance(),
     'okx':ccxt.okx(),
+    'bybit':ccxt.bybit(),
+    # uncomment and fill kucoin futures api for delta-neutral mode.
+        #'kucoinfutures':ccxt.kucoinfutures({
+        #'apiKey':'here',
+        #'secret':'here',
+        #'password':'here'
+    # }),
     # 'another_exchange_here':ccxt.other_exchange({
     #     'apiKey':'here',
     #     'secret':'here',
@@ -83,3 +91,9 @@ def get_time():
 
     # Retourner la date et l'heure formatées
     return date_heure_format
+def get_balance_usdt(ex_list_str:list):
+    usdt_balance = 0
+    for excha in ex_list_str:
+        balances = ex[excha].fetchBalance()
+        usdt_balance+=balances['USDT']['total']
+    return float(usdt_balance)
