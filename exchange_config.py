@@ -7,25 +7,18 @@ import datetime
 telegram_sending = False
 ctrl_c_handling = True
 
-how_do_you_usually_launch_python = 'python' # the command you put in the terminal/cmd to launch python. Usually: python, python3, py...
+how_do_you_usually_launch_python = 'python3' # the command you put in the terminal/cmd to launch python. Usually: python, python3, py...
 
-# put maker fees of the exchange in 'receive'
 fees = {
-    'binance': {'give': 0, 'receive' : 0.001},
-    'okx': {'give': 0, 'receive' : 0.0008},
-    'kucoin': {'give': 0, 'receive' : 0.001}
+    'binance': {'base': 0, 'quote' : 0.001},
+    'okx': {'base': 0, 'quote' : 0.0008},
+    'kucoin': {'base': 0, 'quote' : 0.001}
 }
 
 ex = {
     'kucoin':ccxt.kucoin(),
     'binance':ccxt.binance(),
     'okx':ccxt.okx(),
-    # uncomment and fill kucoin futures api for delta-neutral mode.
-        #'kucoinfutures':ccxt.kucoinfutures({
-        #'apiKey':'here',
-        #'secret':'here',
-        #'password':'here'
-    # }),
     # 'another_exchange_here':ccxt.other_exchange({
     #     'apiKey':'here',
     #     'secret':'here',
@@ -37,8 +30,8 @@ chatID = 'here'
 
 first_orders_fill_timeout = 0 # put a value for the timeout in minutes. 0 means desactivated (default)
 
-criteria_pct = 0 # minimum of profit in % to take the opportunity
-criteria_usd = 0 # minimum of profit in USD to take the opportunity
+criteria_pct = 0 # minimum of price difference in % to take the opportunity
+criteria_usd = 0
 
 def moy(list):
     moy=0
@@ -71,8 +64,8 @@ def get_balance(exchange,symbol):
     if symbol[-5:] == '/USDT':
         symbol = symbol[:-5]
     balance=ex[exchange].fetch_balance()
-    if symbol in balance['free'] != 0:
-        return balance['free'][symbol]
+    if symbol in balance['total'] != 0:
+        return balance['total'][symbol]
     else: return 0
 def get_precision_min(symbol,exchange_str):
     symbol_info = ex[exchange_str].load_markets(symbol)
