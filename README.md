@@ -30,8 +30,6 @@
 Fees are set to 0 for demo purposes.
 ![Barbotine Arbitrage Bot Demo](https://cdn.discordapp.com/attachments/876447732259225612/1095816511760904322/arbitrage.gif)
 
-[It's running live! Click here to see current opportunities.](https://barbotine.capital/arbitrage-live)
-
 [video demo](https://youtu.be/-HG05ZSeAp8)
 
 <a name="prerequis"/>
@@ -72,7 +70,7 @@ python run.py
 You can also run it with one line like this:
 
 ```sh
-python run.py <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> <symbol>
+python run.py <mode> <renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> <symbol>
 ```
 
 
@@ -84,7 +82,7 @@ python run.py <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange
   
   
   
-* ```<symbol-renew-time-minutes>``` = the timeframe you wanna use to switch symbol. If you put 60, it will renew the symbol each hour. Note that the new symbol is automatically selected by the [best_symbol.py](best-symbol.py) script if you don't put a {symbol}. Default: 15
+* ```<renew-time-minutes>``` = the timeframe you wanna use to close the session & open a new one. If you put 60, it will renew each hour.
 
 
 
@@ -94,20 +92,20 @@ python run.py <mode> <symbol-renew-time-minutes> <balance-usdt-to-use> <exchange
 * ```<exchange1,2,3>``` = the three exchanges you want to use among all the CCXT-compatible exchanges. Default: binance okx kucoin (All the 3 have to be correctly configured in [exchange_config.py](exchange_config.py)).
 
 
-* ```<symbol>``` = Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
+* ```<symbol>``` = The symbol you wanna arbitrage on. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
 
 Note: you can put a minimum profit in USD or % in [exchange_config.py](exchange_config.py). The bot will only take the trade if the profit is > (superior) to your value.
 
 Examples:
 
 ```sh
-python run.py fake-money 15 500 binance okx kucoin EOS/USDT    # run the system with 500 USDT and renew symbol every 15 minutes, with binance okx and kucoin
+python run.py fake-money 15 500 binance okx kucoin EOS/USDT    # run the system with 500 USDT and renew the session every 15 minutes, with binance okx and kucoin
 ```
 ```sh
-python run.py classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT continuously (change the symbol to SOL/USDT each 15 minutes).
+python run.py classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT, and renew the session every 15 minutes.
 ```
 ```sh
-python run.py delta-neutral 60 750 okx cryptocom huobi BTC/USDT   # run the system in a delta-neutral situation with 750 USDT and renew the symbol each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
+python run.py delta-neutral 60 750 okx cryptocom huobi BTC/USDT   # run the system in a delta-neutral situation with 750 USDT and renew the session each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
 ```
 
 ## Contact
@@ -129,4 +127,4 @@ Most of the time, the more volatile a crypto asset is, the more opportunities th
 You can now buy the source code of that real version!
 Link: [barbotine.capital/arbitrage](https://barbotine.capital/arbitrage)
 
-I also made a new trading (scalping) bot! As I want people to discover it, you can buy a bundle of Barbotine Arbitrage + Scalping for a very reduced price, [here](https://barbotine.capital/purchase-arbitrage)
+I also made a new trading (scalping) bot! Check it out here: [github.com/nelso0/barbotine-scalping-bot](https://github.com/nelso0/barbotine-scalping-bot)
