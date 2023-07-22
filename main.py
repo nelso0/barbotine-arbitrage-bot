@@ -10,7 +10,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 print("""
     █▄▄ ▄▀█ █▀█ █▄▄ █▀█ ▀█▀ █ █▄░█ █▀▀   ▄▀█ █▀█ █▄▄ █ ▀█▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
     █▄█ █▀█ █▀▄ █▄█ █▄█ ░█░ █ █░▀█ ██▄   █▀█ █▀▄ █▄█ █ ░█░ █▀▄ █▀█ █▄█ ██▄   ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█""")
-print(f" \n{Fore.BLUE}{Style.BRIGHT}FAKE-MONEY VERSION{Style.RESET_ALL}\n \nLink for real money version: https://barbotine.capital/purchase-arbitrage\n \nGithub: nelso0\nTwitter: @nelsorex\nDiscord: nelsorex\n")
+print(f" \n{Fore.BLUE}{Style.BRIGHT}FAKE-MONEY VERSION{Style.RESET_ALL}\n \nGithub: nelso0\nTwitter: @nelsorex\nDiscord: nelsorex\n")
 args = sys.argv
 mode = args[1]
 balance = args[3]
