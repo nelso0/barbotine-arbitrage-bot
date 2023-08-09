@@ -18,7 +18,7 @@
 ## Features
 
 * Compatible with almost any exchange (all [ccxt](https://github.com/ccxt/ccxt) exchanges).
-* Calculates all the fees to know the exact possible profit before all transactions
+* Pre-calculates all future transactions fees to know the exact possible profit before all transactions
 * Zero-risk (no speculation)
 * Full live tracking on Telegram and Discord webhooks
 * Permanent live rate display in the terminal
