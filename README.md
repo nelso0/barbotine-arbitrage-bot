@@ -18,7 +18,7 @@
 ## Features
 
 * Compatible with almost any exchange (all [ccxt](https://github.com/ccxt/ccxt) exchanges).
-* True trading fees support
+* Calculates all the fees to know the exact possible profit before all transactions
 * Zero-risk (no speculation)
 * Full live tracking on Telegram and Discord webhooks
 * Permanent live rate display in the terminal
