@@ -12,15 +12,16 @@ how_do_you_usually_launch_python = 'python3' # the command you put in the termin
 fees = {
     'binance': {'base': 0, 'quote' : 0.001},
     'okx': {'base': 0, 'quote' : 0.0008},
-    'kucoin': {'base': 0, 'quote' : 0.001},
-    'bybit':{'base':0.001,'quote':0.001},
+    'kucoin': {'base': 0, 'quote' : 0.001}
 }
+
+nb_exchanges = 3
 
 ex = {
     'kucoin':ccxt.kucoin(),
     'binance':ccxt.binance(),
     'okx':ccxt.okx(),
-    'bybit':ccxt.bybit(),
+    'poloniex':ccxt.poloniex(),
     # uncomment and fill kucoin futures api for delta-neutral mode.
         #'kucoinfutures':ccxt.kucoinfutures({
         #'apiKey':'here',
@@ -41,11 +42,11 @@ first_orders_fill_timeout = 0 # put a value for the timeout in minutes. 0 means 
 criteria_pct = 0 # minimum of price difference in % to take the opportunity
 criteria_usd = 0
 
-def moy(list):
+def moy(list1):
     moy=0
-    for n in list:
+    for n in list1:
         moy+=n
-    return moy/len(list)
+    return moy/len(list1)
 def send_to_telegram(message):
     message = message.replace("[2m","")
     message = message.replace("[0m","")
@@ -58,6 +59,18 @@ def send_to_telegram(message):
             pass
     except Exception as e:
         print(e)
+def append_list_file(fichier, nouvel_element):
+    import ast
+    try:
+        with open(fichier, 'r') as file:
+            liste = ast.literal_eval(file.read())
+    except FileNotFoundError:
+        liste = []
+
+    liste.append(nouvel_element)
+
+    with open(fichier, 'w') as file:
+        file.write(str(liste))
 def append_new_line(file_name, text_to_append):
     with open(file_name, 'a+') as file_object:
         file_object.seek(0)
