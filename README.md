@@ -70,7 +70,7 @@ python run.py
 You can also run it with one line like this:
 
 ```sh
-python run.py <mode> <renew-time-minutes> <balance-usdt-to-use> <exchange1> <exchange2> <exchange3> <symbol>
+python run.py <mode> <renew-time-minutes> <balance-usdt-to-use> <symbol> <exchanges list separated by commas (no space!)>
 ```
 
 
@@ -89,23 +89,26 @@ python run.py <mode> <renew-time-minutes> <balance-usdt-to-use> <exchange1> <exc
 * ```<balance-usdt-to-use>``` = how to be clearer? 
 
 
-* ```<exchange1,2,3>``` = the three exchanges you want to use among all the CCXT-compatible exchanges. Default: binance okx kucoin (All the 3 have to be correctly configured in [exchange_config.py](exchange_config.py)).
-
 
 * ```<symbol>``` = The symbol you wanna arbitrage on. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
 
-Note: you can put a minimum profit in USD or % in [exchange_config.py](exchange_config.py). The bot will only take the trade if the profit is > (superior) to your value.
+
+
+* ```<exchanges list>``` = the exchanges you want to use among all the CCXT-compatible exchanges. At least 2 exchanges, theorically infinite maximum. Don't forget to configure the exchanges in [exchange_config.py](exchange_config.py).
+
+
+Note: you can put a minimum profit in USD or % in [exchange_config.py](exchange_config.py). The bot will only take the trade if the profit is > (superior) to your value. You can also use pairs without USDT, like ETH/BTC.
 
 Examples:
 
 ```sh
-python run.py fake-money 15 500 binance okx kucoin EOS/USDT    # run the system with 500 USDT and renew the session every 15 minutes, with binance okx and kucoin
+python run.py fake-money 15 500 EOS/USDT binance,okx,kucoin    # run the system with 500 USDT and renew the session every 15 minutes, with binance okx and kucoin
 ```
 ```sh
-python run.py classic 15 1000 binance phemex bybit SOL/USDT   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT, and renew the session every 15 minutes.
+python run.py classic 15 1000 SOL/USDT binance,poloniex,kucoin   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT, and renew the session every 15 minutes.
 ```
 ```sh
-python run.py delta-neutral 60 750 okx cryptocom huobi BTC/USDT   # run the system in a delta-neutral situation with 750 USDT and renew the session each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
+python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the system in a delta-neutral situation with 750 USDT and renew the session each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
 ```
 
 ## Contact
