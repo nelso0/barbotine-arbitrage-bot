@@ -4,9 +4,14 @@ import sys
 sys.stdin.reconfigure(encoding="utf-8")
 sys.stdout.reconfigure(encoding="utf-8")
 import time
-from os import path
+from os import path, name,system
 from colorama import Style, Fore, init
 init()
+def clear():
+    if name == 'nt':
+      system('cls')
+    else:
+        system('clear')
 def emergency_convert_list(pair_to_sell,exlist):
     i=0
     for echange in exlist:
@@ -15,9 +20,8 @@ def emergency_convert_list(pair_to_sell,exlist):
                 ex[echange].cancelAllOrders(pair_to_sell)
                 print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Successfully canceled all orders on {echange}.")
             bal = get_balance(echange,pair_to_sell)
-            bal-=bal*0.01
             if bal>(float(10)/float(ex[echange].fetch_ticker(pair_to_sell)['last'])):
-                ex[echange].createMarketSellOrder(symbol=pair_to_sell,amount=round(bal,3))
+                ex[echange].createMarketSellOrder(symbol=pair_to_sell,amount=bal)
                 print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Successfully sold {bal} {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
             else: print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Not enough {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
             i+=1
@@ -27,6 +31,8 @@ def emergency_convert_list(pair_to_sell,exlist):
 try:
     if len(sys.argv) < 2:
         input_list = ["mode (fake-money, classic, delta-neutral)", "renew time (in minutes)", "balance to use", "symbol", "exchanges list separated without space with commas (,)"]
+        if not renewal:
+            input_list.remove("renew time (in minutes)")
         output = []
         
         for inputt in input_list:
@@ -40,14 +46,20 @@ try:
             f.close()
         
         mode = output[0]
-
-        subprocess.run([how_do_you_usually_launch_python,f"main.py",output[0],output[1],output[2],output[3],output[4]])
+        symbol = output[3]
+        ex_list = output[4]
+        if renewal:
+            subprocess.run([how_do_you_usually_launch_python,f"main.py",output[0],output[1],output[2],output[3],output[4]])
+        else:
+            subprocess.run([how_do_you_usually_launch_python,f"main.py",output[0],525600,output[2],output[3],output[4]])
         
 
     else:
-        
-        if len(sys.argv) < 6 or len(sys.argv) > 6:
+        if len(sys.argv) < 6 or len(sys.argv) > 6 and renewal:
             print("Not correctly configured. Usage:\n \n{how_do_you_usually_launch_python} run.py <mode> <symbol-renew-time> <balance-to-use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
+            sys.exit(1)
+        if len(sys.argv) < 5 or len(sys.argv) > 5 and not renewal:
+            print("Not correctly configured. Usage:\n \n{how_do_you_usually_launch_python} run.py <mode> <balance-to-use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
             sys.exit(1)
         args = sys.argv
         mode = args[1]
@@ -60,7 +72,10 @@ try:
             f.close()
         
         symbol=args[4]
-        renew=args[2]
+        if renewal:
+            renew=args[2]
+        else:
+            renew = 525600
         ex_list=args[5]
         print("""
     █▄▄ ▄▀█ █▀█ █▄▄ █▀█ ▀█▀ █ █▄░█ █▀▀   ▄▀█ █▀█ █▄▄ █ ▀█▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
@@ -90,6 +105,7 @@ try:
 except KeyboardInterrupt:
     if ctrl_c_handling and mode!='fake-money':
         print(" \n \n \n")
+        clear()
         answered = False
         while answered == False:
             inp = input(f"{Style.DIM}{get_time()}{Style.RESET_ALL} CTRL+C was pressed. Do you want to sell all crypto back? (y)es / (n)o\n \ninput: ")
