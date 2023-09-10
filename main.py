@@ -10,7 +10,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 print("""
     █▄▄ ▄▀█ █▀█ █▄▄ █▀█ ▀█▀ █ █▄░█ █▀▀   ▄▀█ █▀█ █▄▄ █ ▀█▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
     █▄█ █▀█ █▀▄ █▄█ █▄█ ░█░ █ █░▀█ ██▄   █▀█ █▀▄ █▄█ █ ░█░ █▀▄ █▀█ █▄█ ██▄   ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█""")
-print(f" \n{Fore.YELLOW}{Style.BRIGHT}FULL VERSION{Style.RESET_ALL}\n \nGithub: nelso0\nTwitter: @nelsorex\nDiscord: nelsorex\n")
+print(f" \n{Fore.BLUE}{Style.BRIGHT}DEMO VERSION{Style.RESET_ALL}\n \nGithub: nelso0\nTwitter: @nelsorex\nDiscord: nelsorex\n")
 args = sys.argv
 mode = args[1]
 balance = args[3]
