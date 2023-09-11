@@ -37,21 +37,28 @@ try:
         
         for inputt in input_list:
             output.append(input(inputt+" >>> "))
-        balance=output[2]
+        
+        mode = output[0]
+        if not renewal:
+            balance=output[1]
+            symbol = output[2]
+            ex_list = output[3]
+        else:
+            balance=output[2]
+            symbol = output[3]
+            ex_list = output[4]
+
         with open(f"start_balance.txt","w") as f:
             f.write(balance)
             f.close()
         with open(f"balance.txt","w") as f:
             f.write(balance)
             f.close()
-        
-        mode = output[0]
-        symbol = output[3]
-        ex_list = output[4]
+
         if renewal:
             subprocess.run([how_do_you_usually_launch_python,f"main.py",output[0],output[1],output[2],output[3],output[4]])
         else:
-            subprocess.run([how_do_you_usually_launch_python,f"main.py",output[0],525600,output[2],output[3],output[4]])
+            subprocess.run([how_do_you_usually_launch_python,f"main.py",output[0],525600,output[1],output[2],output[3]])
         
 
     else:
@@ -63,7 +70,18 @@ try:
             sys.exit(1)
         args = sys.argv
         mode = args[1]
-        balance = args[3]
+        
+        if renewal:
+            balance = args[3]
+            symbol=args[4]
+            renew=args[2]
+            ex_list=args[5]
+        else:
+            balance = args[2]
+            symbol=args[3]
+            ex_list=args[4]
+            renew = 525600
+
         with open(f"start_balance.txt","w") as f:
             f.write(balance)
             f.close()
@@ -71,12 +89,6 @@ try:
             f.write(balance)
             f.close()
         
-        symbol=args[4]
-        if renewal:
-            renew=args[2]
-        else:
-            renew = 525600
-        ex_list=args[5]
         print("""
     █▄▄ ▄▀█ █▀█ █▄▄ █▀█ ▀█▀ █ █▄░█ █▀▀   ▄▀█ █▀█ █▄▄ █ ▀█▀ █▀█ ▄▀█ █▀▀ █▀▀   █▀ █▄█ █▀ ▀█▀ █▀▀ █▀▄▀█
     █▄█ █▀█ █▀▄ █▄█ █▄█ ░█░ █ █░▀█ ██▄   █▀█ █▀▄ █▄█ █ ░█░ █▀▄ █▀█ █▄█ ██▄   ▄█ ░█░ ▄█ ░█░ ██▄ █░▀░█""")
