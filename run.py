@@ -40,10 +40,12 @@ try:
         
         mode = output[0]
         if not renewal:
+            renew_time = "525600"
             balance=output[1]
             symbol = output[2]
             ex_list = output[3]
         else:
+            renew_time = output[1]
             balance=output[2]
             symbol = output[3]
             ex_list = output[4]
@@ -56,31 +58,30 @@ try:
             f.close()
 
         if renewal:
-            subprocess.run([how_do_you_usually_launch_python,f"main.py",output[0],output[1],output[2],output[3],output[4]])
+            subprocess.run([how_do_you_usually_launch_python,f"main.py",mode,renew_time,balance,symbol,ex_list])
         else:
-            subprocess.run([how_do_you_usually_launch_python,f"main.py",output[0],525600,output[1],output[2],output[3]])
-        
+            subprocess.run([how_do_you_usually_launch_python,f"main.py",mode,balance,symbol,ex_list])
 
     else:
-        if len(sys.argv) < 6 or len(sys.argv) > 6 and renewal:
-            print("Not correctly configured. Usage:\n \n{how_do_you_usually_launch_python} run.py <mode> <symbol-renew-time> <balance-to-use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
+        if (len(sys.argv) < 6 or len(sys.argv) > 6) and renewal:
+            print(f"Not correctly configured. Usage:\n \n{how_do_you_usually_launch_python} run.py <mode> <symbol-renew-time> <balance-to-use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
             sys.exit(1)
-        if len(sys.argv) < 5 or len(sys.argv) > 5 and not renewal:
-            print("Not correctly configured. Usage:\n \n{how_do_you_usually_launch_python} run.py <mode> <balance-to-use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
+        if (len(sys.argv) < 5 or len(sys.argv) > 5) and not renewal:
+            print(f"Not correctly configured. Usage:\n \n{how_do_you_usually_launch_python} run.py <mode> <balance-to-use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
             sys.exit(1)
         args = sys.argv
-        mode = args[1]
         
-        if renewal:
-            balance = args[3]
-            symbol=args[4]
-            renew=args[2]
-            ex_list=args[5]
+        mode = args[1]
+        if not renewal:
+            renew_time = "525600"
+            balance=args[2]
+            symbol = args[3]
+            ex_list = args[4]
         else:
-            balance = args[2]
-            symbol=args[3]
-            ex_list=args[4]
-            renew = 525600
+            renew_time = args[2]
+            balance=args[3]
+            symbol = args[4]
+            ex_list = args[5]
 
         with open(f"start_balance.txt","w") as f:
             f.write(balance)
@@ -99,15 +100,15 @@ try:
             if i>=1 and p.returncode==1:
                 sys.exit(1)
             if mode == "fake-money":
-                p=subprocess.run([how_do_you_usually_launch_python,"bot-fake-money.py",symbol,balance,renew,symbol,ex_list])
+                p=subprocess.run([how_do_you_usually_launch_python,"bot-fake-money.py",symbol,balance,renew_time,symbol,ex_list])
                 with open(f"balance.txt") as f:
                     balance=f.read()
             elif mode == "classic":
-                p=subprocess.run([how_do_you_usually_launch_python,"bot-classic.py",symbol,balance,renew,symbol,ex_list])
+                p=subprocess.run([how_do_you_usually_launch_python,"bot-classic.py",symbol,balance,renew_time,symbol,ex_list])
                 with open(f"balance.txt") as f:
                     balance=f.read()
             elif mode == "delta-neutral":
-                p=subprocess.run([how_do_you_usually_launch_python,"bot-delta-neutral.py",symbol,balance,renew,symbol,ex_list])
+                p=subprocess.run([how_do_you_usually_launch_python,"bot-delta-neutral.py",symbol,balance,renew_time,symbol,ex_list])
                 with open(f"balance.txt") as f:
                     balance=f.read()
             else:
