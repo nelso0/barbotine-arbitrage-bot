@@ -4,6 +4,8 @@ import time
 import pytz
 import datetime
 
+# The bot seems complicated? I swear it's not, just try! (and contact me if you have an error, it's probably a silly one :)
+
 telegram_sending = False
 ctrl_c_handling = True
 renewal = True # you can disable session renewal here, default: True
