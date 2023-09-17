@@ -116,8 +116,9 @@ while ordersFilled != nb_exchanges:
 printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Starting program with parameters: {[n for n in sys.argv]}")
 prec_time = '0000000'
 min_ask_price = 0
+total_change_usd_pct=0
 async def symbol_loop(exchange, symbol):
-    global crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,total_absolute_profit_pct,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_pct,profit_usd,total_crypto
+    global total_change_usd_pct,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,total_absolute_profit_pct,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_pct,profit_usd,total_crypto
     while time.time() <= timeout:
         # try:
             orderbook = await exchange.watch_order_book(symbol)
