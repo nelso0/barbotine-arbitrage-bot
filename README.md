@@ -27,10 +27,7 @@
  
 ## Demo
 
-Fees are set to 0 for demo purposes.
-![Barbotine Arbitrage Bot Demo](https://cdn.discordapp.com/attachments/876447732259225612/1095816511760904322/arbitrage.gif)
-
-[video demo](https://youtu.be/-HG05ZSeAp8)
+Here is the setup & demo video for beginners: https://youtu.be/Uw6ajbODid0
 
 <a name="prerequis"/>
  
