@@ -127,4 +127,4 @@ Most of the time, the more volatile a crypto asset is, the more opportunities th
 You can now buy the source code of that real version!
 Link: [barbotine.capital/arbitrage](https://barbotine.capital/arbitrage)
 
-Warning: as always, you can win money, but also lose money! There is no miracle solution, do your research.
+/!\ No financial advise, DYOR /!\
