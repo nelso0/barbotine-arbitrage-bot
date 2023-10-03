@@ -8,7 +8,7 @@ import datetime
 
 telegram_sending = False
 ctrl_c_handling = True
-renewal = True # you can disable session renewal here, default: True
+renewal = False # you can enable session renewal here, default: False
 
 how_do_you_usually_launch_python = 'python3' # the command you put in the terminal/cmd to launch python. Usually: python, python3, py...
 
