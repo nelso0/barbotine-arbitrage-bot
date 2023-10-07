@@ -110,11 +110,7 @@ python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the syst
 
 ## Contact
 
-If you have any questions or you want to discuss of the bot with me, let's talk!
-
-Discord: nelsorex
-
-Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
+[barbotine.capital](https://barbotine.capital)
 
 <a name="full-version"/>
  
@@ -122,9 +118,6 @@ Email: [nelso@barbotine.capital](mailto:nelso@barbotine.capital)
 
 There is also a full version which operates with real dollars.
 
-Most of the time, the more volatile a crypto asset is, the more opportunities there are (because exchanges struggle more to have the same price). 
-
-You can now buy the source code of that real version!
 Link: [barbotine.capital/arbitrage](https://barbotine.capital/arbitrage)
 
 /!\ No financial advise, DYOR /!\
