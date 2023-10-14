@@ -35,10 +35,7 @@ Here is the setup & demo video for beginners: https://youtu.be/Uw6ajbODid0
  
 ## Prerequisites
 
-The things you need before installing the software.
-
-* Python 3.9+ (for windows users: if python or pip isn't recognized as a command, make sure you have installed python by checking the box "add to PATH")
-* Nothing else lol
+* Python 3+ inferior to 3.12! (for windows users: if python or pip isn't recognized as a command, make sure you have installed python by checking the box "add to PATH")
 
 <a name="installation"/>
  
