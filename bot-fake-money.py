@@ -68,7 +68,7 @@ s=0
 
 ordersFilled = 0
 
-while ordersFilled != nb_exchanges:
+while ordersFilled != len(echanges):
 
     if s==1:
         sys.exit(1)
@@ -107,7 +107,7 @@ while ordersFilled != nb_exchanges:
     printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} All orders sent.")
 
     already_filled = []
-    for zz in range(nb_exchanges):
+    for zz in range(len(echanges)):
         time.sleep(2.1)
         printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} {echanges_str[zz]} order filled.")
         ordersFilled+=1
@@ -136,7 +136,10 @@ async def symbol_loop(exchange, symbol):
             min_ask_price = ask_prices[min_ask_ex]
             max_bid_price = bid_prices[max_bid_ex]
 
-            change_usd = ((usd[max_bid_ex] - (crypto_per_transaction / (1-fees[min_ask_ex]['quote'])) * min_ask_price * (1+fees[min_ask_ex]['base'])) + (usd[min_ask_ex] + crypto_per_transaction / (1+fees[max_bid_ex]['base']) * max_bid_price * (1-fees[max_bid_ex]['quote']))) - (usd[min_ask_ex]+usd[max_bid_ex])
+            theoritical_min_ask_usd_bal = usd[min_ask_ex] - (crypto_per_transaction / (1-fees[min_ask_ex]['quote'])) * min_ask_price * (1+fees[min_ask_ex]['base'])
+            theoritical_max_bid_usd_bal = usd[max_bid_ex] + (crypto_per_transaction / (1+fees[max_bid_ex]['base']) * max_bid_price * (1-fees[max_bid_ex]['quote']))
+
+            change_usd = (theoritical_min_ask_usd_bal+theoritical_max_bid_usd_bal)-(usd[max_bid_ex]+usd[min_ask_ex])
             total_usd_balance = 0
             for n in echanges_str:
                 total_usd_balance+=usd[n]
@@ -145,8 +148,8 @@ async def symbol_loop(exchange, symbol):
             if max_bid_ex != min_ask_ex and change_usd > float(criteria_usd) and change_usd_pct > float(criteria_pct) and prec_ask_price != min_ask_price and prec_bid_price != max_bid_price:
                 i+=1
                 
-                fees_crypto = crypto_per_transaction * (1-fees[min_ask_ex]['quote']) + crypto_per_transaction * (1-fees[max_bid_ex]['base'])
-                fees_usd = crypto_per_transaction * max_bid_price * (1-fees[max_bid_ex]['quote']) + crypto_per_transaction * min_ask_price * (1-fees[min_ask_ex]['base'])
+                fees_crypto = crypto_per_transaction * (fees[min_ask_ex]['quote']) + crypto_per_transaction * (fees[max_bid_ex]['base'])
+                fees_usd = crypto_per_transaction * max_bid_price * (fees[max_bid_ex]['quote']) + crypto_per_transaction * min_ask_price * (fees[min_ask_ex]['base'])
 
                 sys.stdout.write("\033[F")
                 sys.stdout.write("\033[K")
@@ -155,7 +158,7 @@ async def symbol_loop(exchange, symbol):
                 ex_balances = ""
                 for exc in echanges_str:
                     ex_balances+=f"\n➝ {exc}: {round(crypto[exc],3)} {currentPair.split('/')[0]} / {round(usd[exc],2)} {endPair}"
-                print(f"{Style.RESET_ALL}Opportunity n°{i} detected! ({min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex})\n \nExcepted profit: {Fore.GREEN}+{round(change_usd_pct,4)} % (+{round(change_usd,4)} {endPair}){Style.RESET_ALL}\n \nSession total profit: {Fore.GREEN}+{round(total_change_usd_pct,4)} %     (+{round((total_change_usd/100)*howmuchusd,4)} {endPair}){Style.RESET_ALL}\n \nFees paid: {Fore.RED}-{round(fees_usd*max_bid_price,4)} {endPair}      -{round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n{Style.DIM} {ex_balances}\n \n{Style.RESET_ALL}Time elapsed since the beginning of the session: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\n \n{Style.RESET_ALL}-----------------------------------------------------\n \n")
+                print(f"{Style.RESET_ALL}Opportunity n°{i} detected! ({min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex})\n \nExcepted profit: {Fore.GREEN}+{round(change_usd_pct,4)} % (+{round(change_usd,4)} {endPair}){Style.RESET_ALL}\n \nSession total profit: {Fore.GREEN}+{round(total_change_usd_pct,4)} %     (+{round((total_change_usd/100)*howmuchusd,4)} {endPair}){Style.RESET_ALL}\n \nFees paid: {Fore.RED}-{round(fees_usd*max_bid_price,4)} {endPair}      -{round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n{Style.RESET_ALL}{Style.DIM} {ex_balances}\n \n{Style.RESET_ALL}Time elapsed since the beginning of the session: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\n \n{Style.RESET_ALL}-----------------------------------------------------\n \n")
                 send_to_telegram(f"[{indicatif} Trade n°{i}]\n \nOpportunity detected!\n \nExcepted profit: {round(change_usd_pct,4)} % ({round(change_usd,4)} {endPair})\n \n{min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex}\nTime elapsed: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\nSession total profit: {round(total_change_usd_pct,4)} % ({round(total_change_usd,4)} {endPair})\nFees paid: {round(fees_usd*max_bid_price,4)} {endPair}      {round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n--------BALANCES---------\n \n {ex_balances}")
 
                 printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Sell market order filled on {max_bid_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {max_bid_price}.")
@@ -207,7 +210,7 @@ async def exchange_loop(exchange_id, symbols):
 
 async def main():
     exchanges = {
-        echanges_str[i]:[currentPair] for i in range(0,nb_exchanges)
+        echanges_str[i]:[currentPair] for i in range(0,len(echanges))
     }
     loops = [
         exchange_loop(exchange_id, symbols)
