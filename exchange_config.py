@@ -18,19 +18,13 @@ fees = {
     'kucoin': {'base': 0, 'quote' : 0.001}
 }
 
-nb_exchanges = 3
-
+# you have to put your api keys if you want to use real money modes. To do that, add "{'apiKey':'here','secret':'here'}" between the parenthesis () by replacing 'here' with the api key and the secret key.
+# read the instructions on the google drive link you received for more details and screenshots.
 ex = {
     'kucoin':ccxt.kucoin(),
     'binance':ccxt.binance(),
     'okx':ccxt.okx(),
     'poloniex':ccxt.poloniex(),
-    # uncomment and fill kucoin futures api for delta-neutral mode.
-        #'kucoinfutures':ccxt.kucoinfutures({
-        #'apiKey':'here',
-        #'secret':'here',
-        #'password':'here'
-    # }),
     # 'another_exchange_here':ccxt.other_exchange({
     #     'apiKey':'here',
     #     'secret':'here',
