@@ -27,6 +27,8 @@
  
 ## Demo
 
+Message from after the video: the nb_exchanges variable in the config is now deleted, the bot automatically detects the number of exchanges you put.
+
 Here is the setup & demo video for beginners: https://youtu.be/Uw6ajbODid0
 
 <a name="prerequis"/>
@@ -67,7 +69,7 @@ python run.py
 You can also run it with one line like this:
 
 ```sh
-python run.py <mode> <renew-time-minutes> <balance-usdt-to-use> <symbol> <exchanges list separated by commas (no space!)>
+python run.py <mode> [renew-time-minutes] <balance-usdt-to-use> <symbol> <exchanges list separated by commas (no space!)>
 ```
 
 
@@ -79,7 +81,7 @@ python run.py <mode> <renew-time-minutes> <balance-usdt-to-use> <symbol> <exchan
   
   
   
-* ```<renew-time-minutes>``` = the timeframe you wanna use to close the session & open a new one. If you put 60, it will renew each hour.
+* ```[renew-time-minutes]``` = ONLY IF YOU ENABLED RENEWAL SETTING IN THE CONFIG. If you enabled it, you have to put the number of minutes a session should last. After each session, the bot sells all the assets back to USDT and start again. It's for volatile assets if you want to refresh the price at which the bot bought the asset.
 
 
 
