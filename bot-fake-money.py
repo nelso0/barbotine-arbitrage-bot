@@ -33,6 +33,12 @@ indicatif = str(sys.argv[4])
 timeout = time.time() + inputtimeout
 endPair = currentPair.split('/')[1]
 
+fees = {n:0 for n in echanges_str}
+
+for ech in fees:
+    markets = ex[ech].load_markets()
+    fees[ech] = {'base': 0 if markets['BTC/USDT']['feeSide']!='base' else markets['BTC/USDT']['taker'], 'quote': markets['BTC/USDT']['taker'] if markets['BTC/USDT']['feeSide']!='base' else 0}
+
 def emergency_convert(pair_to_sell):
     i=0
     for echange in echanges_str:
