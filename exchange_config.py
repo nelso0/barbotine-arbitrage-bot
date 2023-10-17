@@ -12,12 +12,6 @@ renewal = False # you can enable session renewal here, default: False
 
 how_do_you_usually_launch_python = 'python3' # the command you put in the terminal/cmd to launch python. Usually: python, python3, py...
 
-fees = {
-    'binance': {'base': 0, 'quote' : 0.001},
-    'okx': {'base': 0, 'quote' : 0.0008},
-    'kucoin': {'base': 0, 'quote' : 0.001}
-}
-
 # you have to put your api keys if you want to use real money modes. To do that, add "{'apiKey':'here','secret':'here'}" between the parenthesis () by replacing 'here' with the api key and the secret key.
 # read the instructions on the google drive link you received for more details and screenshots.
 ex = {
