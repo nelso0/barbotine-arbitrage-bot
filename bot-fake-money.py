@@ -37,7 +37,7 @@ fees = {n:0 for n in echanges_str}
 
 for ech in fees:
     markets = ex[ech].load_markets()
-    fees[ech] = {'base': 0 if markets['BTC/USDT']['feeSide']!='base' else markets['BTC/USDT']['taker'], 'quote': markets['BTC/USDT']['taker'] if markets['BTC/USDT']['feeSide']!='base' else 0}
+    fees[ech] = {'base': (0 if markets['BTC/USDT']['feeSide']!='base' else markets['BTC/USDT']['taker']) if list(markets['BTC/USDT'].keys()).count('feeSide')!=0 else 0, 'quote': (markets['BTC/USDT']['taker'] if markets['BTC/USDT']['feeSide']!='base' else 0) if list(markets['BTC/USDT'].keys()).count('feeSide')!=0 else markets['BTC/USDT']['taker']}
 
 def emergency_convert(pair_to_sell):
     i=0
