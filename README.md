@@ -117,6 +117,8 @@ python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the syst
 
 There is also a full version which operates with real dollars.
 
-Link: [barbotine.capital/arbitrage](https://barbotine.capital/arbitrage)
+You can now buy the source code of that full version!
+
+Link for source code: [nelso.sell.app/arbitrage](https://nelso.sell.app/product/barbotine-arbitrage-bot-lifetime)
 
 /!\ No financial advise, DYOR /!\
