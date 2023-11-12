@@ -119,6 +119,6 @@ There is also a full version which operates with real dollars.
 
 You can now buy the source code of that full version!
 
-Link for source code: [nelso.sell.app/arbitrage](https://nelso.sell.app/product/barbotine-arbitrage-bot-lifetime)
+Link for source code: [barbotine.capital/arbitrage](https://barbotine.capital/pricing)
 
 /!\ No financial advise, DYOR /!\
