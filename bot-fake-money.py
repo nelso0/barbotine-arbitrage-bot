@@ -9,7 +9,6 @@ from exchange_config import *
 bid_prices = {}
 ask_prices = {}
 total_change_usd = 0
-total_change_usd_pct = 0
 prec_ask_price = 0
 prec_bid_price = 0
 i=0
@@ -121,10 +120,9 @@ while ordersFilled != len(echanges):
 printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Starting program with parameters: {[n for n in sys.argv]}")
 prec_time = '0000000'
 min_ask_price = 0
-total_change_usd_pct=0
 total_change_usd=0
 async def symbol_loop(exchange, symbol):
-    global total_change_usd,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,total_absolute_profit_pct,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_pct,profit_usd,total_crypto
+    global total_change_usd,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_usd,total_crypto
     while time.time() <= timeout:
         # try:
             orderbook = await exchange.watch_order_book(symbol)
@@ -160,7 +158,7 @@ async def symbol_loop(exchange, symbol):
                 for exc in echanges_str:
                     ex_balances+=f"\n➝ {exc}: {round(crypto[exc],3)} {currentPair.split('/')[0]} / {round(usd[exc],2)} {endPair}"
                 print(f"{Style.RESET_ALL}Opportunity n°{i} detected! ({min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex})\n \nExcepted profit: {Fore.GREEN}+{round(change_usd,4)} {endPair}{Style.RESET_ALL}\n \nSession total profit: {Fore.GREEN}+{round((total_change_usd/100)*howmuchusd,4)} {endPair}{Style.RESET_ALL}\n \nFees paid: {Fore.RED}-{round(fees_usd,4)} {endPair}      -{round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n{Style.RESET_ALL}{Style.DIM} {ex_balances}\n \n{Style.RESET_ALL}Time elapsed since the beginning of the session: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\n \n{Style.RESET_ALL}-----------------------------------------------------\n \n")
-                send_to_telegram(f"[{indicatif} Trade n°{i}]\n \nOpportunity detected!\n \nExcepted profit: {round(change_usd,4)} {endPair}\n \n{min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex}\nTime elapsed: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\nSession total profit: {round(total_change_usd_pct,4)} % ({round(total_change_usd,4)} {endPair})\nFees paid: {round(fees_usd,4)} {endPair}      {round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n--------BALANCES---------\n \n {ex_balances}")
+                send_to_telegram(f"[{indicatif} Trade n°{i}]\n \nOpportunity detected!\n \nExcepted profit: {round(change_usd,4)} {endPair}\n \n{min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex}\nTime elapsed: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\nSession total profit: {round(total_change_usd,4)} % ({round(total_change_usd,4)} {endPair})\nFees paid: {round(fees_usd,4)} {endPair}      {round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n--------BALANCES---------\n \n {ex_balances}")
 
                 printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Sell market order filled on {max_bid_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {max_bid_price}.")
                 printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Buy market order filled on {min_ask_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {min_ask_price}.")
