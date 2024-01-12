@@ -119,6 +119,6 @@ There is also a full version which operates with real dollars.
 
 You can now buy the source code of that full version!
 
-Link for source code: [barbotine.xyz/arbitrage](https://barbotine.xyz/pricing)
+Link for source code: [barbotine.xyz/arbitrage](https://barbotine.xyz/shop)
 
 /!\ No financial advise, DYOR /!\
