@@ -124,7 +124,7 @@ total_change_usd=0
 async def symbol_loop(exchange, symbol):
     global total_change_usd,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_usd,total_crypto
     while time.time() <= timeout:
-        # try:
+        try:
             try:
                 orderbook = await exchange.watch_order_book(symbol)
             except Exception as e1:
@@ -215,9 +215,9 @@ async def symbol_loop(exchange, symbol):
                 prec_time = time1[11:13]
                 await exchange.close()
 
-        # except Exception as e:
-        #     print(str(e))
-        #     break  # you can break just this one loop if it fails
+        except Exception as e:
+            print(str(e))
+            break  # you can break just this one loop if it fails
 
 async def exchange_loop(exchange_id, symbols):
     exchange = getattr(ccxt.pro, exchange_id)()
