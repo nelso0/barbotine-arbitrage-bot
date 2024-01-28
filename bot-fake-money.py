@@ -125,7 +125,25 @@ async def symbol_loop(exchange, symbol):
     global total_change_usd,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_usd,total_crypto
     while time.time() <= timeout:
         # try:
-            orderbook = await exchange.watch_order_book(symbol)
+            try:
+                orderbook = await exchange.watch_order_book(symbol)
+            except Exception as e1:
+                print(f"{get_time()} {Fore.RED}non-fatal error in watch_order_book: {e1}{Style.RESET_ALL}")
+                print(f"{get_time()} trying again.")
+                try:
+                    orderbook = await exchange.watch_order_book(symbol)
+                except Exception as e2:
+                    if e1==e2:
+                        print(f"{get_time()} {Fore.RED}still same error. Retrying after 10 seconds.{Style.RESET_ALL}")
+                    else:
+                        print(f"{get_time()} {Fore.RED}not the same error: {e2}. Retrying after 10 seconds.{Style.RESET_ALL}")
+                    await asyncio.sleep(10)
+                    try:
+                        orderbook = await exchange.watch_order_book(symbol)
+                    except Exception as e4:
+                        print(f"{get_time()} {Fore.RED}error again: {e4}. Exiting.{Style.RESET_ALL}")
+                        sys.exit()
+                    
             now = exchange.milliseconds()
             bid_prices[exchange.id] = orderbook["bids"][0][0]
             ask_prices[exchange.id] = orderbook["asks"][0][0]
