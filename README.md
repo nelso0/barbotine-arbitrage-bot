@@ -1,5 +1,5 @@
 <p align="left">
-  <img alt="Barbotine Arbitrage System Logo" width="30%" height="30%" src="https://i.ibb.co/gy9mb2k/logo.png">
+  <img alt="Barbotine Arbitrage System Logo" width="10%" height="auto" src="https://i.ibb.co/gy9mb2k/logo.png">
 </p>
 
 [![Twitter @nelsodot](https://img.shields.io/twitter/url/https/twitter.com/nelsorex.svg?style=social&label=%20%40nelsorex)](https://twitter.com/nelsorex)
