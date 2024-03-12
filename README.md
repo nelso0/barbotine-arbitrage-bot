@@ -17,9 +17,9 @@
  
 ## Features
 
-* Compatible with almost any exchange (all [ccxt](https://github.com/ccxt/ccxt) exchanges).
-* Pre-calculates all future transactions fees to know the exact possible profit before all transactions
-* Zero-risk (no speculation)
+* Compatible with all [ccxt](https://github.com/ccxt/ccxt) exchanges
+* Look for oportunities on up to 30 simultaneous exchanges at the same time
+* Rebalance system with balance simulation to ensure that all possible opportunities are taken into account
 * Full live tracking on Telegram and Discord webhooks
 * Permanent live rate display in the terminal
 
@@ -115,10 +115,8 @@ python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the syst
  
 ## Full version
 
-There is also a full version which operates with real dollars.
+There is also a full version which operates with real money.
 
-You can now buy the source code of that full version!
-
-Link for source code: [barbotine.xyz/arbitrage](https://barbotine.xyz/shop)
+Get the source code of that real version here: [barbotine.xyz/arbitrage](https://barbotine.xyz/shop)
 
 /!\ No financial advise, DYOR /!\
