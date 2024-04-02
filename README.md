@@ -117,6 +117,6 @@ python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the syst
 
 There is also a full version which operates with real money.
 
-Get the source code of that real version here: [barbotine.xyz/arbitrage](https://barbotine.xyz/shop)
+More info here: [documentation.barbotine.xyz/arbitrage](https://documentation.barbotine.xyz/arbitrage)
 
 /!\ No financial advise, DYOR /!\
