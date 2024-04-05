@@ -109,7 +109,7 @@ python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the syst
 
 ## Contact
 
-[nelso@barbotine.xyz](https://barbotine.xyz)
+[nelso@barbotine.xyz](mailto:nelso@barbotine.xyz)
 
 <a name="full-version"/>
  
@@ -117,6 +117,6 @@ python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the syst
 
 There is also a full version which operates with real money.
 
-More info here: [documentation.barbotine.xyz/arbitrage](https://documentation.barbotine.xyz/arbitrage/general/presentation)
+More info here: [barbotine.xyz](https://barbotine.xyz/)
 
 /!\ No financial advise, DYOR /!\
