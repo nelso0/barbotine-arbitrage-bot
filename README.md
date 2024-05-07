@@ -11,8 +11,9 @@
 * [Prerequisites](#prerequis)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Contact](#contact)
 * [Real version](#full-version)
+* [Contact](#contact)
+
 <a name="features"/>
  
 ## Features
