@@ -107,10 +107,6 @@ python run.py classic 15 1000 SOL/USDT binance,poloniex,kucoin   # run the syste
 python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the system in a delta-neutral situation with 750 USDT and renew the session each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
 ```
 
-## Contact
-
-[nelso@barbotine.xyz](mailto:nelso@barbotine.xyz)
-
 <a name="full-version"/>
  
 ## Full version
@@ -120,3 +116,7 @@ There is also a full version which operates with real money.
 More info here: [barbotine.xyz](https://barbotine.xyz/)
 
 /!\ No financial advise, DYOR /!\
+
+## Contact
+
+[nelso@barbotine.xyz](mailto:nelso@barbotine.xyz)
