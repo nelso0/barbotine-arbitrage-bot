@@ -112,9 +112,9 @@ python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the syst
  
 ## Full version
 
-The full version works with real money.
+There is a full version that works with real money.
 
-More info here: [barbotine.xyz](https://barbotine.xyz/)
+You can get it there: [barbotine.xyz](https://barbotine.xyz/)
 
 /!\ No financial advise, DYOR /!\
 
