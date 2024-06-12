@@ -20,7 +20,7 @@
 
 * Compatible with all [ccxt](https://github.com/ccxt/ccxt) exchanges
 * Ready-to-run and easily editable to fit your needs (no need to be an advanced developer)
-* Precise at the orderbook level (close to market-making)
+* Precise at the orderbook level (close to a market-making algorithm)
 * Can work with an unlimited number of exchanges at the same time
 * Does a balance simulation for every possible opportunity to always choose the most profitable one
 * Opportunities updates on Telegram
