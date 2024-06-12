@@ -7,7 +7,7 @@
 
 ## Table of content
 * [Features](#features)
-* [Demo](#demo)
+* [Demo video](#demo)
 * [Prerequisites](#prerequis)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -28,9 +28,7 @@
  
 ## Demo
 
-Message from after the video: the nb_exchanges variable in the config is now deleted, the bot automatically detects the number of exchanges you put.
-
-Here is the setup & demo video for beginners: https://youtu.be/Uw6ajbODid0
+demo video: https://youtu.be/Uw6ajbODid0
 
 <a name="prerequis"/>
  
@@ -67,54 +65,39 @@ python run.py
 You can also run it with one line like this:
 
 ```sh
-python run.py <mode> [renew-time-minutes] <balance-usdt-to-use> <symbol> <exchanges list separated by commas (no space!)>
+python run.py <mode> [renew-time-minutes] <balance-usdt-to-use> <pair> <exchanges list separated by commas (no space!)>
 ```
 
 
-* ```<mode>``` = the mode you wanna use among ```fake-money```, ```classic```, and ```delta-neutral```. See #full-version for classic and delta-neutral modes. 
+* ```<mode>``` = the mode you wanna use between ```fake-money``` and ```real```. See #full-version for real mode. 
   
   * ```fake-money``` will run the bot with the balance-usdt-to-use you put, with a virtual balance, just to test.
-  * ```classic``` will run the bot with real USDT.
-  * ```delta-neutral```will run the bot with real USDT also, but in a delta-neutral situation. (a bit less profits but you won't loose a cent if the crypto you're using dump in 5 minutes (for very very careful people).
+  * ```real``` will run the bot with real money.
   
-  
-  
-* ```[renew-time-minutes]``` = ONLY IF YOU ENABLED RENEWAL SETTING IN THE CONFIG. If you enabled it, you have to put the number of minutes a session should last. After each session, the bot sells all the assets back to USDT and start again. It's for volatile assets if you want to refresh the price at which the bot bought the asset.
-
-
+* ```[renew-time-minutes]``` = ONLY IF YOU ENABLED RENEWAL SETTING IN THE CONFIG. If you enabled it, you have to put the number of minutes a session should last. After each session, the bot sells all the assets back to rebalance.
 
 * ```<balance-usdt-to-use>``` = how to be clearer? 
 
+* ```<pair>``` = The pair you wanna arbitrage on.
 
-
-* ```<symbol>``` = The symbol you wanna arbitrage on. Every time it renews, it sells all the crypto and rebuy the crypto asset at the new price. 
-
-
-
-* ```<exchanges list>``` = the exchanges you want to use among all the CCXT-compatible exchanges. At least 2 exchanges, theorically infinite maximum. Don't forget to configure the exchanges in [exchange_config.py](exchange_config.py).
-
-
-Note: you can put a minimum profit in USD or % in [exchange_config.py](exchange_config.py). The bot will only take the trade if the profit is > (superior) to your value. You can also use pairs without USDT, like ETH/BTC.
+* ```<exchanges list>``` = the exchanges you want the bot to scan the orderbooks on, among all the [CCXT-compatible exchanges](https://github.com/ccxt/ccxt). From a 2 exchanges minimum, up to an unlimited number. Don't forget to configure the exchanges in [exchange_config.py](exchange_config.py).
 
 Examples:
 
 ```sh
-python run.py fake-money 15 500 EOS/USDT binance,okx,kucoin    # run the system with 500 USDT and renew the session every 15 minutes, with binance okx and kucoin
+python run.py fake-money 15 500 EOS/USDT binance,okx,kucoin    # run the bot with 500 USDT and rebalance every 15 minutes, with binance okx and kucoin
 ```
 ```sh
-python run.py classic 15 1000 SOL/USDT binance,poloniex,kucoin   # run the system with 1000 USDT on binance phemex and bybit on SOL/USDT, and renew the session every 15 minutes.
-```
-```sh
-python run.py delta-neutral 60 750 BTC/USDT okx,cryptocom,huobi   # run the system in a delta-neutral situation with 750 USDT and renew the session each hour, on okx crypto.com and huobi. Note that with same amount of USDT, the delta-neutral mode will have 2/3 of the profits of the classic mode because it has less liquidity to invest in arbitrage opportunities.
+python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with 1000 USDT on binance phemex and bybit on SOL/USDT, and rebalance every 15 minutes.
 ```
 
 <a name="full-version"/>
  
 ## Real money modes
 
-There are two modes that works with real money.
+The source code of the arbitrage bot that works with real money is available on the Barbotine's shop.
 
-More info: [barbotine.xyz/arbitrage](https://barbotine.xyz/arbitrage)
+Link: [barbotine.xyz/shop](https://barbotine.xyz/shop)
 
 ## Contact
 
