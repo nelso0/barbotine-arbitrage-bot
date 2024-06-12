@@ -19,10 +19,11 @@
 ## Features
 
 * Compatible with all [ccxt](https://github.com/ccxt/ccxt) exchanges
-* Look for oportunities on up to 30 simultaneous exchanges at the same time
+* Ready-to-run and easily editable to fit your needs (no need to be an advanced developer)
+* Can work with an unlimited number of exchanges at the same time
 * Rebalance system with balance simulation to ensure that all possible opportunities are taken into account
-* Full live tracking on Telegram and Discord webhooks
-* Permanent live rate display in the terminal
+* Opportunities updates on Telegram
+* Full logging system
 
 <a name="demo"/>
  
