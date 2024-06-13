@@ -84,6 +84,8 @@ python run.py <mode> [renew-time-minutes] <balance-usdt-to-use> <pair> <exchange
 
 * ```<exchanges list>``` = the exchanges you want the bot to scan the orderbooks on, among all the [CCXT-compatible exchanges](https://github.com/ccxt/ccxt). From a 2 exchanges minimum, up to an unlimited number. Don't forget to configure the exchanges in [exchange_config.py](exchange_config.py).
 
+Note: as the bot needs to buy assets before getting started (it's necessary in order to operate without transfer between exchanges, read more [here](https://medium.com/@barbotine/how-to-exploit-arbitrage-opportunities-using-python-in-centralized-exchanges-like-binance-or-kucoin-805b5bf7b2f2)), if the pair you have chosen looses in value, you'll end up losing money when rebalancing. To avoid that, I created a delta-neutral feature that places a short order to "hedge" and counterbalance the purchase of coins by the bot. You can enable this feature in [exchange_config.py](exchange_config.py).
+
 Examples:
 
 ```sh
