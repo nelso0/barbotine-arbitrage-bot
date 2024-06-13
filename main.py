@@ -46,7 +46,7 @@ else:
 
 while True:
     with open(f"real_balance.txt","r") as f:
-        balance = float(f.read())
+        balance = str(f.read())
     if i>=1 and p.returncode==1:
         sys.exit(1)
     if mode == "fake-money":
