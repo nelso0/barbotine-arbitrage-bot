@@ -4,6 +4,7 @@ import ccxt.pro
 import ccxt
 import sys
 from colorama import Fore, Back, Style,init
+import threading
 init()
 from exchange_config import *
 bid_prices = {}
@@ -13,6 +14,14 @@ prec_ask_price = 0
 prec_bid_price = 0
 i=0
 z=0
+
+stop_requested = False
+
+def listen_for_exit():
+    global stop_requested
+    input("")
+    stop_requested = True
+
 if len(sys.argv) != 6:
     print(f" \nIncorrect usage, this is what it has to look like: $ {how_do_you_usually_launch_python} bot-classic.py [pair] [total_usdt_investment] [stop.delay.minutes] [tlgrm.msg.title] [ex_list]\n ")
     print(f" \n This is the list of args you wrote: {sys.argv}")
@@ -20,7 +29,7 @@ if len(sys.argv) != 6:
 print(" ")
 if first_orders_fill_timeout <= 0:
     first_orders_fill_timeout = 3600 # 2.5 days
-print(f" \n This is the list of args you wrote: {sys.argv}")
+
 echanges = [ex[sys.argv[5].split(',')[i]] for i in range(len(sys.argv[5].split(',')))]
 echanges_str = [sys.argv[5].split(',')[i] for i in range(len(sys.argv[5].split(',')))]
 currentPair = str(sys.argv[1])
@@ -28,7 +37,6 @@ criteria_usd = str(criteria_usd)
 howmuchusd = float(sys.argv[2])
 inputtimeout = int(sys.argv[3])*60
 indicatif = str(sys.argv[4])
-timeout = time.time() + inputtimeout
 endPair = currentPair.split('/')[1]
 
 fees = {n:0 for n in echanges_str}
@@ -37,6 +45,24 @@ for ech in fees:
     markets = ex[ech].load_markets()
     fees[ech] = {'base': (0 if markets['BTC/USDT']['feeSide']!='base' else markets['BTC/USDT']['taker']) if list(markets['BTC/USDT'].keys()).count('feeSide')!=0 else 0, 'quote': (markets['BTC/USDT']['taker'] if markets['BTC/USDT']['feeSide']!='base' else 0) if list(markets['BTC/USDT'].keys()).count('feeSide')!=0 else markets['BTC/USDT']['taker']}
 
+async def fetch_orderbook(exchange_instance, symbol):
+    try:
+        orderbook = await exchange_instance.watch_order_book(symbol)
+    except Exception as e:
+        printerror(m=f"Error while fetching orderbook on {exchange_instance.id}. {e}")
+        sys.stdout.write("\033[F")
+        sys.stdout.write("\033[K")
+        id_ = exchange_instance.id
+        await exchange_instance.close()
+        new_instance = getattr(ccxt.pro,id_)({'enableRateLimit':True})
+        try:
+            orderbook = await new_instance.watch_order_book(symbol)
+        except Exception as e:
+            printerror(m=f"Error while fetching orderbook on {exchange_instance.id}. {e}")
+            sys.stdout.write("\033[F")
+            sys.stdout.write("\033[K")
+            sys.exit()
+    return orderbook
 def emergency_convert(pair_to_sell):
     i=0
     for echange in echanges_str:
@@ -117,108 +143,97 @@ while ordersFilled != len(echanges):
         ordersFilled+=1
         already_filled.append(exc)
 
+time.sleep(1)
 printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Starting program with parameters: {[n for n in sys.argv]}")
 prec_time = '0000000'
+
 min_ask_price = 0
+timeout = time.time() + inputtimeout
 total_change_usd=0
 async def symbol_loop(exchange, symbol):
     global asyncio,total_change_usd,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_usd,total_crypto
     while time.time() <= timeout:
-        try:
-            try:
-                orderbook = await exchange.watch_order_book(symbol)
-            except Exception as e1:
-                print(f"{get_time()} {Fore.RED}non-fatal error in watch_order_book: {e1}{Style.RESET_ALL}")
-                print(f"{get_time()} trying again.")
-                try:
-                    orderbook = await exchange.watch_order_book(symbol)
-                except Exception as e2:
-                    if e1==e2:
-                        print(f"{get_time()} {Fore.RED}still same error. Retrying after 10 seconds.{Style.RESET_ALL}")
-                    else:
-                        print(f"{get_time()} {Fore.RED}not the same error: {e2}. Retrying after 10 seconds.{Style.RESET_ALL}")
-                    await asyncio.sleep(10)
-                    try:
-                        orderbook = await exchange.watch_order_book(symbol)
-                    except Exception as e4:
-                        print(f"{get_time()} {Fore.RED}error again: {e4}. Exiting.{Style.RESET_ALL}")
-                        sys.exit()
-                    
-            now = exchange.milliseconds()
-            bid_prices[exchange.id] = orderbook["bids"][0][0]
-            ask_prices[exchange.id] = orderbook["asks"][0][0]
-            min_ask_ex = min(ask_prices, key=ask_prices.get)
-            max_bid_ex = max(bid_prices, key=bid_prices.get)
-            for u in echanges_str:
-                if crypto[u] < crypto_per_transaction:
-                    min_ask_ex = u
-                if usd[u] <= 0: # should not happen
-                    max_bid_ex = u
-            min_ask_price = ask_prices[min_ask_ex]
-            max_bid_price = bid_prices[max_bid_ex]
+        if stop_requested:
+            sys.stdout.write("\033[F")
+            sys.stdout.write("\033[K")
+            sys.stdout.write("\033[F")
+            sys.stdout.write("\033[K")
+            print(f"{get_time()} Manual rebalance requested. Breaking.")
+            await exchange.close()
+            append_new_line('logs/logs.txt',f"{get_time_blank()} INFO: Manual rebalance requested. Breaking.")
+            timeout -= 100000000000
+            break
+        orderbook = await fetch_orderbook(exchange,symbol)
+        now = exchange.milliseconds()
+        bid_prices[exchange.id] = orderbook["bids"][0][0]
+        ask_prices[exchange.id] = orderbook["asks"][0][0]
+        min_ask_ex = min(ask_prices, key=ask_prices.get)
+        max_bid_ex = max(bid_prices, key=bid_prices.get)
+        for u in echanges_str:
+            if crypto[u] < crypto_per_transaction:
+                min_ask_ex = u
+            if usd[u] <= 0: # should not happen
+                max_bid_ex = u
+        min_ask_price = ask_prices[min_ask_ex]
+        max_bid_price = bid_prices[max_bid_ex]
 
-            theoritical_min_ask_usd_bal = usd[min_ask_ex] - (crypto_per_transaction / (1-fees[min_ask_ex]['quote'])) * min_ask_price * (1+fees[min_ask_ex]['base'])
-            theoritical_max_bid_usd_bal = usd[max_bid_ex] + (crypto_per_transaction / (1+fees[max_bid_ex]['base']) * (max_bid_price * (1+fees[max_bid_ex]['quote'])))
+        theoritical_min_ask_usd_bal = usd[min_ask_ex] - (crypto_per_transaction / (1-fees[min_ask_ex]['quote'])) * min_ask_price * (1+fees[min_ask_ex]['base'])
+        theoritical_max_bid_usd_bal = usd[max_bid_ex] + (crypto_per_transaction / (1+fees[max_bid_ex]['base']) * max_bid_price * (1-fees[max_bid_ex]['quote']))
 
-            change_usd = (theoritical_min_ask_usd_bal+theoritical_max_bid_usd_bal)-(usd[max_bid_ex]+usd[min_ask_ex])
+        change_usd = (theoritical_min_ask_usd_bal+theoritical_max_bid_usd_bal)-(usd[max_bid_ex]+usd[min_ask_ex])
 
-            if max_bid_ex != min_ask_ex and change_usd > float(criteria_usd) and prec_ask_price != min_ask_price and prec_bid_price != max_bid_price:
-                i+=1
-                
-                fees_crypto = crypto_per_transaction * (fees[min_ask_ex]['quote']) + crypto_per_transaction * (fees[max_bid_ex]['base'])
-                fees_usd = crypto_per_transaction * max_bid_price * (fees[max_bid_ex]['quote']) + crypto_per_transaction * min_ask_price * (fees[min_ask_ex]['base'])
+        if max_bid_ex != min_ask_ex and change_usd > float(criteria_usd) and (abs(min_ask_price-max_bid_price))/((max_bid_price+min_ask_price)/2)*100>=criteria_pct and prec_ask_price != min_ask_price and prec_bid_price != max_bid_price:
+            i+=1
+            
+            fees_crypto = crypto_per_transaction * (fees[min_ask_ex]['quote']) + crypto_per_transaction * (fees[max_bid_ex]['base'])
+            fees_usd = crypto_per_transaction * max_bid_price * (fees[max_bid_ex]['quote']) + crypto_per_transaction * min_ask_price * (fees[min_ask_ex]['base'])
 
+            sys.stdout.write("\033[F")
+            sys.stdout.write("\033[K")
+            print("-----------------------------------------------------\n")
+            
+            ex_balances = ""
+            for exc in echanges_str:
+                ex_balances+=f"\n➝ {exc}: {round(crypto[exc],3)} {currentPair.split('/')[0]} / {round(usd[exc],2)} {endPair}"
+            print(f"{Style.RESET_ALL}Opportunity n°{i} detected! ({min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex})\n \nExcepted profit: {Fore.GREEN}+{round(change_usd,4)} {endPair}{Style.RESET_ALL}\n \nSession total profit: {Fore.GREEN}+{round(total_change_usd,4)} {endPair}{Style.RESET_ALL}\n \nFees paid: {Fore.RED}-{round(fees_usd,4)} {endPair}      -{round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n{Style.RESET_ALL}{Style.DIM} {ex_balances}\n \n{Style.RESET_ALL}Time elapsed since the beginning of the session: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\n \n{Style.RESET_ALL}-----------------------------------------------------\n \n")
+            send_to_telegram(f"[{indicatif} Trade n°{i}]\n \nOpportunity detected!\n \nExcepted profit: {round(change_usd,4)} {endPair}\n \n{min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex}\nTime elapsed: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\nSession total profit: {round(total_change_usd,4)} % ({round(total_change_usd,4)} {endPair})\nFees paid: {round(fees_usd,4)} {endPair}      {round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n--------BALANCES---------\n \n {ex_balances}")
+
+            printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Sell market order filled on {max_bid_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {max_bid_price}.")
+            printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Buy market order filled on {min_ask_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {min_ask_price}.")
+            printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Buy market order filled on {min_ask_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {min_ask_price}.")
+
+            append_list_file('all_opportunities_profits.txt',change_usd)
+
+            crypto[min_ask_ex] += crypto_per_transaction
+            usd[min_ask_ex] -= (crypto_per_transaction / (1-fees[min_ask_ex]['quote'])) * min_ask_price * (1+fees[min_ask_ex]['base'])
+            crypto[max_bid_ex] -= crypto_per_transaction
+            usd[max_bid_ex] += crypto_per_transaction / (1+fees[max_bid_ex]['base']) * max_bid_price * (1-fees[max_bid_ex]['quote'])
+
+            total_change_usd+=change_usd
+
+            prec_ask_price = min_ask_price
+            prec_bid_price = max_bid_price
+
+            total_crypto = 0
+            for exc in echanges_str:
+                total_crypto+=crypto[exc]
+            crypto_per_transaction = total_crypto/len(echanges_str)
+        
+        else:
+            for count in range(0,1):
                 sys.stdout.write("\033[F")
                 sys.stdout.write("\033[K")
-                print("-----------------------------------------------------\n")
-                
-                ex_balances = ""
-                for exc in echanges_str:
-                    ex_balances+=f"\n➝ {exc}: {round(crypto[exc],3)} {currentPair.split('/')[0]} / {round(usd[exc],2)} {endPair}"
-                print(f"{Style.RESET_ALL}Opportunity n°{i} detected! ({min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex})\n \nExcepted profit: {Fore.GREEN}+{round(change_usd,4)} {endPair}{Style.RESET_ALL}\n \nSession total profit: {Fore.GREEN}+{round((total_change_usd/100)*howmuchusd,4)} {endPair}{Style.RESET_ALL}\n \nFees paid: {Fore.RED}-{round(fees_usd,4)} {endPair}      -{round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n{Style.RESET_ALL}{Style.DIM} {ex_balances}\n \n{Style.RESET_ALL}Time elapsed since the beginning of the session: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\n \n{Style.RESET_ALL}-----------------------------------------------------\n \n")
-                send_to_telegram(f"[{indicatif} Trade n°{i}]\n \nOpportunity detected!\n \nExcepted profit: {round(change_usd,4)} {endPair}\n \n{min_ask_ex} {min_ask_price}   ->   {max_bid_price} {max_bid_ex}\nTime elapsed: {time.strftime('%H:%M:%S', time.gmtime(time.time()-st))}\nSession total profit: {round(total_change_usd,4)} % ({round(total_change_usd,4)} {endPair})\nFees paid: {round(fees_usd,4)} {endPair}      {round(fees_crypto,4)} {currentPair.split('/')[0]}\n \n--------BALANCES---------\n \n {ex_balances}")
-
-                printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Sell market order filled on {max_bid_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {max_bid_price}.")
-                printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Buy market order filled on {min_ask_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {min_ask_price}.")
-                printandtelegram(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Buy market order filled on {min_ask_ex} for {crypto_per_transaction} {currentPair.split('/')[0]} at {min_ask_price}.")
-
-                append_list_file('all_opportunities_profits.txt',change_usd)
-
-                crypto[min_ask_ex] += crypto_per_transaction
-                usd[min_ask_ex] -= (crypto_per_transaction / (1-fees[min_ask_ex]['quote'])) * min_ask_price * (1+fees[min_ask_ex]['base'])
-                crypto[max_bid_ex] -= crypto_per_transaction
-                usd[max_bid_ex] += crypto_per_transaction / (1+fees[max_bid_ex]['base']) * max_bid_price * (1-fees[max_bid_ex]['quote'])
-
-                total_change_usd+=change_usd
-
-                prec_ask_price = min_ask_price
-                prec_bid_price = max_bid_price
-
-                total_crypto = 0
-                for exc in echanges_str:
-                    total_crypto+=crypto[exc]
-                crypto_per_transaction = total_crypto/len(echanges_str)
-            
-            else:
-                for count in range(0,1):
-                    sys.stdout.write("\033[F")
-                    sys.stdout.write("\033[K")
-                if change_usd < 0:
-                    color = Fore.RED
-                elif change_usd > 0:
-                    color = Fore.GREEN
-                elif change_usd == 0:
-                    color = Fore.WHITE
-                print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Best opportunity: {color}{round(change_usd,4)} {endPair} {Style.RESET_ALL}(with fees)       buy: {min_ask_ex} at {min_ask_price}     sell: {max_bid_ex} at {max_bid_price}")
-            time1=exchange.iso8601(exchange.milliseconds())
-            if time1[17:19] == "00" and time1[14:16] != prec_time:
-                prec_time = time1[11:13]
-                await exchange.close()
-
-        except Exception as e:
-            print(str(e))
-            break  # you can break just this one loop if it fails
-
+            if change_usd < 0:
+                color = Fore.RED
+            elif change_usd > 0:
+                color = Fore.GREEN
+            elif change_usd == 0:
+                color = Fore.WHITE
+            print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Best opportunity: {color}{round(change_usd,4)} {endPair} {Style.RESET_ALL}(with fees)       buy: {min_ask_ex} at {min_ask_price}     sell: {max_bid_ex} at {max_bid_price}")
+        time1=exchange.iso8601(exchange.milliseconds())
+        if time1[17:19] == "00" and time1[14:16] != prec_time:
+            prec_time = time1[11:13]
+            await exchange.close()
 async def exchange_loop(exchange_id, symbols):
     exchange = getattr(ccxt.pro, exchange_id)()
     loops = [symbol_loop(exchange, symbol) for symbol in symbols]
@@ -237,18 +252,24 @@ async def main():
 
 st = time.time()
 print(" \n")
+listener_thread = threading.Thread(target=listen_for_exit)
+listener_thread.start()
 run(main())
 
 for exc in crypto:
     ticker = ex[exc].fetchTicker(currentPair)
     price = ticker['last']
-    usd[exc]+=((crypto[exc])*(1-fees[exc]['base'])*price)*(1-fees[exc]['quote'])
+    if delta_neutral:
+        usd[exc]+=crypto[exc]*average_first_buy_price
+    else:
+        usd[exc]+=crypto[exc]*price
     crypto[exc]=0
 
 total_usdt_balance = 0
 for n in echanges_str:
     total_usdt_balance += usd[n]
-with open('balance.txt', 'r+') as balance_file:
+
+with open('real_balance.txt', 'r+') as balance_file:
     old_balance = float(balance_file.read())
     balance_file.seek(0)
     balance_file.write(str(total_usdt_balance))
