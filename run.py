@@ -76,7 +76,9 @@ try:
                 real_balance+=float(bal[symbol.split('/')[1]]['total'])
             with open(f"real_balance.txt","w") as f:
                 f.write(str(real_balance))
-        
+        else:
+            with open(f"real_balance.txt","w") as f:
+                f.write(str(balance))
         print('''
                                                                                                                      
                                                                                                                      
@@ -93,6 +95,8 @@ AMMMMMMMF     .JMMmmmd9 .AMA.   .AMMA..JMML. .JMM..JMMmmmd9    `"bmmd"'     .JMM
         i=0
 
         while True:
+            with open(f"real_balance.txt","r") as f:
+                balance = float(f.read())
             if i>=1 and p.returncode==1:
                 sys.exit(1)
             if mode == "fake-money":
