@@ -12,7 +12,7 @@
 * [Installation](#installation)
 * [Usage](#usage)
 * [Real version](#full-version)
-* [Contact](#contact)
+* [Contact and full documentation](#contact)
 
 <a name="features"/>
  
@@ -76,7 +76,7 @@ python run.py <mode> [renew-time-minutes] <balance-usdt-to-use> <pair> <exchange
   * ```fake-money``` will run the bot with the balance-usdt-to-use you put, with a virtual balance, just to test.
   * ```real``` will run the bot with real money.
   
-* ```[renew-time-minutes]``` = ONLY IF YOU ENABLED RENEWAL SETTING IN THE CONFIG. If you enabled it, you have to put the number of minutes a session should last. After each session, the bot sells all the assets back to rebalance.
+* ```[renew-time-minutes]``` = ONLY IF YOU ENABLED RENEWAL SETTING IN THE CONFIG. If you enabled it, you have to put the number of minutes a session should last. After each session, the bot sells all the assets back to rebalance. Note: you can trigger a manual rebalance while in a session by pressing the Enter key.
 
 * ```<balance-usdt-to-use>``` = how to be clearer? 
 
@@ -103,6 +103,8 @@ The source code of the arbitrage bot that works with real money is available on 
 
 Link: [barbotine.xyz/shop](https://barbotine.xyz/shop)
 
-## Contact
+## Contact and documentation
 
 [nelso@barbotine.xyz](mailto:nelso@barbotine.xyz)
+
+[Full documentation](https://documentation.barbotine.xyz)
