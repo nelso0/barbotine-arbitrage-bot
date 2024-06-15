@@ -23,7 +23,7 @@ def listen_for_exit():
     stop_requested = True
 
 if len(sys.argv) != 6:
-    print(f" \nIncorrect usage, this is what it has to look like: $ {how_do_you_usually_launch_python} bot-classic.py [pair] [total_usdt_investment] [stop.delay.minutes] [tlgrm.msg.title] [ex_list]\n ")
+    print(f" \nIncorrect usage, this is what it has to look like: $ {python_command} bot-classic.py [pair] [total_usdt_investment] [stop.delay.minutes] [tlgrm.msg.title] [ex_list]\n ")
     print(f" \n This is the list of args you wrote: {sys.argv}")
     sys.exit(1)
 print(" ")
