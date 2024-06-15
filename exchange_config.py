@@ -11,7 +11,7 @@ import datetime
 renewal = False # (1)
 delta_neutral = False # (2)
 timezone = 'Europe/Paris'
-how_do_you_usually_launch_python = 'python3' # (3)
+python_command = 'python3' # (3)
 
 # (4)
 exchanges = {
