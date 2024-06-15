@@ -30,6 +30,9 @@ print(" ")
 if first_orders_fill_timeout <= 0:
     first_orders_fill_timeout = 3600 # 2.5 days
 
+for e in sys.argv[5].split(','):
+    if e not in list(ex.keys()):
+        ex[e] = getattr(ccxt,e)()
 echanges = [ex[sys.argv[5].split(',')[i]] for i in range(len(sys.argv[5].split(',')))]
 echanges_str = [sys.argv[5].split(',')[i] for i in range(len(sys.argv[5].split(',')))]
 currentPair = str(sys.argv[1])
