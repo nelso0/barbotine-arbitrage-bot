@@ -50,9 +50,9 @@ while True:
     if i>=1 and p.returncode==1:
         sys.exit(1)
     if mode == "fake-money":
-        p=subprocess.run([how_do_you_usually_launch_python,"bot-fake-money.py",symbol,balance,renew,symbol,ex_list])
+        p=subprocess.run([python_command,"bot-fake-money.py",symbol,balance,renew,symbol,ex_list])
     elif mode == "real":
-        p=subprocess.run([how_do_you_usually_launch_python,"bot.py",symbol,balance,renew,symbol,ex_list])
+        p=subprocess.run([python_command,"bot.py",symbol,balance,renew,symbol,ex_list])
     else:
         printerror(m=f"mode input is incorrect.")
         sys.exit(1)
