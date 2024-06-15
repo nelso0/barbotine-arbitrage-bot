@@ -44,16 +44,16 @@ try:
                 f.write(str(real_balance))
 
         if renewal:
-            subprocess.run([how_do_you_usually_launch_python,f"main.py",mode,renew_time,balance,symbol,ex_list])
+            subprocess.run([python_command,f"main.py",mode,renew_time,balance,symbol,ex_list])
         else:
-            subprocess.run([how_do_you_usually_launch_python,f"main.py",mode,balance,symbol,ex_list])
+            subprocess.run([python_command,f"main.py",mode,balance,symbol,ex_list])
 
     else:
         if (len(sys.argv) != 6) and renewal:
-            printerror(m=f"Not correctly configured. Usage:\n \n{how_do_you_usually_launch_python} run.py <mode> <renewal period minutes> <balance to use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
+            printerror(m=f"Not correctly configured. Usage:\n \n{python_command} run.py <mode> <renewal period minutes> <balance to use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
             sys.exit(1)
         if (len(sys.argv) != 5) and not renewal:
-            printerror(m=f"Not correctly configured. Usage:\n \n{how_do_you_usually_launch_python} run.py <mode> <balance to use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
+            printerror(m=f"Not correctly configured. Usage:\n \n{python_command} run.py <mode> <balance to use> <crypto pair> <exchanges list separated without space with commas (,)>\n")
             sys.exit(1)
         args = sys.argv
         
@@ -101,12 +101,12 @@ AMMMMMMMF     .JMMmmmd9 .AMA.   .AMMA..JMML. .JMM..JMMmmmd9    `"bmmd"'     .JMM
                 sys.exit(1)
             if mode == "fake-money":
                 if os.path.exists('bot-fake-money.py'):
-                    p=subprocess.run([how_do_you_usually_launch_python,"bot-fake-money.py",symbol,balance,renew_time,symbol,ex_list])
+                    p=subprocess.run([python_command,"bot-fake-money.py",symbol,balance,renew_time,symbol,ex_list])
                 else:
                     printerror(m=f'please put the file "bot-fake-money.py" in the current directory.')
             elif mode == "real":
                 if os.path.exists('bot.py'):
-                    p=subprocess.run([how_do_you_usually_launch_python,"bot.py",symbol,balance,renew_time,symbol,ex_list])
+                    p=subprocess.run([python_command,"bot.py",symbol,balance,renew_time,symbol,ex_list])
                 else:
                     printerror(m=f'please put the file "bot.py" in the current directory.')
             else:
