@@ -6,14 +6,11 @@ import datetime
 
 # The bot seems complicated? It's not, just try! (and contact me if you have an error, it's probably a silly one :)
 
-# Link for all parameters explanation: https://docs.google.com/document/d/1qSXVCaoXEvL_5YwHjUKDa-ml3A8d8h-fnU0VhA9xLrY/edit?usp=sharing 
-
-renewal = False # (1)
-delta_neutral = False # (2)
+renewal = False
+delta_neutral = False
 timezone = 'Europe/Paris'
-python_command = 'python3' # (3)
+python_command = 'python3'
 
-# (4)
 exchanges = {
     'kucoin':{},
     'binance':{},
@@ -26,13 +23,16 @@ exchanges = {
 }
 
 telegram_sending = False
-apiToken = 'here' # (5)
+apiToken = 'here'
 chatID = 'here'
 
-criteria_pct = 0 # (6)
-criteria_usd = 0 # (7)
+criteria_pct = 0
+criteria_usd = 0
 
-first_orders_fill_timeout = 0 # (8)
+first_orders_fill_timeout = 0
+
+demo_fake_delay = False
+demo_fake_delay_ms = 500
 
 # ------------------------------------ FUNCTIONS (you can ignore) ------------------------------------
 
