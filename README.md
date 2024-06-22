@@ -99,9 +99,9 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
  
 ## Real money modes
 
-The source code of the arbitrage bot that works with real money is available on the Barbotine's shop.
+The source code of the arbitrage bot that works with real money is available for Barbotine's Capital supporters.
 
-Link: [barbotine.xyz/shop](https://barbotine.xyz/shop)
+More information: [barbotine.xyz/](https://barbotine.xyz/)
 
 ## Contact and documentation
 
