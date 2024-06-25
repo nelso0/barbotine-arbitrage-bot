@@ -19,11 +19,11 @@
 ## Features
 
 * Compatible with all [ccxt](https://github.com/ccxt/ccxt) exchanges
-* Ready-to-run and easily editable to fit your needs (no need to be an advanced developer)
+* Ready-to-run
 * Precise at the orderbook level (close to a market-making algorithm)
 * Can work with an unlimited number of exchanges at the same time
 * Does a balance simulation for every possible opportunity to always choose the most profitable one
-* Opportunities updates on Telegram
+* Opportunities updates on Telegram and webhooks
 * Full logging system
 
 <a name="demo"/>
