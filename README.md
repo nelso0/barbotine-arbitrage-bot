@@ -88,9 +88,11 @@ Note: as the bot needs to buy assets before getting started (it's necessary in o
 
 Examples:
 
+with renewal disabled (default):
 ```sh
-python run.py fake-money 15 500 EOS/USDT binance,okx,kucoin    # run the bot with 500 USDT and rebalance every 15 minutes, with binance okx and kucoin
+python run.py fake-money 500 EOS/USDT binance,okx,kucoin    # run the bot with 500 USDT and rebalance every 15 minutes, with binance okx and kucoin
 ```
+with renewal enabled:
 ```sh
 python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with 1000 USDT on binance phemex and bybit on SOL/USDT, and rebalance every 15 minutes.
 ```
