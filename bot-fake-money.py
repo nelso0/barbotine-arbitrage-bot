@@ -35,7 +35,7 @@ for e in sys.argv[5].split(','):
         ex[e] = getattr(ccxt,e)()
 echanges = [ex[sys.argv[5].split(',')[i]] for i in range(len(sys.argv[5].split(',')))]
 echanges_str = [sys.argv[5].split(',')[i] for i in range(len(sys.argv[5].split(',')))]
-currentPair = str(sys.argv[1])
+currentPair = str(sys.argv[1]).upper()
 criteria_usd = str(criteria_usd)
 howmuchusd = float(sys.argv[2])
 inputtimeout = int(sys.argv[3])*60
