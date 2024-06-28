@@ -15,7 +15,7 @@ def clear():
 
 try:
     if len(sys.argv) < 3:
-        input_list = ["mode (fake-money or real)", "renewal period (in minutes)", "balance to use", "symbol", "exchanges list separated without space with commas (,)"]
+        input_list = ["mode (fake-money or real)", "renewal period (in minutes)", "balance to use", "pair", "exchanges list separated without space with commas (,)"]
         if not renewal:
             input_list.remove("renewal period (in minutes)")
         output = []
@@ -27,26 +27,26 @@ try:
         if not renewal:
             renew_time = "525600"
             balance=output[1]
-            symbol = output[2]
+            pair = output[2]
             ex_list = output[3]
         else:
             renew_time = output[1]
             balance=output[2]
-            symbol = output[3]
+            pair = output[3]
             ex_list = output[4]
 
         if mode!='fake-money':
             real_balance=0
             for ex_str in ex_list.split(','):
                 bal = ex[ex_str].fetchBalance()
-                real_balance+=float(bal[symbol.split('/')[1]]['total'])
+                real_balance+=float(bal[pair.split('/')[1]]['total'])
             with open(f"real_balance.txt","w") as f:
                 f.write(str(real_balance))
 
         if renewal:
-            subprocess.run([python_command,f"main.py",mode,renew_time,balance,symbol,ex_list])
+            subprocess.run([python_command,f"main.py",mode,renew_time,balance,pair,ex_list])
         else:
-            subprocess.run([python_command,f"main.py",mode,balance,symbol,ex_list])
+            subprocess.run([python_command,f"main.py",mode,balance,pair,ex_list])
 
     else:
         if (len(sys.argv) != 6) and renewal:
@@ -61,19 +61,19 @@ try:
         if not renewal:
             renew_time = "525600"
             balance=args[2]
-            symbol = args[3]
+            pair = args[3]
             ex_list = args[4]
         else:
             renew_time = args[2]
             balance=args[3]
-            symbol = args[4]
+            pair = args[4]
             ex_list = args[5]
 
         if mode!='fake-money':
             real_balance=0
             for ex_str in ex_list.split(','):
                 bal = ex[ex_str].fetchBalance()
-                real_balance+=float(bal[symbol.split('/')[1]]['total'])
+                real_balance+=float(bal[pair.split('/')[1]]['total'])
             with open(f"real_balance.txt","w") as f:
                 f.write(str(real_balance))
         else:
@@ -101,12 +101,12 @@ AMMMMMMMF     .JMMmmmd9 .AMA.   .AMMA..JMML. .JMM..JMMmmmd9    `"bmmd"'     .JMM
                 sys.exit(1)
             if mode == "fake-money":
                 if os.path.exists('bot-fake-money.py'):
-                    p=subprocess.run([python_command,"bot-fake-money.py",symbol,balance,renew_time,symbol,ex_list])
+                    p=subprocess.run([python_command,"bot-fake-money.py",pair,balance,renew_time,pair,ex_list])
                 else:
                     printerror(m=f'please put the file "bot-fake-money.py" in the current directory.')
             elif mode == "real":
                 if os.path.exists('bot.py'):
-                    p=subprocess.run([python_command,"bot.py",symbol,balance,renew_time,symbol,ex_list])
+                    p=subprocess.run([python_command,"bot.py",pair,balance,renew_time,pair,ex_list])
                 else:
                     printerror(m=f'please put the file "bot.py" in the current directory.')
             else:
@@ -123,7 +123,7 @@ except KeyboardInterrupt:
             append_new_line('logs/logs.txt',f"{get_time_blank()} INFO: ctrl+c was pressed.")
             if inp.lower() == "y" or inp.lower() == "yes":
                 answered = True
-                emergency_convert_list(symbol,[ex_list.split(',')[i] for i in range(len(ex_list.split(',')))])
+                emergency_convert_list(pair,[ex_list.split(',')[i] for i in range(len(ex_list.split(',')))])
                 sys.exit(1)
             if inp.lower() == "n" or inp.lower() == "no":
                 answered = True

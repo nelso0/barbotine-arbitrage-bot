@@ -114,7 +114,7 @@ def emergency_convert_list(pair_to_sell,exlist):
             m[pair_to_sell]['limits']['cost']['max'] = 10e13 if type(m[pair_to_sell]['limits']['cost']['max'])!=float and type(m[pair_to_sell]['limits']['cost']['max'])!=int else m[pair_to_sell]['limits']['cost']['max']
             m[pair_to_sell]['limits']['amount']['max'] = 10e13 if type(m[pair_to_sell]['limits']['amount']['max'])!=float and type(m[pair_to_sell]['limits']['amount']['max'])!=int else m[pair_to_sell]['limits']['amount']['max']
             if (bal>(m[pair_to_sell]['limits']['cost']['min']/float(t['last'])) and bal>m[pair_to_sell]['limits']['amount']['min']) and (bal<(m[pair_to_sell]['limits']['cost']['max']/float(t['last'])) and bal<m[pair_to_sell]['limits']['amount']['max']):
-                ex[echange].createMarketSellOrder(symbol=pair_to_sell,amount=bal)
+                ex[echange].createMarketSellOrder(pair=pair_to_sell,amount=bal)
                 print(f"{get_time()} Successfully sold {bal} {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
                 append_new_line('logs/logs.txt',f"{get_time_blank()} INFO: Successfully sold {bal} {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
             else: 
@@ -126,20 +126,20 @@ def emergency_convert_list(pair_to_sell,exlist):
 def printandtelegram(message):
     print(message)
     send_to_telegram(message)
-def get_balance(exchange,symbol):
-    if symbol[-5:] == '/USDT':
-        symbol = symbol[:-5]
+def get_balance(exchange,pair):
+    if pair[-5:] == '/USDT':
+        pair = pair[:-5]
     balance=ex[exchange].fetch_balance()
-    if balance[symbol]['free'] != 0:
-        return balance[symbol]['free']
+    if balance[pair]['free'] != 0:
+        return balance[pair]['free']
     else:
         return 0
     
 ex = {n:getattr(ccxt,n)(exchanges[n]) for n in exchanges}
 
-def get_precision_min(symbol,exchange_str):
-    symbol_info = ex[exchange_str].load_markets(symbol)
-    grail = symbol_info[symbol]['limits']['price']['min']
+def get_precision_min(pair,exchange_str):
+    pair_info = ex[exchange_str].load_markets(pair)
+    grail = pair_info[pair]['limits']['price']['min']
     return grail
 def get_time():
     tz = pytz.timezone(timezone)

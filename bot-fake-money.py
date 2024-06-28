@@ -48,9 +48,9 @@ for ech in fees:
     markets = ex[ech].load_markets()
     fees[ech] = {'base': (0 if markets['BTC/USDT']['feeSide']!='base' else markets['BTC/USDT']['taker']) if list(markets['BTC/USDT'].keys()).count('feeSide')!=0 else 0, 'quote': (markets['BTC/USDT']['taker'] if markets['BTC/USDT']['feeSide']!='base' else 0) if list(markets['BTC/USDT'].keys()).count('feeSide')!=0 else markets['BTC/USDT']['taker']}
 
-async def fetch_orderbook(exchange_instance, symbol):
+async def fetch_orderbook(exchange_instance, pair):
     try:
-        orderbook = await exchange_instance.watch_order_book(symbol)
+        orderbook = await exchange_instance.watch_order_book(pair)
     except Exception as e:
         printerror(m=f"Error while fetching orderbook on {exchange_instance.id}. {e}")
         sys.stdout.write("\033[F")
@@ -59,7 +59,7 @@ async def fetch_orderbook(exchange_instance, symbol):
         await exchange_instance.close()
         new_instance = getattr(ccxt.pro,id_)({'enableRateLimit':True})
         try:
-            orderbook = await new_instance.watch_order_book(symbol)
+            orderbook = await new_instance.watch_order_book(pair)
         except Exception as e:
             printerror(m=f"Error while fetching orderbook on {exchange_instance.id}. {e}")
             sys.stdout.write("\033[F")
@@ -75,7 +75,7 @@ def emergency_convert(pair_to_sell):
                 print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Successfully canceled all orders on {echange}.")
             bal = get_balance(echange,pair_to_sell)
             if bal>(float(10)/float(ex[echange].fetch_ticker(pair_to_sell)['last'])):
-                ex[echange].createMarketSellOrder(symbol=pair_to_sell,amount=bal)
+                ex[echange].createMarketSellOrder(pair=pair_to_sell,amount=bal)
                 print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Successfully sold {bal} {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
             else: print(f"Not enough {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
             i+=1
@@ -90,7 +90,7 @@ def emergency_convert_list(pair_to_sell,exlist):
                 print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Successfully canceled all orders on {echange}.")
             bal = get_balance(echange,pair_to_sell)
             if bal>(float(10)/float(ex[echange].fetch_ticker(pair_to_sell)['last'])):
-                ex[echange].createMarketSellOrder(symbol=pair_to_sell,amount=bal)
+                ex[echange].createMarketSellOrder(pair=pair_to_sell,amount=bal)
                 print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Successfully sold {bal} {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
             else: print(f"{Style.DIM}{get_time()}{Style.RESET_ALL} Not enough {pair_to_sell[:len(pair_to_sell)-5]} on {echange}.")
             i+=1
@@ -153,7 +153,7 @@ prec_time = '0000000'
 min_ask_price = 0
 timeout = time.time() + inputtimeout
 total_change_usd=0
-async def symbol_loop(exchange, symbol):
+async def pair_loop(exchange, pair):
     global asyncio,total_change_usd,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_usd,total_crypto
     while time.time() <= timeout:
         if stop_requested:
@@ -166,7 +166,7 @@ async def symbol_loop(exchange, symbol):
             append_new_line('logs/logs.txt',f"{get_time_blank()} INFO: Manual rebalance requested. Breaking.")
             timeout -= 100000000000
             break
-        orderbook = await fetch_orderbook(exchange,symbol)
+        orderbook = await fetch_orderbook(exchange,pair)
         now = exchange.milliseconds()
         bid_prices[exchange.id] = orderbook["bids"][0][0]
         ask_prices[exchange.id] = orderbook["asks"][0][0]
@@ -204,8 +204,8 @@ async def symbol_loop(exchange, symbol):
             if demo_fake_delay:
                 ts = time.time()
                 await asyncio.sleep(demo_fake_delay_ms/1000)
-                ob_min_ask = await fetch_orderbook(getattr(ccxt, min_ask_ex)(),symbol)
-                ob_max_bid = await fetch_orderbook(getattr(ccxt, max_bid_ex)(),symbol)
+                ob_min_ask = await fetch_orderbook(getattr(ccxt, min_ask_ex)(),pair)
+                ob_max_bid = await fetch_orderbook(getattr(ccxt, max_bid_ex)(),pair)
                 min_ask_price = ob_min_ask['asks'][0][0]
                 max_bid_price = ob_max_bid['bids'][0][0]
     
@@ -251,9 +251,9 @@ async def symbol_loop(exchange, symbol):
         if time1[17:19] == "00" and time1[14:16] != prec_time:
             prec_time = time1[11:13]
             await exchange.close()
-async def exchange_loop(exchange_id, symbols):
+async def exchange_loop(exchange_id, pairs):
     exchange = getattr(ccxt.pro, exchange_id)()
-    loops = [symbol_loop(exchange, symbol) for symbol in symbols]
+    loops = [pair_loop(exchange, pair) for pair in pairs]
     await gather(*loops)
     await exchange.close()
 
@@ -262,8 +262,8 @@ async def main():
         echanges_str[i]:[currentPair] for i in range(0,len(echanges))
     }
     loops = [
-        exchange_loop(exchange_id, symbols)
-        for exchange_id, symbols in exchanges.items()
+        exchange_loop(exchange_id, pairs)
+        for exchange_id, pairs in exchanges.items()
     ]
     await gather(*loops)
 

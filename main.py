@@ -24,12 +24,12 @@ args = sys.argv
 mode = args[1]
 if renewal:
     balance = args[3]
-    symbol=args[4]
+    pair=args[4]
     renew=args[2]
     ex_list=args[5]
 else:
     balance = args[2]
-    symbol=args[3]
+    pair=args[3]
     renew="525600"
     ex_list=args[4]
 i=0
@@ -37,7 +37,7 @@ if mode!='fake-money':
     real_balance=0
     for ex_str in ex_list.split(','):
         bal = ex[ex_str].fetchBalance()
-        real_balance+=float(bal[symbol.split('/')[1]]['total'])
+        real_balance+=float(bal[pair.split('/')[1]]['total'])
     with open(f"real_balance.txt","w") as f:
         f.write(str(real_balance))
 else:
@@ -50,9 +50,9 @@ while True:
     if i>=1 and p.returncode==1:
         sys.exit(1)
     if mode == "fake-money":
-        p=subprocess.run([python_command,"bot-fake-money.py",symbol,balance,renew,symbol,ex_list])
+        p=subprocess.run([python_command,"bot-fake-money.py",pair,balance,renew,pair,ex_list])
     elif mode == "real":
-        p=subprocess.run([python_command,"bot.py",symbol,balance,renew,symbol,ex_list])
+        p=subprocess.run([python_command,"bot.py",pair,balance,renew,pair,ex_list])
     else:
         printerror(m=f"mode input is incorrect.")
         sys.exit(1)
