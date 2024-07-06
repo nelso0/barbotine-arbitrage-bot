@@ -11,8 +11,7 @@
 * [Prerequisites](#prerequis)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Real version](#full-version)
-* [Contact and full documentation](#contact)
+* [Paid version](#full-version)
 
 <a name="features"/>
  
@@ -98,15 +97,7 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
 ```
 
 <a name="full-version"/>
- 
-## Real money modes
 
-The source code of the arbitrage bot that works with real money is available for Barbotine Capital supporters.
+## Get premium version (works with real money)
 
-More information: [barbotine.xyz/](https://barbotine.xyz/)
-
-## Contact and documentation
-
-[nelso@barbotine.xyz](mailto:nelso@barbotine.xyz)
-
-[Full documentation](https://documentation.barbotine.xyz)
+Check: [https://barbotine.xyz](https://barbotine.xyz)
