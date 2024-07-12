@@ -98,6 +98,7 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
 
 <a name="full-version"/>
 
-## Get premium version (works with real money)
+## Join the community and see the website
 
-Check: [https://barbotine.xyz](https://barbotine.xyz)
+Community: [https://barbotine.xyz/discord](https://barbotine.xyz/discord)
+Website: [https://barbotine.xyz](https://barbotine.xyz)
