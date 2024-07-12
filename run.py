@@ -91,7 +91,7 @@ VMA""YMM      `7MM"""Yp,      db      `7MM"""Mq.  `7MM"""Yp,   .g8""8q.  MMP""MM
 AMMMMMMMF     .JMMmmmd9 .AMA.   .AMMA..JMML. .JMM..JMMmmmd9    `"bmmd"'     .JMML.    .JMML..JML.    YM  .JMMmmmmMMM 
                                                                                                                      
                                                                                                                      ''')
-        print(f" \n{Fore.BLUE}{Style.BRIGHT}DEMO VERSION{Style.RESET_ALL}\n \n\nTwitter: @thebarbotine\nDiscord: https://discord.gg/zZpvyz8brn\n")
+        print(f" \n{Fore.BLUE}{Style.BRIGHT}DEMO VERSION{Style.RESET_ALL}\n \n\nTwitter: @thebarbotine\nDiscord: https://barbotine.xyz/discord\n")
         i=0
 
         while True:
