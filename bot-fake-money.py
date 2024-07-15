@@ -1,4 +1,4 @@
-from asyncio import gather, run
+from asyncio import gather, run, sleep
 import time
 import ccxt.pro
 import ccxt
@@ -154,7 +154,7 @@ min_ask_price = 0
 timeout = time.time() + inputtimeout
 total_change_usd=0
 async def pair_loop(exchange, pair):
-    global asyncio,total_change_usd,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_usd,total_crypto
+    global total_change_usd,crypto_per_transaction,i,z,prec_time,t,time1,bid_prices,ask_prices,min_ask_price,max_bid_price,prec_ask_price,prec_bid_price,timeout,profit_usd,total_crypto
     while time.time() <= timeout:
         if stop_requested:
             sys.stdout.write("\033[F")
@@ -203,7 +203,7 @@ async def pair_loop(exchange, pair):
 
             if demo_fake_delay:
                 ts = time.time()
-                await asyncio.sleep(demo_fake_delay_ms/1000)
+                await sleep(demo_fake_delay_ms/1000)
                 ob_min_ask = await fetch_orderbook(getattr(ccxt, min_ask_ex)(),pair)
                 ob_max_bid = await fetch_orderbook(getattr(ccxt, max_bid_ex)(),pair)
                 min_ask_price = ob_min_ask['asks'][0][0]
