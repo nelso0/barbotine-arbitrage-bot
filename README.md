@@ -100,5 +100,5 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
 
 ## Join the community and see the website
 
-Community: [https://barbotine.xyz/discord](https://barbotine.xyz/discord)
-Website: [https://barbotine.xyz](https://barbotine.xyz)
+Community: [barbotine.xyz/discord](https://barbotine.xyz/discord)
+Website: [barbotine.xyz](https://barbotine.xyz)
