@@ -154,4 +154,4 @@ flowchart TD
 
 ## Full version
 
-You can get the source code of the real money modes and the rest of the arbitrage system by becoming a Barbotine donator. More info on [barbotine.xyz](https://barbotine.xyz)
+You can get the source code of the real money modes and the rest of the documentation/ressources by becoming a Barbotine donator. More info on [barbotine.xyz](https://barbotine.xyz)
