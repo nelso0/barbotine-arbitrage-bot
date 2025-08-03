@@ -8,7 +8,6 @@
 
 ## Table of content
 * [Features](#features)
-* [Demo video](#demo)
 * [Prerequisites](#prerequis)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -25,12 +24,6 @@
 * Does a balance simulation for every possible opportunity to always choose the most profitable one
 * Opportunities updates on Telegram and webhooks
 * Full logging system
-
-<a name="demo"/>
- 
-## Demo
-
-demo video: https://youtu.be/Uw6ajbODid0
 
 <a name="prerequis"/>
  
