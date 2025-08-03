@@ -90,7 +90,7 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
 ```
 
 <a name="how"/>
-This diagram shows the complete workflow of the Barbotine arbitrage bot from initialization to session completion.
+## How does it work?
 
 ```mermaid
 flowchart TD
