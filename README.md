@@ -1,7 +1,6 @@
-## Σ Barbotine Arbitrage
+## Σ Barbotine
 <p align="left">
-  <img alt="Barbotine arbitrage bot Logo" height="auto" src="https://i.ibb.co/cgdP6rL/Capture-d-e-cran-2024-07-28-a-15-39-40.png">
-  <img alt="Barbotine arbitrage bot Logo" height="auto" src="https://i.ibb.co/wSmHNm8/image.png">
+  <img alt="Barbotine arbitrage bot" height="auto" src="./screenshot.png">
 </p>
 
 [![GitHub @nelso0](https://img.shields.io/github/followers/nelso0?label=follow&style=social)](https://github.com/nelso0)
