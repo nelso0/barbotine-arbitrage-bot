@@ -93,6 +93,8 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
 
 ## How does it work?
 
+<details>
+<summary>Click to view the complete operation flow diagram</summary>
 ```mermaid
 flowchart TD
     A[Start bot] --> B[Parse arguments<br/>mode, pair, balance, exchanges]
@@ -149,6 +151,7 @@ flowchart TD
     style S fill:#e8f5e8
     style CC fill:#fce4ec
 ```
+</details>
 
 <a name="full-version"/>
 
