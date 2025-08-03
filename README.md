@@ -1,6 +1,6 @@
 ## Σ Barbotine
 <p align="left">
-  <img alt="Barbotine arbitrage bot" height="auto" src="./screenshot.png">
+  <img alt="Barbotine arbitrage bot" width="400px" height="auto" src="./screenshot.png">
 </p>
 
 [![GitHub @nelso0](https://img.shields.io/github/followers/nelso0?label=follow&style=social)](https://github.com/nelso0)
