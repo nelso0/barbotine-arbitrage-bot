@@ -94,52 +94,52 @@ This diagram shows the complete workflow of the Barbotine arbitrage bot from ini
 
 ```mermaid
 flowchart TD
-    A[Start Bot] --> B[Parse Arguments<br/>Mode, Pair, Balance, Exchanges]
-    B --> C[Load Exchange Configs<br/>& Connect via CCXT]
+    A[Start bot] --> B[Parse arguments<br/>mode, pair, balance, exchanges]
+    B --> C[Load exchange configs<br/>& connect via CCXT]
     C --> D{Mode?}
     
-    D -->|Real| E[Fetch Real Balances<br/>B = Sum of exchange balances]
-    D -->|Fake Money| F[Use Input Balance<br/>B = input_balance]
+    D -->|Real| E[Fetch real balances<br/>from all exchanges]
+    D -->|Fake Money| F[Use input balance<br/>from config]
     
-    E --> G[Calculate Allocation]
+    E --> G[Calculate initial allocation]
     F --> G
     
-    G --> H[USD per exchange = B/(2*n)<br/>Fetch average price<br/>Crypto per exchange = total_crypto/n]
+    G --> H[Distribute balance equally<br/>fetch average price<br/>calculate crypto amounts]
     
-    H --> I[Place Initial Buy Orders<br/>on All Exchanges]
-    I --> J[Wait for Order Fulfillment]
+    H --> I[Place initial buy orders<br/>on all exchanges]
+    I --> J[Wait for order fulfillment]
     
-    J --> K[Start Main Arbitrage Loop]
+    J --> K[Start main arbitrage loop]
     
-    K --> L[Monitor Orderbooks<br/>Parallel WebSocket Connections]
-    L --> M[Update Price Dictionaries<br/>bid_prices & ask_prices]
+    K --> L[Monitor orderbooks<br/>parallel WebSocket connections]
+    L --> M[Update price dictionaries<br/>bid_prices & ask_prices]
     
-    M --> N[Find Best Opportunities<br/>min_ask_ex & max_bid_ex]
-    N --> O[Calculate Profit<br/>Including Fees]
+    M --> N[Find best opportunities<br/>min_ask_ex & max_bid_ex]
+    N --> O[Calculate profit<br/>including fees]
     
-    O --> P{Profitable<br/>Opportunity?}
+    O --> P{Profitable<br/>opportunity?}
     
-    P -->|No| Q[Display Current Best<br/>Continue Monitoring]
-    Q --> R{Session<br/>Timeout?}
+    P -->|No| Q[Display current best<br/>continue monitoring]
+    Q --> R{Session<br/>timeout?}
     
-    P -->|Yes| S[Execute Simultaneous Trades<br/>BUY on min_ask_ex<br/>SELL on max_bid_ex]
+    P -->|Yes| S[Execute simultaneous trades<br/>BUY on min_ask_ex<br/>SELL on max_bid_ex]
     
-    S --> T[Update Balances<br/>& Rebalance Positions]
-    T --> U[Log Profit & Send<br/>Telegram Notification]
-    U --> V[Increment Trade Counter<br/>Update Session Totals]
+    S --> T[Update balances<br/>& rebalance positions]
+    T --> U[Log profit & send<br/>Telegram notification]
+    U --> V[Increment trade counter<br/>update session totals]
     
     V --> R
-    R -->|No| W{Manual Stop<br/>Requested?}
+    R -->|No| W{Manual stop<br/>requested?}
     W -->|No| L
-    W -->|Yes| X[Emergency Rebalance]
+    W -->|Yes| X[Emergency rebalance]
     
-    R -->|Yes| Y[Session End Cleanup]
+    R -->|Yes| Y[Session end cleanup]
     X --> Y
     
-    Y --> Z[Cancel Open Orders<br/>Convert All Crypto to USD]
-    Z --> AA[Calculate Final Balance<br/>& Session Profit]
-    AA --> BB[Update real_balance.txt<br/>Generate Report]
-    BB --> CC[End Session]
+    Y --> Z[Cancel open orders<br/>convert all crypto to USD]
+    Z --> AA[Calculate final balance<br/>& session profit]
+    AA --> BB[Update real_balance.txt<br/>generate report]
+    BB --> CC[End session]
     
     style A fill:#e1f5fe
     style G fill:#f3e5f5
