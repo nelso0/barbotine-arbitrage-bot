@@ -1,4 +1,4 @@
-ccxt==4.0.42
-colorama==0.4.6
-requests==2.31.0
-pytz==2023.3
+ccxt>=4.0.42
+colorama>=0.4.6
+requests>=2.31.0
+pytz>=2023.3

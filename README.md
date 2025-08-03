@@ -50,7 +50,7 @@ pip install -r requirements.txt
 4. Set your configuration details in [exchange_config.py](exchange_config.py)
 5. Run with:
 ```sh
-python run.py
+python main.py
 ```
 
 <a name="usage"/>
@@ -60,7 +60,7 @@ python run.py
 You can also run it with one line like this:
 
 ```sh
-python run.py <mode> [renew-time-minutes] <balance-usdt-to-use> <pair> <exchanges list separated by commas (no space!)>
+python main.py <mode> [renew-time-minutes] <balance-usdt-to-use> <pair> <exchanges list separated by commas (no space!)>
 ```
 
 
@@ -81,11 +81,11 @@ Examples:
 
 with renewal disabled (default):
 ```sh
-python run.py fake-money 500 EOS/USDT binance,okx,kucoin    # run the bot with 500 USDT and rebalance every 15 minutes, with binance okx and kucoin
+python main.py fake-money 500 EOS/USDT binance,okx,kucoin    # run the bot with 500 USDT and rebalance every 15 minutes, with binance okx and kucoin
 ```
 with renewal enabled:
 ```sh
-python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with 1000 USDT on binance phemex and bybit on SOL/USDT, and rebalance every 15 minutes.
+python main.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with 1000 USDT on binance phemex and bybit on SOL/USDT, and rebalance every 15 minutes.
 ```
 
 <a name="how"/>
