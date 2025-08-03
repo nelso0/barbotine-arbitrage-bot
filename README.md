@@ -90,6 +90,7 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
 ```
 
 <a name="how"/>
+
 ## How does it work?
 
 ```mermaid
