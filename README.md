@@ -95,62 +95,7 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
 
 <details>
 <summary>Click to view the complete operation flow diagram</summary>
-```mermaid
-flowchart TD
-    A[Start bot] --> B[Parse arguments<br/>mode, pair, balance, exchanges]
-    B --> C[Load exchange configs<br/>& connect via CCXT]
-    C --> D{Mode?}
-    
-    D -->|Real| E[Fetch real balances<br/>from all exchanges]
-    D -->|Fake Money| F[Use input balance<br/>from config]
-    
-    E --> G[Calculate initial allocation]
-    F --> G
-    
-    G --> H[Distribute balance equally<br/>fetch average price<br/>calculate crypto amounts]
-    
-    H --> I[Place initial buy orders<br/>on all exchanges]
-    I --> J[Wait for order fulfillment]
-    
-    J --> K[Start main arbitrage loop]
-    
-    K --> L[Monitor orderbooks<br/>parallel WebSocket connections]
-    L --> M[Update price dictionaries<br/>bid_prices & ask_prices]
-    
-    M --> N[Find best opportunities<br/>min_ask_ex & max_bid_ex]
-    N --> O[Calculate profit<br/>including fees]
-    
-    O --> P{Profitable<br/>opportunity?}
-    
-    P -->|No| Q[Display current best<br/>continue monitoring]
-    Q --> R{Session<br/>timeout?}
-    
-    P -->|Yes| S[Execute simultaneous trades<br/>BUY on min_ask_ex<br/>SELL on max_bid_ex]
-    
-    S --> T[Update balances<br/>& rebalance positions]
-    T --> U[Log profit & send<br/>Telegram notification]
-    U --> V[Increment trade counter<br/>update session totals]
-    
-    V --> R
-    R -->|No| W{Manual stop<br/>requested?}
-    W -->|No| L
-    W -->|Yes| X[Emergency rebalance]
-    
-    R -->|Yes| Y[Session end cleanup]
-    X --> Y
-    
-    Y --> Z[Cancel open orders<br/>convert all crypto to USD]
-    Z --> AA[Calculate final balance<br/>& session profit]
-    AA --> BB[Update real_balance.txt<br/>generate report]
-    BB --> CC[End session]
-    
-    style A fill:#e1f5fe
-    style G fill:#f3e5f5
-    style K fill:#fff3e0
-    style P fill:#ffebee
-    style S fill:#e8f5e8
-    style CC fill:#fce4ec
-```
+![Diagram](./operation-diagram.svg)
 </details>
 
 <a name="full-version"/>
