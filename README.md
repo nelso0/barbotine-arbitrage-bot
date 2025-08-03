@@ -98,13 +98,13 @@ flowchart TD
     B --> C[Load Exchange Configs<br/>& Connect via CCXT]
     C --> D{Mode?}
     
-    D -->|Real| E[Fetch Real Balances<br/>B = Σ(exchange_balances)]
+    D -->|Real| E[Fetch Real Balances<br/>B = Sum of exchange balances]
     D -->|Fake Money| F[Use Input Balance<br/>B = input_balance]
     
     E --> G[Calculate Allocation]
     F --> G
     
-    G --> H[USD per exchange = B/(2×n)<br/>Fetch average price<br/>Crypto per exchange = total_crypto/n]
+    G --> H[USD per exchange = B/(2*n)<br/>Fetch average price<br/>Crypto per exchange = total_crypto/n]
     
     H --> I[Place Initial Buy Orders<br/>on All Exchanges]
     I --> J[Wait for Order Fulfillment]
