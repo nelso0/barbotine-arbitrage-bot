@@ -93,9 +93,9 @@ python run.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot with
 
 ## How does it work?
 
-<details style="max-width: 150px">
+<details>
 <summary>Click to view the complete operation flow diagram</summary>
-<img src="./operation-diagram.svg">
+<div style="max-width: 150px"><img src="./operation-diagram.svg"></div>
 </details>
 
 <a name="full-version"/>
