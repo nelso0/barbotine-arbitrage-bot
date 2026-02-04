@@ -101,4 +101,4 @@ python main.py real 15 1000 SOL/USDT binance,poloniex,kucoin   # run the bot wit
 
 ## Full version
 
-You can get the source code of the real money modes and the rest of the documentation/ressources by becoming a Barbotine donator. More info on [barbotine.xyz](https://barbotine.xyz)
+Contact me if you're interested in the full version that works with real balances
